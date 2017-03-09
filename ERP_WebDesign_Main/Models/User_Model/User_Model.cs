@@ -7,7 +7,7 @@ namespace ERP_WebDesign_Main.Models.User_Model
 {
     public class User_Model
     {
-        USER_LOGIN_MODEL aa = new USER_LOGIN_MODEL();
+        
 
     }
 

@@ -135,6 +135,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\User_Model\User_Model.cs" />
+    <Compile Include="Model_BL\User_BL\Users_BL.cs" />
     <Compile Include="Model_Entity_DB\ERP_WebDesign_DB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -153,6 +154,9 @@
     <Compile Include="Model_Entity_DB\tbl_JobMaster.cs">
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model_Entity_DB\tbl_User.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +165,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\ERP_Logo.jpg" />
     <Content Include="Model_Entity_DB\ERP_WebDesign_DB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ERP_WebDesign_DB.edmx</DependentUpon>
