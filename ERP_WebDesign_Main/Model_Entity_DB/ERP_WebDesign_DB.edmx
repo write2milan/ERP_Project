@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ERP_DEMOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_JobMaster">
+          <Key>
+            <PropertyRef Name="JOBID" />
+          </Key>
+          <Property Name="SITE" Type="nvarchar" MaxLength="50" />
+          <Property Name="JOBID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="JOBNAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="SUBPROCESSID" Type="nvarchar" MaxLength="500" />
+          <Property Name="DETAILS" Type="nvarchar" MaxLength="500" />
+          <Property Name="DEPT" Type="nvarchar" MaxLength="50" />
+          <Property Name="JOBREQ" Type="int" />
+          <Property Name="POWERREQ" Type="int" />
+          <Property Name="STANDARDOUTPUT" Type="int" />
+          <Property Name="STANDARDTIME" Type="int" />
+        </EntityType>
+        <EntityContainer Name="ERP_DEMOModelStoreContainer">
+          <EntitySet Name="tbl_JobMaster" EntityType="Self.tbl_JobMaster" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ERP_DEMOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_JobMaster">
+          <Key>
+            <PropertyRef Name="JOBID" />
+          </Key>
+          <Property Name="SITE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JOBID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="JOBNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SUBPROCESSID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DETAILS" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DEPT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JOBREQ" Type="Int32" />
+          <Property Name="POWERREQ" Type="Int32" />
+          <Property Name="STANDARDOUTPUT" Type="Int32" />
+          <Property Name="STANDARDTIME" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="ERP_DEMOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_JobMaster" EntityType="Self.tbl_JobMaster" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ERP_DEMOModelStoreContainer" CdmEntityContainer="ERP_DEMOEntities">
+          <EntitySetMapping Name="tbl_JobMaster">
+            <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_JobMaster">
+              <MappingFragment StoreEntitySet="tbl_JobMaster">
+                <ScalarProperty Name="SITE" ColumnName="SITE" />
+                <ScalarProperty Name="JOBID" ColumnName="JOBID" />
+                <ScalarProperty Name="JOBNAME" ColumnName="JOBNAME" />
+                <ScalarProperty Name="SUBPROCESSID" ColumnName="SUBPROCESSID" />
+                <ScalarProperty Name="DETAILS" ColumnName="DETAILS" />
+                <ScalarProperty Name="DEPT" ColumnName="DEPT" />
+                <ScalarProperty Name="JOBREQ" ColumnName="JOBREQ" />
+                <ScalarProperty Name="POWERREQ" ColumnName="POWERREQ" />
+                <ScalarProperty Name="STANDARDOUTPUT" ColumnName="STANDARDOUTPUT" />
+                <ScalarProperty Name="STANDARDTIME" ColumnName="STANDARDTIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
