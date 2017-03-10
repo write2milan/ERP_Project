@@ -7,20 +7,21 @@ using System.Web.Security;
 
 namespace ERP_WebDesign_Main.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
+        [AuthenticationFilter]
         public ActionResult Index()
         {
             return View();
         }
-
+        [AuthenticationFilter]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
-
+        [AuthenticationFilter]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -30,7 +31,11 @@ namespace ERP_WebDesign_Main.Controllers
 
         public ActionResult Login()
         {
-            return View();
+            Model_BL.User_BL.Users_BL objUserBL = new Model_BL.User_BL.Users_BL();
+            if (!objUserBL.IsAuthenticated())
+                return View();
+            else
+                return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]

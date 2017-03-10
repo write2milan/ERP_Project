@@ -20,14 +20,13 @@
                 @Html.ValidationMessageFor(model => model.USERNAME, "", new { @class = "text-danger" })
 
                 <br />
-                @Html.EditorFor(model => model.PASSWORD, new { htmlAttributes = new { @class = "form-control input-sm chat-input", @placeholder = "password" } })
+                @Html.EditorFor(model => model.PASSWORD, new { htmlAttributes = new { @type="password", @class = "form-control input-sm chat-input", @placeholder = "password" } })
                 @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
 
                 <br />
                 <div class="wrapper">
                     <span class="group-btn">
                         <input type="submit" value="Log In" class="btn btn-primary btn-md" />
-                        @*<a href="#" class="btn btn-primary btn-md">Login <i class="fa fa-sign-in"></i></a>*@
                     </span>
                 </div>
             </div>

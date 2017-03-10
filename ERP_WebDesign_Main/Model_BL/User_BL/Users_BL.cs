@@ -1,8 +1,6 @@
 ﻿using ERP_WebDesign_Main.Model_Entity_DB;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace ERP_WebDesign_Main.Model_BL.User_BL
 {
@@ -35,6 +33,26 @@ namespace ERP_WebDesign_Main.Model_BL.User_BL
 
             return isValid;
 
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool IsAuthenticated()
+        {
+            bool isAuthenticated = false;
+            try
+            {
+                if (System.Web.HttpContext.Current.Request.IsAuthenticated)
+                {
+                    isAuthenticated = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return isAuthenticated;
         }
     }
 }
