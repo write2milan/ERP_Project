@@ -22,7 +22,7 @@ namespace ERP_WebDesign_Main.Model_BL.User_BL
                     var userExist = objContext.tbl_User.Where(item =>
                     item.USERNAME.Equals(_username, StringComparison.CurrentCultureIgnoreCase)
                     && item.PASSWORD.Equals(_password));
-                    isValid = userExist.Count() > 0 ? true : false;
+                    isValid = userExist.Count() > 0 ? true : false; 
                 }
             }
             catch (Exception ex)
