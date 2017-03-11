@@ -7,7 +7,7 @@ namespace ERP_WebDesign_Main
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            filters.Add(new CustomHandleError.CustomErrorHandler());
         }
     }
 }

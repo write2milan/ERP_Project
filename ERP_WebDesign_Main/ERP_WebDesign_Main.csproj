@@ -133,6 +133,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="CustomActionFilter\AuthenticationFilterAttribute.cs" />
+    <Compile Include="CustomHandleError\CustomErrorHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
