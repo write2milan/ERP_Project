@@ -9,28 +9,30 @@
 
 @using (Html.BeginForm())
 {
-    
+
     @Html.AntiForgeryToken()
     
-    <div class="row">
-        <div class="col-md-offset-5 col-md-3">
-            <div class="form-login">
-                <h4>ERP Login</h4>
-                @Html.EditorFor(model => model.USERNAME, new { htmlAttributes = new { @class = "form-control input-sm chat-input", @placeholder = "username" } })
-                @Html.ValidationMessageFor(model => model.USERNAME, "", new { @class = "text-danger" })
+    <div class="container body-content login">
+        <div class="row">
+            <div class="col-md-offset-4 col-md-3 login-wrapper">
+                <div class="form-login">
+                    <h4>ERP Login</h4>
+                    @Html.EditorFor(model => model.USERNAME, new { htmlAttributes = new { @class = "form-control input-sm chat-input", @placeholder = "username" } })
+                    @Html.ValidationMessageFor(model => model.USERNAME, "", new { @class = "text-danger" })
 
-                <br />
-                @Html.EditorFor(model => model.PASSWORD, new { htmlAttributes = new { @type="password", @class = "form-control input-sm chat-input", @placeholder = "password" } })
-                @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
+                    <br />
+                    @Html.EditorFor(model => model.PASSWORD, new { htmlAttributes = new { @type = "password", @class = "form-control input-sm chat-input", @placeholder = "password" } })
+                    @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
 
-                <br />
-                <div class="wrapper">
-                    <span class="group-btn">
-                        <input type="submit" value="Log In" class="btn btn-primary btn-md" />
-                    </span>
+                    <br />
+                    <div class="wrapper">
+                        <span class="group-btn">
+                            <input type="submit" value="Log In" class="btn btn-primary btn-md" />
+                        </span>
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 
