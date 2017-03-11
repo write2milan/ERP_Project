@@ -61,7 +61,7 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hello....Login data is incorrect.
+        ///   Looks up a localized string similar to Invalid user id or password.
         /// </summary>
         public static string INVALID_LOGIN_MESSAGE {
             get {
