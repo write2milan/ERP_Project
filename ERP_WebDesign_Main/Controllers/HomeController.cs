@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ERP_WebDesign_Main.Resources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -51,7 +52,7 @@ namespace ERP_WebDesign_Main.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Login data is incorrect!");
+                    ModelState.AddModelError("", ERP_WebDesign_CommonResource.INVALID_LOGIN_MESSAGE);
                 }
             }
             return View(objUserModel);

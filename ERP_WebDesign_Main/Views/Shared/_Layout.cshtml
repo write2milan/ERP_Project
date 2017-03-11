@@ -6,8 +6,9 @@
     <title>@ViewBag.Title - ERP Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
-<body>
+<body ng-app="ERP-APP">
     @{ ERP_WebDesign_Main.Model_BL.User_BL.Users_BL objUserBL = new ERP_WebDesign_Main.Model_BL.User_BL.Users_BL(); }
 
     <div id="header" class="navbar navbar-default navbar-fixed-top">
@@ -75,6 +76,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/commonscript")
     @RenderSection("scripts", required: false)
 </body>
 </html>
