@@ -23,7 +23,6 @@ namespace ERP_WebDesign_Main.Model_BL.User_BL
                     item.USERNAME.Equals(_username, StringComparison.CurrentCultureIgnoreCase)
                     && item.PASSWORD.Equals(_password));
                     isValid = userExist.Count() > 0 ? true : false;
-                    float ss = (1 / userExist.Count());
                 }
             }
             catch (Exception ex)

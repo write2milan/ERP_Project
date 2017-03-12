@@ -27,5 +27,6 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
     
         public virtual DbSet<tbl_JobMaster> tbl_JobMaster { get; set; }
         public virtual DbSet<tbl_User> tbl_User { get; set; }
+        public virtual DbSet<tbl_ExceptionLogger> tbl_ExceptionLogger { get; set; }
     }
 }

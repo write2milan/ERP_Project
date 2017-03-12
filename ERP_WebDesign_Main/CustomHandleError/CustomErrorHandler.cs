@@ -42,7 +42,7 @@ namespace ERP_WebDesign_Main.CustomHandleError
             }
 
             // Write error logging code here if you wish.
-
+            CommonHelper.CommonHelper.ExceptionLogger(filterContext.Exception);
             //if want to get different of the request
             //var currentController = (string)filterContext.RouteData.Values["controller"];
             //var currentActionName = (string)filterContext.RouteData.Values["action"];

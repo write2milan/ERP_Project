@@ -130,6 +130,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CommonHelper\CommonHelper.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="CustomActionFilter\AuthenticationFilterAttribute.cs" />
@@ -153,6 +154,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ERP_WebDesign_DB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\tbl_ExceptionLogger.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Model_Entity_DB\tbl_JobMaster.cs">
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>

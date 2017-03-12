@@ -7,6 +7,7 @@
       <Diagram DiagramId="c41874a9b2c846a1958200d9badbdaba" Name="Diagram1">
         <EntityTypeShape EntityType="ERP_DEMOModel.tbl_JobMaster" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ERP_DEMOModel.tbl_User" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ERP_DEMOModel.tbl_ExceptionLogger" Width="1.5" PointX="3.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

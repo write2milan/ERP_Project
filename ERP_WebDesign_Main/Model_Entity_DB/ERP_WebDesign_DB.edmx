@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ERP_DEMOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_ExceptionLogger">
+          <Key>
+            <PropertyRef Name="EXCEPTIONID" />
+          </Key>
+          <Property Name="EXCEPTIONID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EXCEPTIONMESSAGE" Type="varchar(max)" />
+          <Property Name="EXCEPTIONSTACKTRACE" Type="varchar(max)" />
+          <Property Name="EXCEPTIONSOURCE" Type="varchar(max)" />
+          <Property Name="LOGTIME" Type="datetime" />
+          <Property Name="USERID" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="tbl_JobMaster">
           <Key>
             <PropertyRef Name="JOBID" />
@@ -28,6 +39,7 @@
           <Property Name="PASSWORD" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ERP_DEMOModelStoreContainer">
+          <EntitySet Name="tbl_ExceptionLogger" EntityType="Self.tbl_ExceptionLogger" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_JobMaster" EntityType="Self.tbl_JobMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -53,6 +65,7 @@
         <EntityContainer Name="ERP_DEMOEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbl_JobMaster" EntityType="Self.tbl_JobMaster" />
           <EntitySet Name="tbl_User" EntityType="ERP_DEMOModel.tbl_User" />
+          <EntitySet Name="tbl_ExceptionLogger" EntityType="ERP_DEMOModel.tbl_ExceptionLogger" />
         </EntityContainer>
         <EntityType Name="tbl_User">
           <Key>
@@ -60,6 +73,17 @@
           </Key>
           <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_ExceptionLogger">
+          <Key>
+            <PropertyRef Name="EXCEPTIONID" />
+          </Key>
+          <Property Name="EXCEPTIONID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EXCEPTIONMESSAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EXCEPTIONSTACKTRACE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EXCEPTIONSOURCE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LOGTIME" Type="DateTime" Precision="3" />
+          <Property Name="USERID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -88,6 +112,18 @@
               <MappingFragment StoreEntitySet="tbl_User">
                 <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
                 <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ExceptionLogger">
+            <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_ExceptionLogger">
+              <MappingFragment StoreEntitySet="tbl_ExceptionLogger">
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="LOGTIME" ColumnName="LOGTIME" />
+                <ScalarProperty Name="EXCEPTIONSOURCE" ColumnName="EXCEPTIONSOURCE" />
+                <ScalarProperty Name="EXCEPTIONSTACKTRACE" ColumnName="EXCEPTIONSTACKTRACE" />
+                <ScalarProperty Name="EXCEPTIONMESSAGE" ColumnName="EXCEPTIONMESSAGE" />
+                <ScalarProperty Name="EXCEPTIONID" ColumnName="EXCEPTIONID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
