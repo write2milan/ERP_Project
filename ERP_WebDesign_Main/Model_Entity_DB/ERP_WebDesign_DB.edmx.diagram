@@ -5,9 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c41874a9b2c846a1958200d9badbdaba" Name="Diagram1">
-        <EntityTypeShape EntityType="ERP_DEMOModel.tbl_JobMaster" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ERP_DEMOModel.tbl_User" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="ERP_DEMOModel.tbl_ExceptionLogger" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="ERP_DEMOModel.tbl_ProcessMaster" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ERP_DEMOModel.tbl_ProductionUnitMaster" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ERP_DEMOModel.tbl_ProductMaster" Width="1.5" PointX="5.75" PointY="1.375" />
+        <EntityTypeShape EntityType="ERP_DEMOModel.tbl_SalesOrder" Width="1.5" PointX="8" PointY="1" />
+        <EntityTypeShape EntityType="ERP_DEMOModel.tbl_ShiftMaster" Width="1.5" PointX="5.75" PointY="5.75" />
+        <AssociationConnector Association="ERP_DEMOModel.FK_SO_ProductID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

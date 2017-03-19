@@ -12,17 +12,15 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_JobMaster
+    public partial class tbl_ProcessMaster
     {
-        public string SITE { get; set; }
-        public string JOBID { get; set; }
-        public string JOBNAME { get; set; }
-        public string SUBPROCESSID { get; set; }
-        public string DETAILS { get; set; }
-        public string DEPT { get; set; }
-        public Nullable<int> JOBREQ { get; set; }
-        public Nullable<int> POWERREQ { get; set; }
-        public Nullable<int> STANDARDOUTPUT { get; set; }
-        public Nullable<int> STANDARDTIME { get; set; }
+        public string ProcessID { get; set; }
+        public string ProcessName { get; set; }
+        public string ProcessDesc { get; set; }
+        public string Site { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedDateTime { get; set; }
+        public string ModifiedBy { get; set; }
+        public Nullable<System.DateTime> ModifiedDateTime { get; set; }
     }
 }

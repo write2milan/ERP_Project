@@ -16,20 +16,72 @@
           <Property Name="LOGTIME" Type="datetime" />
           <Property Name="USERID" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="tbl_JobMaster">
+        <EntityType Name="tbl_ProcessMaster">
           <Key>
-            <PropertyRef Name="JOBID" />
+            <PropertyRef Name="ProcessID" />
           </Key>
-          <Property Name="SITE" Type="nvarchar" MaxLength="50" />
-          <Property Name="JOBID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="JOBNAME" Type="nvarchar" MaxLength="500" />
-          <Property Name="SUBPROCESSID" Type="nvarchar" MaxLength="500" />
-          <Property Name="DETAILS" Type="nvarchar" MaxLength="500" />
-          <Property Name="DEPT" Type="nvarchar" MaxLength="50" />
-          <Property Name="JOBREQ" Type="int" />
-          <Property Name="POWERREQ" Type="int" />
-          <Property Name="STANDARDOUTPUT" Type="int" />
-          <Property Name="STANDARDTIME" Type="int" />
+          <Property Name="ProcessID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProcessName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProcessDesc" Type="nvarchar" MaxLength="500" />
+          <Property Name="Site" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ProductionUnitMaster">
+          <Key>
+            <PropertyRef Name="Site" />
+          </Key>
+          <Property Name="Site" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="500" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ProductMaster">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductDesc" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_SalesOrder">
+          <Key>
+            <PropertyRef Name="SalesOrderID" />
+          </Key>
+          <Property Name="SalesOrderID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SalesOrderDate" Type="datetime" />
+          <Property Name="DeliveryDate" Type="datetime" />
+          <Property Name="Period" Type="int" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="OrderStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductID" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ShiftMaster">
+          <Key>
+            <PropertyRef Name="ShiftID" />
+          </Key>
+          <Property Name="ShiftID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ShiftName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShiftStartTime" Type="datetime" />
+          <Property Name="ShiftEndTime" Type="datetime" />
+          <Property Name="ShiftDesc" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
         </EntityType>
         <EntityType Name="tbl_User">
           <Key>
@@ -38,34 +90,47 @@
           <Property Name="USERNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PASSWORD" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
+        <Association Name="FK_SO_ProductID">
+          <End Role="tbl_ProductMaster" Type="Self.tbl_ProductMaster" Multiplicity="0..1" />
+          <End Role="tbl_SalesOrder" Type="Self.tbl_SalesOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ProductMaster">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="tbl_SalesOrder">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ERP_DEMOModelStoreContainer">
           <EntitySet Name="tbl_ExceptionLogger" EntityType="Self.tbl_ExceptionLogger" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbl_JobMaster" EntityType="Self.tbl_JobMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ProcessMaster" EntityType="Self.tbl_ProcessMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ProductionUnitMaster" EntityType="Self.tbl_ProductionUnitMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ProductMaster" EntityType="Self.tbl_ProductMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SalesOrder" EntityType="Self.tbl_SalesOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ShiftMaster" EntityType="Self.tbl_ShiftMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_SO_ProductID" Association="Self.FK_SO_ProductID">
+            <End Role="tbl_ProductMaster" EntitySet="tbl_ProductMaster" />
+            <End Role="tbl_SalesOrder" EntitySet="tbl_SalesOrder" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ERP_DEMOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="tbl_JobMaster">
-          <Key>
-            <PropertyRef Name="JOBID" />
-          </Key>
-          <Property Name="SITE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="JOBID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="JOBNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="SUBPROCESSID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="DETAILS" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="DEPT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="JOBREQ" Type="Int32" />
-          <Property Name="POWERREQ" Type="Int32" />
-          <Property Name="STANDARDOUTPUT" Type="Int32" />
-          <Property Name="STANDARDTIME" Type="Int32" />
-        </EntityType>
         <EntityContainer Name="ERP_DEMOEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="tbl_JobMaster" EntityType="Self.tbl_JobMaster" />
           <EntitySet Name="tbl_User" EntityType="ERP_DEMOModel.tbl_User" />
           <EntitySet Name="tbl_ExceptionLogger" EntityType="ERP_DEMOModel.tbl_ExceptionLogger" />
+          <EntitySet Name="tbl_ProcessMaster" EntityType="ERP_DEMOModel.tbl_ProcessMaster" />
+          <EntitySet Name="tbl_ProductionUnitMaster" EntityType="ERP_DEMOModel.tbl_ProductionUnitMaster" />
+          <EntitySet Name="tbl_ProductMaster" EntityType="ERP_DEMOModel.tbl_ProductMaster" />
+          <EntitySet Name="tbl_SalesOrder" EntityType="ERP_DEMOModel.tbl_SalesOrder" />
+          <EntitySet Name="tbl_ShiftMaster" EntityType="ERP_DEMOModel.tbl_ShiftMaster" />
+          <AssociationSet Name="FK_SO_ProductID" Association="ERP_DEMOModel.FK_SO_ProductID">
+            <End Role="tbl_ProductMaster" EntitySet="tbl_ProductMaster" />
+            <End Role="tbl_SalesOrder" EntitySet="tbl_SalesOrder" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tbl_User">
           <Key>
@@ -85,28 +150,93 @@
           <Property Name="LOGTIME" Type="DateTime" Precision="3" />
           <Property Name="USERID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="tbl_ProcessMaster">
+          <Key>
+            <PropertyRef Name="ProcessID" />
+          </Key>
+          <Property Name="ProcessID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProcessName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProcessDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Site" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_ProductionUnitMaster">
+          <Key>
+            <PropertyRef Name="Site" />
+          </Key>
+          <Property Name="Site" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_ProductMaster">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProductDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_SalesOrder" Relationship="ERP_DEMOModel.FK_SO_ProductID" FromRole="tbl_ProductMaster" ToRole="tbl_SalesOrder" />
+        </EntityType>
+        <EntityType Name="tbl_SalesOrder">
+          <Key>
+            <PropertyRef Name="SalesOrderID" />
+          </Key>
+          <Property Name="SalesOrderID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SalesOrderDate" Type="DateTime" Precision="3" />
+          <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+          <Property Name="Period" Type="Int32" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="OrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_ProductMaster" Relationship="ERP_DEMOModel.FK_SO_ProductID" FromRole="tbl_SalesOrder" ToRole="tbl_ProductMaster" />
+        </EntityType>
+        <EntityType Name="tbl_ShiftMaster">
+          <Key>
+            <PropertyRef Name="ShiftID" />
+          </Key>
+          <Property Name="ShiftID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShiftName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShiftStartTime" Type="DateTime" Precision="3" />
+          <Property Name="ShiftEndTime" Type="DateTime" Precision="3" />
+          <Property Name="ShiftDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_SO_ProductID">
+          <End Type="ERP_DEMOModel.tbl_ProductMaster" Role="tbl_ProductMaster" Multiplicity="0..1" />
+          <End Type="ERP_DEMOModel.tbl_SalesOrder" Role="tbl_SalesOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ProductMaster">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="tbl_SalesOrder">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ERP_DEMOModelStoreContainer" CdmEntityContainer="ERP_DEMOEntities">
-          <EntitySetMapping Name="tbl_JobMaster">
-            <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_JobMaster">
-              <MappingFragment StoreEntitySet="tbl_JobMaster">
-                <ScalarProperty Name="SITE" ColumnName="SITE" />
-                <ScalarProperty Name="JOBID" ColumnName="JOBID" />
-                <ScalarProperty Name="JOBNAME" ColumnName="JOBNAME" />
-                <ScalarProperty Name="SUBPROCESSID" ColumnName="SUBPROCESSID" />
-                <ScalarProperty Name="DETAILS" ColumnName="DETAILS" />
-                <ScalarProperty Name="DEPT" ColumnName="DEPT" />
-                <ScalarProperty Name="JOBREQ" ColumnName="JOBREQ" />
-                <ScalarProperty Name="POWERREQ" ColumnName="POWERREQ" />
-                <ScalarProperty Name="STANDARDOUTPUT" ColumnName="STANDARDOUTPUT" />
-                <ScalarProperty Name="STANDARDTIME" ColumnName="STANDARDTIME" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_User">
             <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_User">
               <MappingFragment StoreEntitySet="tbl_User">
@@ -124,6 +254,78 @@
                 <ScalarProperty Name="EXCEPTIONSTACKTRACE" ColumnName="EXCEPTIONSTACKTRACE" />
                 <ScalarProperty Name="EXCEPTIONMESSAGE" ColumnName="EXCEPTIONMESSAGE" />
                 <ScalarProperty Name="EXCEPTIONID" ColumnName="EXCEPTIONID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ProcessMaster">
+            <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_ProcessMaster">
+              <MappingFragment StoreEntitySet="tbl_ProcessMaster">
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="ProcessDesc" ColumnName="ProcessDesc" />
+                <ScalarProperty Name="ProcessName" ColumnName="ProcessName" />
+                <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ProductionUnitMaster">
+            <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_ProductionUnitMaster">
+              <MappingFragment StoreEntitySet="tbl_ProductionUnitMaster">
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ProductMaster">
+            <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_ProductMaster">
+              <MappingFragment StoreEntitySet="tbl_ProductMaster">
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ProductDesc" ColumnName="ProductDesc" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SalesOrder">
+            <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_SalesOrder">
+              <MappingFragment StoreEntitySet="tbl_SalesOrder">
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="SalesOrderDate" ColumnName="SalesOrderDate" />
+                <ScalarProperty Name="SalesOrderID" ColumnName="SalesOrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ShiftMaster">
+            <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_ShiftMaster">
+              <MappingFragment StoreEntitySet="tbl_ShiftMaster">
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ShiftDesc" ColumnName="ShiftDesc" />
+                <ScalarProperty Name="ShiftEndTime" ColumnName="ShiftEndTime" />
+                <ScalarProperty Name="ShiftStartTime" ColumnName="ShiftStartTime" />
+                <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+                <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

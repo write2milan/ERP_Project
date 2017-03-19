@@ -25,8 +25,12 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tbl_JobMaster> tbl_JobMaster { get; set; }
         public virtual DbSet<tbl_User> tbl_User { get; set; }
         public virtual DbSet<tbl_ExceptionLogger> tbl_ExceptionLogger { get; set; }
+        public virtual DbSet<tbl_ProcessMaster> tbl_ProcessMaster { get; set; }
+        public virtual DbSet<tbl_ProductionUnitMaster> tbl_ProductionUnitMaster { get; set; }
+        public virtual DbSet<tbl_ProductMaster> tbl_ProductMaster { get; set; }
+        public virtual DbSet<tbl_SalesOrder> tbl_SalesOrder { get; set; }
+        public virtual DbSet<tbl_ShiftMaster> tbl_ShiftMaster { get; set; }
     }
 }
