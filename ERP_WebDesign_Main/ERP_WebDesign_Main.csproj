@@ -158,7 +158,19 @@
     <Compile Include="Model_Entity_DB\tbl_ExceptionLogger.cs">
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model_Entity_DB\tbl_JobMaster.cs">
+    <Compile Include="Model_Entity_DB\tbl_ProcessMaster.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\tbl_ProductionUnitMaster.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\tbl_ProductMaster.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\tbl_SalesOrder.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\tbl_ShiftMaster.cs">
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Model_Entity_DB\tbl_User.cs">
