@@ -133,12 +133,15 @@
     <Compile Include="CommonHelper\CommonHelper.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MasterDataController.cs" />
     <Compile Include="CustomActionFilter\AuthenticationFilterAttribute.cs" />
     <Compile Include="CustomHandleError\CustomErrorHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\MasterData_Model\ProductMaster_Model.cs" />
     <Compile Include="Models\User_Model\User_Model.cs" />
+    <Compile Include="Model_BL\MasterData_BL\ProductMaster_BL.cs" />
     <Compile Include="Model_BL\User_BL\Users_BL.cs" />
     <Compile Include="Model_Entity_DB\ERP_WebDesign_DB.Context.cs">
       <AutoGen>True</AutoGen>
@@ -246,6 +249,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\MasterData\ProductMaster_Index.cshtml" />
+    <Content Include="Views\MasterData\ProductMaster_Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
