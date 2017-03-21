@@ -27,13 +27,14 @@ namespace ERP_WebDesign_Main.Controllers
         [AuthenticationFilter]
         public ActionResult ProductMaster_Create()
         {
+            //Models.MasterData_Model.ProductMaster_Model collection = new Models.MasterData_Model.ProductMaster_Model();
             return View();
         }
 
         // POST: MasterData/Create
         [AuthenticationFilter]
         [HttpPost]
-        public ActionResult ProductMaster_Create(FormCollection collection)
+        public ActionResult ProductMaster_Create(Models.MasterData_Model.ProductMaster_Model collection)
         {
             try
             {

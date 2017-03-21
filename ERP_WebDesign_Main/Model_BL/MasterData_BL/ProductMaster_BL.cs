@@ -7,9 +7,9 @@ using System.Web;
 
 namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
 {
-    public class ProductMaster_BL
+    public class ProductMaster_BL : Base_BL<ProductMaster_Model>
     {
-        public IEnumerable<ProductMaster_Model> GetAllItems()
+        public override IEnumerable<ProductMaster_Model> GetAllItems()
         {
             IEnumerable<ProductMaster_Model> objProdMasterCollection = null;
             try
@@ -33,7 +33,7 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
             return objProdMasterCollection;
 
         }
-        public void InsertData(System.Web.Mvc.FormCollection collection)
+        public override void InsertData(ProductMaster_Model entity)
         {
             try
             {
@@ -41,8 +41,8 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
                 {
                     objContext.tbl_ProductMaster.Add(new tbl_ProductMaster
                     {
-                        ProductID = Convert.ToString(collection["ProductID"]),
-                        ProductDesc = Convert.ToString(collection["ProductDesc"])
+                        ProductID = entity.ProductID,
+                        ProductDesc = entity.ProductDesc
                     });
                     objContext.SaveChanges();
                 }
