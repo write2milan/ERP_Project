@@ -22,14 +22,14 @@ namespace ERP_WebDesign_Main.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ERP_WebDesign_CommonResource {
+    public class ERP_WebDesign_MasterModelResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ERP_WebDesign_CommonResource() {
+        internal ERP_WebDesign_MasterModelResource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace ERP_WebDesign_Main.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ERP_WebDesign_Main.Resources.ERP_WebDesign_CommonResource", typeof(ERP_WebDesign_CommonResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ERP_WebDesign_Main.Resources.ERP_WebDesign_MasterModelResource", typeof(ERP_WebDesign_MasterModelResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,47 +61,56 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Created by.
+        ///   Looks up a localized string similar to Product description.
         /// </summary>
-        public static string CREATED_BY {
+        public static string PRODUCT_DESC {
             get {
-                return ResourceManager.GetString("CREATED_BY", resourceCulture);
+                return ResourceManager.GetString("PRODUCT_DESC", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Created date.
+        ///   Looks up a localized string similar to *.
         /// </summary>
-        public static string CREATED_DATE {
+        public static string PRODUCT_DESC_NOTBLANK {
             get {
-                return ResourceManager.GetString("CREATED_DATE", resourceCulture);
+                return ResourceManager.GetString("PRODUCT_DESC_NOTBLANK", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid user id or password.
+        ///   Looks up a localized string similar to Product id.
         /// </summary>
-        public static string INVALID_LOGIN_MESSAGE {
+        public static string PRODUCT_ID {
             get {
-                return ResourceManager.GetString("INVALID_LOGIN_MESSAGE", resourceCulture);
+                return ResourceManager.GetString("PRODUCT_ID", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Modified by.
+        ///   Looks up a localized string similar to PRD_.
         /// </summary>
-        public static string MODIFIED_BY {
+        public static string PRODUCT_ID_PREFIX {
             get {
-                return ResourceManager.GetString("MODIFIED_BY", resourceCulture);
+                return ResourceManager.GetString("PRODUCT_ID_PREFIX", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Modified date.
+        ///   Looks up a localized string similar to Product name.
         /// </summary>
-        public static string MODIFIED_DATE {
+        public static string PRODUCT_NAME {
             get {
-                return ResourceManager.GetString("MODIFIED_DATE", resourceCulture);
+                return ResourceManager.GetString("PRODUCT_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to *.
+        /// </summary>
+        public static string PRODUCT_NAME_NOTBLANK {
+            get {
+                return ResourceManager.GetString("PRODUCT_NAME_NOTBLANK", resourceCulture);
             }
         }
     }

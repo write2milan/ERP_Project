@@ -187,6 +187,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ERP_WebDesign_CommonResource.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\ERP_WebDesign_MasterModelResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERP_WebDesign_MasterModelResource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\ERP_WebDesign_UsersResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -253,6 +258,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\MasterData\ProductMaster_Index.cshtml" />
     <Content Include="Views\MasterData\ProductMaster_Create.cshtml" />
+    <Content Include="Views\MasterData\ProductMaster_Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -274,6 +280,10 @@
     <EmbeddedResource Include="Resources\ERP_WebDesign_CommonResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ERP_WebDesign_CommonResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ERP_WebDesign_MasterModelResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ERP_WebDesign_MasterModelResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\ERP_WebDesign_UsersResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -8,6 +8,11 @@ namespace ERP_WebDesign_Main.CommonHelper
 {
     public static class CommonHelper
     {
+        public static string CurrentUserLoginName()
+        {
+            return System.Web.HttpContext.Current.User.Identity.Name;
+        }
+
         public static void ExceptionLogger(Exception exp)
         {
             try

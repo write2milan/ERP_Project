@@ -1,13 +1,13 @@
 ﻿@model ERP_WebDesign_Main.Models.MasterData_Model.ProductMaster_Model
 
 @{
-    ViewBag.Title = "Product Master Create";
+    ViewBag.Title = "Product Master Edit";
 }
 
-<h2>Product Master Create</h2>
+<h2>Product Master Edit</h2>
 
 
-@using (Html.BeginForm("ProductMaster_Create", "MasterData", FormMethod.Post, new { collection = Model }))
+@using (Html.BeginForm("ProductMaster_Edit", "MasterData", FormMethod.Post, new { Entity = Model }))
 {
     @Html.AntiForgeryToken()
 
@@ -15,7 +15,11 @@
         <h4>ProductMaster_Model</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
+
+
+        @Html.HiddenFor(model => model.ProductID)
+
+
         <div class="form-group">
             @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -32,11 +36,9 @@
             </div>
         </div>
 
-
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>

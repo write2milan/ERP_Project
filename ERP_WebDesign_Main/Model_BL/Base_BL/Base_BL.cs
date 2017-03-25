@@ -9,7 +9,8 @@ namespace ERP_WebDesign_Main.Model_BL
     {
         public abstract void InsertData(T entity);
         public abstract IEnumerable<T> GetAllItems();
-        //public abstract void UpdateData(string ItemId, T entity);
-        //public abstract void DeleteData(string ItemId);
+        public abstract void UpdateData(string ItemId, T entity);
+        public abstract void DeleteData(string ItemId);
+        public abstract T DetailsData(string ItemId);
     }
 }
