@@ -163,6 +163,12 @@
     <Compile Include="Model_Entity_DB\tbl_ExceptionLogger.cs">
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model_Entity_DB\tbl_Groups.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\tbl_Items.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model_Entity_DB\tbl_ProcessMaster.cs">
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
@@ -172,10 +178,16 @@
     <Compile Include="Model_Entity_DB\tbl_ProductMaster.cs">
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model_Entity_DB\tbl_Rack.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model_Entity_DB\tbl_SalesOrder.cs">
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Model_Entity_DB\tbl_ShiftMaster.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\tbl_Specification.cs">
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Model_Entity_DB\tbl_User.cs">
@@ -201,6 +213,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="ERP_SqlServer_Scripts\06042017_ERP.sql" />
     <Content Include="ERP_SqlServer_Scripts\26032017_ERP.sql" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

@@ -32,5 +32,9 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
         public virtual DbSet<tbl_ProductMaster> tbl_ProductMaster { get; set; }
         public virtual DbSet<tbl_SalesOrder> tbl_SalesOrder { get; set; }
         public virtual DbSet<tbl_ShiftMaster> tbl_ShiftMaster { get; set; }
+        public virtual DbSet<tbl_Groups> tbl_Groups { get; set; }
+        public virtual DbSet<tbl_Items> tbl_Items { get; set; }
+        public virtual DbSet<tbl_Rack> tbl_Rack { get; set; }
+        public virtual DbSet<tbl_Specification> tbl_Specification { get; set; }
     }
 }

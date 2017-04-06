@@ -13,6 +13,12 @@
         <EntityTypeShape EntityType="ERP_DEMOModel.tbl_SalesOrder" Width="1.5" PointX="8" PointY="1" />
         <EntityTypeShape EntityType="ERP_DEMOModel.tbl_ShiftMaster" Width="1.5" PointX="5.75" PointY="5.75" />
         <AssociationConnector Association="ERP_DEMOModel.FK_SO_ProductID" />
+        <EntityTypeShape EntityType="ERP_DEMOModel.tbl_Groups" Width="1.5" PointX="8.75" PointY="6.125" />
+        <EntityTypeShape EntityType="ERP_DEMOModel.tbl_Items" Width="1.5" PointX="11" PointY="6" />
+        <EntityTypeShape EntityType="ERP_DEMOModel.tbl_Rack" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="ERP_DEMOModel.tbl_Specification" Width="1.5" PointX="13.25" PointY="6.125" />
+        <AssociationConnector Association="ERP_DEMOModel.FK_ITEMS_GroupID" />
+        <AssociationConnector Association="ERP_DEMOModel.FK_SPEC_ItemID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

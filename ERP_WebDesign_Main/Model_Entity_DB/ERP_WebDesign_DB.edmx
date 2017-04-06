@@ -16,6 +16,31 @@
           <Property Name="LOGTIME" Type="datetime" />
           <Property Name="USERID" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="tbl_Groups">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GroupCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupDisplayName" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Items">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ItemDisplayName" Type="nvarchar" MaxLength="200" />
+          <Property Name="GroupID" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
         <EntityType Name="tbl_ProcessMaster">
           <Key>
             <PropertyRef Name="ProcessID" />
@@ -53,6 +78,18 @@
           <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
           <Property Name="ModifiedDateTime" Type="datetime" />
         </EntityType>
+        <EntityType Name="tbl_Rack">
+          <Key>
+            <PropertyRef Name="RackID" />
+          </Key>
+          <Property Name="RackID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RackCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="RackDisplayName" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
         <EntityType Name="tbl_SalesOrder">
           <Key>
             <PropertyRef Name="SalesOrderID" />
@@ -83,6 +120,19 @@
           <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
           <Property Name="ModifiedDateTime" Type="datetime" />
         </EntityType>
+        <EntityType Name="tbl_Specification">
+          <Key>
+            <PropertyRef Name="SpecificationID" />
+          </Key>
+          <Property Name="SpecificationID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SpecificationCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpecificationDisplayName" Type="nvarchar" MaxLength="200" />
+          <Property Name="ItemID" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
         <EntityType Name="tbl_User">
           <Key>
             <PropertyRef Name="USERNAME" />
@@ -90,6 +140,18 @@
           <Property Name="USERNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PASSWORD" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
+        <Association Name="FK_ITEMS_GroupID">
+          <End Role="tbl_Groups" Type="Self.tbl_Groups" Multiplicity="0..1" />
+          <End Role="tbl_Items" Type="Self.tbl_Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="tbl_Items">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SO_ProductID">
           <End Role="tbl_ProductMaster" Type="Self.tbl_ProductMaster" Multiplicity="0..1" />
           <End Role="tbl_SalesOrder" Type="Self.tbl_SalesOrder" Multiplicity="*" />
@@ -102,17 +164,41 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SPEC_ItemID">
+          <End Role="tbl_Items" Type="Self.tbl_Items" Multiplicity="0..1" />
+          <End Role="tbl_Specification" Type="Self.tbl_Specification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Items">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="tbl_Specification">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ERP_DEMOModelStoreContainer">
           <EntitySet Name="tbl_ExceptionLogger" EntityType="Self.tbl_ExceptionLogger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Groups" EntityType="Self.tbl_Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Items" EntityType="Self.tbl_Items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_ProcessMaster" EntityType="Self.tbl_ProcessMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_ProductionUnitMaster" EntityType="Self.tbl_ProductionUnitMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_ProductMaster" EntityType="Self.tbl_ProductMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Rack" EntityType="Self.tbl_Rack" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_SalesOrder" EntityType="Self.tbl_SalesOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_ShiftMaster" EntityType="Self.tbl_ShiftMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Specification" EntityType="Self.tbl_Specification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ITEMS_GroupID" Association="Self.FK_ITEMS_GroupID">
+            <End Role="tbl_Groups" EntitySet="tbl_Groups" />
+            <End Role="tbl_Items" EntitySet="tbl_Items" />
+          </AssociationSet>
           <AssociationSet Name="FK_SO_ProductID" Association="Self.FK_SO_ProductID">
             <End Role="tbl_ProductMaster" EntitySet="tbl_ProductMaster" />
             <End Role="tbl_SalesOrder" EntitySet="tbl_SalesOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPEC_ItemID" Association="Self.FK_SPEC_ItemID">
+            <End Role="tbl_Items" EntitySet="tbl_Items" />
+            <End Role="tbl_Specification" EntitySet="tbl_Specification" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -130,6 +216,18 @@
           <AssociationSet Name="FK_SO_ProductID" Association="ERP_DEMOModel.FK_SO_ProductID">
             <End Role="tbl_ProductMaster" EntitySet="tbl_ProductMaster" />
             <End Role="tbl_SalesOrder" EntitySet="tbl_SalesOrder" />
+          </AssociationSet>
+          <EntitySet Name="tbl_Groups" EntityType="ERP_DEMOModel.tbl_Groups" />
+          <EntitySet Name="tbl_Items" EntityType="ERP_DEMOModel.tbl_Items" />
+          <EntitySet Name="tbl_Rack" EntityType="ERP_DEMOModel.tbl_Rack" />
+          <EntitySet Name="tbl_Specification" EntityType="ERP_DEMOModel.tbl_Specification" />
+          <AssociationSet Name="FK_ITEMS_GroupID" Association="ERP_DEMOModel.FK_ITEMS_GroupID">
+            <End Role="tbl_Groups" EntitySet="tbl_Groups" />
+            <End Role="tbl_Items" EntitySet="tbl_Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPEC_ItemID" Association="ERP_DEMOModel.FK_SPEC_ItemID">
+            <End Role="tbl_Items" EntitySet="tbl_Items" />
+            <End Role="tbl_Specification" EntitySet="tbl_Specification" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="tbl_User">
@@ -231,6 +329,84 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tbl_Groups">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupDisplayName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Items" Relationship="ERP_DEMOModel.FK_ITEMS_GroupID" FromRole="tbl_Groups" ToRole="tbl_Items" />
+        </EntityType>
+        <EntityType Name="tbl_Items">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemDisplayName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="GroupID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Groups" Relationship="ERP_DEMOModel.FK_ITEMS_GroupID" FromRole="tbl_Items" ToRole="tbl_Groups" />
+          <NavigationProperty Name="tbl_Specification" Relationship="ERP_DEMOModel.FK_SPEC_ItemID" FromRole="tbl_Items" ToRole="tbl_Specification" />
+        </EntityType>
+        <EntityType Name="tbl_Rack">
+          <Key>
+            <PropertyRef Name="RackID" />
+          </Key>
+          <Property Name="RackID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RackCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RackDisplayName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_Specification">
+          <Key>
+            <PropertyRef Name="SpecificationID" />
+          </Key>
+          <Property Name="SpecificationID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpecificationCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpecificationDisplayName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Items" Relationship="ERP_DEMOModel.FK_SPEC_ItemID" FromRole="tbl_Specification" ToRole="tbl_Items" />
+        </EntityType>
+        <Association Name="FK_ITEMS_GroupID">
+          <End Type="ERP_DEMOModel.tbl_Groups" Role="tbl_Groups" Multiplicity="0..1" />
+          <End Type="ERP_DEMOModel.tbl_Items" Role="tbl_Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="tbl_Items">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPEC_ItemID">
+          <End Type="ERP_DEMOModel.tbl_Items" Role="tbl_Items" Multiplicity="0..1" />
+          <End Type="ERP_DEMOModel.tbl_Specification" Role="tbl_Specification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Items">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="tbl_Specification">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -326,6 +502,60 @@
                 <ScalarProperty Name="ShiftStartTime" ColumnName="ShiftStartTime" />
                 <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
                 <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Groups">
+            <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_Groups">
+              <MappingFragment StoreEntitySet="tbl_Groups">
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="GroupDisplayName" ColumnName="GroupDisplayName" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Items">
+            <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_Items">
+              <MappingFragment StoreEntitySet="tbl_Items">
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="ItemDisplayName" ColumnName="ItemDisplayName" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Rack">
+            <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_Rack">
+              <MappingFragment StoreEntitySet="tbl_Rack">
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="RackDisplayName" ColumnName="RackDisplayName" />
+                <ScalarProperty Name="RackCode" ColumnName="RackCode" />
+                <ScalarProperty Name="RackID" ColumnName="RackID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Specification">
+            <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_Specification">
+              <MappingFragment StoreEntitySet="tbl_Specification">
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="SpecificationDisplayName" ColumnName="SpecificationDisplayName" />
+                <ScalarProperty Name="SpecificationCode" ColumnName="SpecificationCode" />
+                <ScalarProperty Name="SpecificationID" ColumnName="SpecificationID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
