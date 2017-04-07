@@ -14,6 +14,12 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
     
     public partial class tbl_Specification
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbl_Specification()
+        {
+            this.tbl_Codification = new HashSet<tbl_Codification>();
+        }
+    
         public string SpecificationID { get; set; }
         public string SpecificationCode { get; set; }
         public string SpecificationDisplayName { get; set; }
@@ -24,5 +30,7 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
         public Nullable<System.DateTime> ModifiedDateTime { get; set; }
     
         public virtual tbl_Items tbl_Items { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_Codification> tbl_Codification { get; set; }
     }
 }

@@ -36,5 +36,6 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
         public virtual DbSet<tbl_Items> tbl_Items { get; set; }
         public virtual DbSet<tbl_Rack> tbl_Rack { get; set; }
         public virtual DbSet<tbl_Specification> tbl_Specification { get; set; }
+        public virtual DbSet<tbl_Codification> tbl_Codification { get; set; }
     }
 }

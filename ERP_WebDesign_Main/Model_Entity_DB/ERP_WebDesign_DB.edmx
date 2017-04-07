@@ -5,6 +5,21 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ERP_DEMOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Codification">
+          <Key>
+            <PropertyRef Name="CodificationID" />
+          </Key>
+          <Property Name="CodificationID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodificationCode" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ItemID" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupID" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpecificationID" Type="nvarchar" MaxLength="50" />
+          <Property Name="RackID" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
         <EntityType Name="tbl_ExceptionLogger">
           <Key>
             <PropertyRef Name="EXCEPTIONID" />
@@ -140,6 +155,54 @@
           <Property Name="USERNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PASSWORD" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
+        <Association Name="FK_CODI_GroupID">
+          <End Role="tbl_Groups" Type="Self.tbl_Groups" Multiplicity="0..1" />
+          <End Role="tbl_Codification" Type="Self.tbl_Codification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="tbl_Codification">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CODI_ItemID">
+          <End Role="tbl_Items" Type="Self.tbl_Items" Multiplicity="0..1" />
+          <End Role="tbl_Codification" Type="Self.tbl_Codification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Items">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="tbl_Codification">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CODI_RackID">
+          <End Role="tbl_Rack" Type="Self.tbl_Rack" Multiplicity="0..1" />
+          <End Role="tbl_Codification" Type="Self.tbl_Codification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Rack">
+              <PropertyRef Name="RackID" />
+            </Principal>
+            <Dependent Role="tbl_Codification">
+              <PropertyRef Name="RackID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CODI_SpecificationID">
+          <End Role="tbl_Specification" Type="Self.tbl_Specification" Multiplicity="0..1" />
+          <End Role="tbl_Codification" Type="Self.tbl_Codification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Specification">
+              <PropertyRef Name="SpecificationID" />
+            </Principal>
+            <Dependent Role="tbl_Codification">
+              <PropertyRef Name="SpecificationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ITEMS_GroupID">
           <End Role="tbl_Groups" Type="Self.tbl_Groups" Multiplicity="0..1" />
           <End Role="tbl_Items" Type="Self.tbl_Items" Multiplicity="*" />
@@ -177,6 +240,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ERP_DEMOModelStoreContainer">
+          <EntitySet Name="tbl_Codification" EntityType="Self.tbl_Codification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_ExceptionLogger" EntityType="Self.tbl_ExceptionLogger" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Groups" EntityType="Self.tbl_Groups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Items" EntityType="Self.tbl_Items" Schema="dbo" store:Type="Tables" />
@@ -188,6 +252,22 @@
           <EntitySet Name="tbl_ShiftMaster" EntityType="Self.tbl_ShiftMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Specification" EntityType="Self.tbl_Specification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CODI_GroupID" Association="Self.FK_CODI_GroupID">
+            <End Role="tbl_Groups" EntitySet="tbl_Groups" />
+            <End Role="tbl_Codification" EntitySet="tbl_Codification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CODI_ItemID" Association="Self.FK_CODI_ItemID">
+            <End Role="tbl_Items" EntitySet="tbl_Items" />
+            <End Role="tbl_Codification" EntitySet="tbl_Codification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CODI_RackID" Association="Self.FK_CODI_RackID">
+            <End Role="tbl_Rack" EntitySet="tbl_Rack" />
+            <End Role="tbl_Codification" EntitySet="tbl_Codification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CODI_SpecificationID" Association="Self.FK_CODI_SpecificationID">
+            <End Role="tbl_Specification" EntitySet="tbl_Specification" />
+            <End Role="tbl_Codification" EntitySet="tbl_Codification" />
+          </AssociationSet>
           <AssociationSet Name="FK_ITEMS_GroupID" Association="Self.FK_ITEMS_GroupID">
             <End Role="tbl_Groups" EntitySet="tbl_Groups" />
             <End Role="tbl_Items" EntitySet="tbl_Items" />
@@ -228,6 +308,23 @@
           <AssociationSet Name="FK_SPEC_ItemID" Association="ERP_DEMOModel.FK_SPEC_ItemID">
             <End Role="tbl_Items" EntitySet="tbl_Items" />
             <End Role="tbl_Specification" EntitySet="tbl_Specification" />
+          </AssociationSet>
+          <EntitySet Name="tbl_Codification" EntityType="ERP_DEMOModel.tbl_Codification" />
+          <AssociationSet Name="FK_CODI_GroupID" Association="ERP_DEMOModel.FK_CODI_GroupID">
+            <End Role="tbl_Groups" EntitySet="tbl_Groups" />
+            <End Role="tbl_Codification" EntitySet="tbl_Codification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CODI_ItemID" Association="ERP_DEMOModel.FK_CODI_ItemID">
+            <End Role="tbl_Items" EntitySet="tbl_Items" />
+            <End Role="tbl_Codification" EntitySet="tbl_Codification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CODI_RackID" Association="ERP_DEMOModel.FK_CODI_RackID">
+            <End Role="tbl_Rack" EntitySet="tbl_Rack" />
+            <End Role="tbl_Codification" EntitySet="tbl_Codification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CODI_SpecificationID" Association="ERP_DEMOModel.FK_CODI_SpecificationID">
+            <End Role="tbl_Specification" EntitySet="tbl_Specification" />
+            <End Role="tbl_Codification" EntitySet="tbl_Codification" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="tbl_User">
@@ -341,6 +438,7 @@
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tbl_Items" Relationship="ERP_DEMOModel.FK_ITEMS_GroupID" FromRole="tbl_Groups" ToRole="tbl_Items" />
+          <NavigationProperty Name="tbl_Codification" Relationship="ERP_DEMOModel.FK_CODI_GroupID" FromRole="tbl_Groups" ToRole="tbl_Codification" />
         </EntityType>
         <EntityType Name="tbl_Items">
           <Key>
@@ -356,6 +454,7 @@
           <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tbl_Groups" Relationship="ERP_DEMOModel.FK_ITEMS_GroupID" FromRole="tbl_Items" ToRole="tbl_Groups" />
           <NavigationProperty Name="tbl_Specification" Relationship="ERP_DEMOModel.FK_SPEC_ItemID" FromRole="tbl_Items" ToRole="tbl_Specification" />
+          <NavigationProperty Name="tbl_Codification" Relationship="ERP_DEMOModel.FK_CODI_ItemID" FromRole="tbl_Items" ToRole="tbl_Codification" />
         </EntityType>
         <EntityType Name="tbl_Rack">
           <Key>
@@ -368,6 +467,7 @@
           <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Codification" Relationship="ERP_DEMOModel.FK_CODI_RackID" FromRole="tbl_Rack" ToRole="tbl_Codification" />
         </EntityType>
         <EntityType Name="tbl_Specification">
           <Key>
@@ -382,6 +482,7 @@
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tbl_Items" Relationship="ERP_DEMOModel.FK_SPEC_ItemID" FromRole="tbl_Specification" ToRole="tbl_Items" />
+          <NavigationProperty Name="tbl_Codification" Relationship="ERP_DEMOModel.FK_CODI_SpecificationID" FromRole="tbl_Specification" ToRole="tbl_Codification" />
         </EntityType>
         <Association Name="FK_ITEMS_GroupID">
           <End Type="ERP_DEMOModel.tbl_Groups" Role="tbl_Groups" Multiplicity="0..1" />
@@ -404,6 +505,73 @@
             </Principal>
             <Dependent Role="tbl_Specification">
               <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbl_Codification">
+          <Key>
+            <PropertyRef Name="CodificationID" />
+          </Key>
+          <Property Name="CodificationID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CodificationCode" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ItemID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpecificationID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RackID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Groups" Relationship="ERP_DEMOModel.FK_CODI_GroupID" FromRole="tbl_Codification" ToRole="tbl_Groups" />
+          <NavigationProperty Name="tbl_Items" Relationship="ERP_DEMOModel.FK_CODI_ItemID" FromRole="tbl_Codification" ToRole="tbl_Items" />
+          <NavigationProperty Name="tbl_Rack" Relationship="ERP_DEMOModel.FK_CODI_RackID" FromRole="tbl_Codification" ToRole="tbl_Rack" />
+          <NavigationProperty Name="tbl_Specification" Relationship="ERP_DEMOModel.FK_CODI_SpecificationID" FromRole="tbl_Codification" ToRole="tbl_Specification" />
+        </EntityType>
+        <Association Name="FK_CODI_GroupID">
+          <End Type="ERP_DEMOModel.tbl_Groups" Role="tbl_Groups" Multiplicity="0..1" />
+          <End Type="ERP_DEMOModel.tbl_Codification" Role="tbl_Codification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="tbl_Codification">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CODI_ItemID">
+          <End Type="ERP_DEMOModel.tbl_Items" Role="tbl_Items" Multiplicity="0..1" />
+          <End Type="ERP_DEMOModel.tbl_Codification" Role="tbl_Codification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Items">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="tbl_Codification">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CODI_RackID">
+          <End Type="ERP_DEMOModel.tbl_Rack" Role="tbl_Rack" Multiplicity="0..1" />
+          <End Type="ERP_DEMOModel.tbl_Codification" Role="tbl_Codification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Rack">
+              <PropertyRef Name="RackID" />
+            </Principal>
+            <Dependent Role="tbl_Codification">
+              <PropertyRef Name="RackID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CODI_SpecificationID">
+          <End Type="ERP_DEMOModel.tbl_Specification" Role="tbl_Specification" Multiplicity="0..1" />
+          <End Type="ERP_DEMOModel.tbl_Codification" Role="tbl_Codification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Specification">
+              <PropertyRef Name="SpecificationID" />
+            </Principal>
+            <Dependent Role="tbl_Codification">
+              <PropertyRef Name="SpecificationID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -556,6 +724,22 @@
                 <ScalarProperty Name="SpecificationDisplayName" ColumnName="SpecificationDisplayName" />
                 <ScalarProperty Name="SpecificationCode" ColumnName="SpecificationCode" />
                 <ScalarProperty Name="SpecificationID" ColumnName="SpecificationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Codification">
+            <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_Codification">
+              <MappingFragment StoreEntitySet="tbl_Codification">
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="RackID" ColumnName="RackID" />
+                <ScalarProperty Name="SpecificationID" ColumnName="SpecificationID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="CodificationCode" ColumnName="CodificationCode" />
+                <ScalarProperty Name="CodificationID" ColumnName="CodificationID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

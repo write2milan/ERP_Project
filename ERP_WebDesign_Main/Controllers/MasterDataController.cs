@@ -46,6 +46,12 @@ namespace ERP_WebDesign_Main.Controllers
 
         }
 
+        public ActionResult CodificationMaster_Index()
+        {
+            Model_BL.MasterData_BL.Codification_BL objCodificationMasterBL = new Model_BL.MasterData_BL.Codification_BL();
+            return View(objCodificationMasterBL.BindModelForInsertion());
+        }
+
 
     }
 }

@@ -14,6 +14,12 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
     
     public partial class tbl_Rack
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbl_Rack()
+        {
+            this.tbl_Codification = new HashSet<tbl_Codification>();
+        }
+    
         public string RackID { get; set; }
         public string RackCode { get; set; }
         public string RackDisplayName { get; set; }
@@ -21,5 +27,8 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
         public Nullable<System.DateTime> CreatedDateTime { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDateTime { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_Codification> tbl_Codification { get; set; }
     }
 }
