@@ -25,7 +25,7 @@ namespace ERP_WebDesign_Main.Model_BL.User_BL
                     isValid = userExist.Count() > 0 ? true : false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -48,7 +48,7 @@ namespace ERP_WebDesign_Main.Model_BL.User_BL
                     isAuthenticated = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

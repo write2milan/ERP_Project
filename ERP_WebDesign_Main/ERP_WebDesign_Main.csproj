@@ -261,6 +261,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\underscore.js" />
+    <Content Include="Scripts\underscore.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -281,6 +283,9 @@
     <Content Include="Views\MasterData\ProductMaster_Create.cshtml" />
     <Content Include="Views\MasterData\ProductMaster_Edit.cshtml" />
     <Content Include="Views\MasterData\CodificationMaster_Index.cshtml" />
+    <Content Include="Views\MasterData\CodificationMaster_Create.cshtml" />
+    <Content Include="Scripts\underscore.min.map" />
+    <Content Include="Views\MasterData\CodificationMaster_Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

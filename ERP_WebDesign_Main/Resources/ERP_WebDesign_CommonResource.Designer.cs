@@ -79,6 +79,24 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select one.
+        /// </summary>
+        public static string DEFAULT_DROPDOWN_TEXT {
+            get {
+                return ResourceManager.GetString("DEFAULT_DROPDOWN_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string DEFAULT_DROPDOWN_VALUE {
+            get {
+                return ResourceManager.GetString("DEFAULT_DROPDOWN_VALUE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid user id or password.
         /// </summary>
         public static string INVALID_LOGIN_MESSAGE {

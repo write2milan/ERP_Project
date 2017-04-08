@@ -61,6 +61,69 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Code.
+        /// </summary>
+        public static string CODI_CODE {
+            get {
+                return ResourceManager.GetString("CODI_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group.
+        /// </summary>
+        public static string CODI_GROUP {
+            get {
+                return ResourceManager.GetString("CODI_GROUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Codification id.
+        /// </summary>
+        public static string CODI_ID {
+            get {
+                return ResourceManager.GetString("CODI_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item.
+        /// </summary>
+        public static string CODI_ITEM {
+            get {
+                return ResourceManager.GetString("CODI_ITEM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rack.
+        /// </summary>
+        public static string CODI_RACK {
+            get {
+                return ResourceManager.GetString("CODI_RACK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specification.
+        /// </summary>
+        public static string CODI_SPEC {
+            get {
+                return ResourceManager.GetString("CODI_SPEC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CODI-.
+        /// </summary>
+        public static string CODIFICATION_ID_PREFIX {
+            get {
+                return ResourceManager.GetString("CODIFICATION_ID_PREFIX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Product description.
         /// </summary>
         public static string PRODUCT_DESC {
@@ -88,7 +151,7 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PRD_.
+        ///   Looks up a localized string similar to PRD-.
         /// </summary>
         public static string PRODUCT_ID_PREFIX {
             get {

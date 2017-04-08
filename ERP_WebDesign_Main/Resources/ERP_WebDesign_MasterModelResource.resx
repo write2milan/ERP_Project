@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CODIFICATION_ID_PREFIX" xml:space="preserve">
+    <value>CODI-</value>
+  </data>
+  <data name="CODI_CODE" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="CODI_GROUP" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="CODI_ID" xml:space="preserve">
+    <value>Codification id</value>
+  </data>
+  <data name="CODI_ITEM" xml:space="preserve">
+    <value>Item</value>
+  </data>
+  <data name="CODI_RACK" xml:space="preserve">
+    <value>Rack</value>
+  </data>
+  <data name="CODI_SPEC" xml:space="preserve">
+    <value>Specification</value>
+  </data>
   <data name="PRODUCT_DESC" xml:space="preserve">
     <value>Product description</value>
   </data>
@@ -127,7 +148,7 @@
     <value>Product id</value>
   </data>
   <data name="PRODUCT_ID_PREFIX" xml:space="preserve">
-    <value>PRD_</value>
+    <value>PRD-</value>
   </data>
   <data name="PRODUCT_NAME" xml:space="preserve">
     <value>Product name</value>

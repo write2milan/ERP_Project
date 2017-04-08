@@ -123,6 +123,12 @@
   <data name="CREATED_DATE" xml:space="preserve">
     <value>Created date</value>
   </data>
+  <data name="DEFAULT_DROPDOWN_TEXT" xml:space="preserve">
+    <value>Select one</value>
+  </data>
+  <data name="DEFAULT_DROPDOWN_VALUE" xml:space="preserve">
+    <value />
+  </data>
   <data name="INVALID_LOGIN_MESSAGE" xml:space="preserve">
     <value>Invalid user id or password</value>
   </data>

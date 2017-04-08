@@ -1,41 +1,64 @@
-﻿@model ERP_WebDesign_Main.Models.MasterData_Model.Codification_Model
+﻿@model IEnumerable<ERP_WebDesign_Main.Models.MasterData_Model.Codification_Model>
 
 @{
-    ViewBag.Title = "CodificationMaster_Index";
+    ViewBag.Title = "List of codification";
 }
 
-<h2>CodificationMaster_Index</h2>
-<script src="~/Scripts/Codification/controller.js"></script>
+<h2>List of codification</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<p>
+    @Html.ActionLink("Create New", "CodificationMaster_Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodificationID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodificationCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDateTime)
+        </th>
+        <th></th>
+    </tr>
 
-    <div class="form-horizontal" ng-controller="codification" ng-init="init(@Newtonsoft.Json.JsonConvert.SerializeObject(Model))">
-        <h4>Codification_Model</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.GroupID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select ng-model="Codification_Model.GroupID">
-                    <option ng-repeat="row in Codification_Model.Groups" code="{{row.Code}}" value="{{row.Value}}">{{row.DisplayText}}</option>
-                </select>
-            </div>
-        </div>
-        
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodificationID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodificationCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDateTime)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "CodificationMaster_Edit", new { CodiId = item.CodificationID })
+                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                @*@Html.ActionLink("Delete", "Delete", new { ItemId = item.ProductID  })*@
+            </td>
+        </tr>
+    }
 
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+</table>

@@ -26,6 +26,9 @@ namespace ERP_WebDesign_Main
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                       "~/Scripts/angular.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/underscore").Include(
+                      "~/Scripts/underscore.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/commonscript").Include(
                       "~/Scripts/Common/Common.js"));
 

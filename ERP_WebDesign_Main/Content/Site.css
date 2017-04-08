@@ -150,3 +150,9 @@ h4 {
 .text-danger.login-val-failed-summary div ul li {
     list-style-type: none;
 }
+
+#main h1, h2, h3 {
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
