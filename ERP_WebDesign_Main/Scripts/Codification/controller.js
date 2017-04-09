@@ -25,13 +25,14 @@
 
         $scope.InsertCodi = function () {
             codificationfactory.InsertCodi($scope.Codification_Model).then(function (response) {
-                $window.location = "/MasterData/CodificationMaster_Index";
+                OpenModalAfterSaveRecord(response.data);
             });
         };
 
         $scope.UpdateCodi = function () {
             codificationfactory.UpdateCodi($scope.Codification_Model).then(function (response) {
-                $window.location = "/MasterData/CodificationMaster_Index";
+                OpenModalAfterSaveRecord(response.data);
+
             });
         };
 

@@ -25,7 +25,7 @@ namespace ERP_WebDesign_Main.Controllers
         {
             Model_BL.MasterData_BL.ProductMaster_BL objProductMasterBL = new Model_BL.MasterData_BL.ProductMaster_BL();
             objProductMasterBL.InsertData(collection);
-            return RedirectToAction("ProductMaster_Index");
+            return Json("/MasterData/ProductMaster_Index", JsonRequestBehavior.AllowGet);
         }
 
 
@@ -42,7 +42,7 @@ namespace ERP_WebDesign_Main.Controllers
 
             Model_BL.MasterData_BL.ProductMaster_BL objProductMasterBL = new Model_BL.MasterData_BL.ProductMaster_BL();
             objProductMasterBL.UpdateData(Entity.ProductID, Entity);
-            return RedirectToAction("ProductMaster_Index");
+            return Json("/MasterData/ProductMaster_Index", JsonRequestBehavior.AllowGet);
 
         }
 
@@ -68,7 +68,7 @@ namespace ERP_WebDesign_Main.Controllers
         {
             Model_BL.MasterData_BL.Codification_BL objCodificationMasterBL = new Model_BL.MasterData_BL.Codification_BL();
             objCodificationMasterBL.UpdateData(Entity.CodificationID, Entity);
-            return Json("", JsonRequestBehavior.AllowGet);
+            return Json("/MasterData/CodificationMaster_Index", JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -76,7 +76,7 @@ namespace ERP_WebDesign_Main.Controllers
         {
             Model_BL.MasterData_BL.Codification_BL objCodificationMasterBL = new Model_BL.MasterData_BL.Codification_BL();
             objCodificationMasterBL.InsertData(objModel);
-            return Json("", JsonRequestBehavior.AllowGet);
+            return Json("/MasterData/CodificationMaster_Index", JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

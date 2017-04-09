@@ -81,7 +81,24 @@
     </div>
 
 
-    
+
     @RenderSection("scripts", required: false)
+
+    <div class="modal fade" id="thankyouModal" tabindex="-1" role="dialog" aria-labelledby="thankyouLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Message</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Data has been submitted successfully!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary" id="ok">Ok</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -3,11 +3,11 @@
 @{
     ViewBag.Title = "Product Master Edit";
 }
-
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 <h2>Product Master Edit</h2>
 
 
-@using (Html.BeginForm("ProductMaster_Edit", "MasterData", FormMethod.Post, new { Entity = Model }))
+@using (Ajax.BeginForm("ProductMaster_Edit", "MasterData", FormMethod.Post, new AjaxOptions { OnSuccess = "OnSuccess", OnFailure = "OnFailure" }, new { Entity = Model }))
 {
     @Html.AntiForgeryToken()
 

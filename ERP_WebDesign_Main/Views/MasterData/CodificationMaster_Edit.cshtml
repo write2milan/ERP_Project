@@ -1,10 +1,10 @@
 ﻿@model ERP_WebDesign_Main.Models.MasterData_Model.Codification_Model
 
 @{
-    ViewBag.Title = "Upadte existing codification";
+    ViewBag.Title = "Update existing codification";
 }
 
-<h2>Upadte existing codification</h2>
+<h2>Update existing codification</h2>
 <script src="~/Scripts/Codification/controller.js"></script>
 <script src="~/Scripts/Codification/factory.js"></script>
 
@@ -19,7 +19,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.GroupID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select ng-model="Codification_Model.GroupID" ng-change="GetItems()" ng-disabled="DisableAllDropdown">
+                <select class="form-control" ng-model="Codification_Model.GroupID" ng-change="GetItems()" ng-disabled="DisableAllDropdown">
                     <option ng-repeat="row in Codification_Model.Groups" code="{{row.Code}}" value="{{row.Value}}">{{row.DisplayText}}</option>
                 </select>
             </div>
@@ -28,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ItemID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select ng-model="Codification_Model.ItemID" ng-change="GetSpecs()" ng-disabled="DisableAllDropdown">
+                <select class="form-control" ng-model="Codification_Model.ItemID" ng-change="GetSpecs()" ng-disabled="DisableAllDropdown">
                     <option ng-repeat="row in Codification_Model.Items" code="{{row.Code}}" value="{{row.Value}}">{{row.DisplayText}}</option>
                 </select>
             </div>
@@ -37,7 +37,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SpecificationID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select ng-model="Codification_Model.SpecificationID" ng-disabled="DisableAllDropdown">
+                <select class="form-control" ng-model="Codification_Model.SpecificationID" ng-disabled="DisableAllDropdown">
                     <option ng-repeat="row in Codification_Model.Specifications" code="{{row.Code}}" value="{{row.Value}}">{{row.DisplayText}}</option>
                 </select>
             </div>
@@ -46,7 +46,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.RackID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select ng-model="Codification_Model.RackID" ng-disabled="DisableAllDropdown">
+                <select class="form-control" ng-model="Codification_Model.RackID" ng-disabled="DisableAllDropdown">
                     <option ng-repeat="row in Codification_Model.Racks" code="{{row.Code}}" value="{{row.Value}}">{{row.DisplayText}}</option>
                 </select>
             </div>
@@ -55,12 +55,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CodificationCode, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="text" ng-model="Codification_Model.CodificationCode" ng-disabled="true" />
+                <input type="text" class="form-control" ng-model="Codification_Model.CodificationCode" ng-disabled="true" />
             </div>
         </div>
 
         <div class="form-group" ng-if="ErrorFlagValidation">
-            <span class="col-md-10" ng-bind="ErrorMessageValidation">
+            <span class="control-label col-md-2"></span>
+            <span class="col-md-10 text-danger" ng-bind="ErrorMessageValidation">
             </span>
         </div>
 

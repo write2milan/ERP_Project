@@ -4,10 +4,11 @@
     ViewBag.Title = "Product Master Create";
 }
 
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 <h2>Product Master Create</h2>
 
 
-@using (Html.BeginForm("ProductMaster_Create", "MasterData", FormMethod.Post, new { collection = Model }))
+@using (Ajax.BeginForm("ProductMaster_Create", "MasterData", FormMethod.Post, new AjaxOptions { OnSuccess = "OnSuccess", OnFailure = "OnFailure" }, new { collection = Model }))
 {
     @Html.AntiForgeryToken()
 
@@ -15,7 +16,7 @@
         <h4>ProductMaster_Model</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
