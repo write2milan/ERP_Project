@@ -14,18 +14,24 @@
         $scope.GetItems = function () {
             codificationfactory.GetCodiItems($scope.Codification_Model.GroupID).then(function (response) {
                 $scope.Codification_Model.Items = response.data;
+            }).catch(function (response) {
+                OnFailure(response);
             });
         };
 
         $scope.GetSpecs = function () {
             codificationfactory.GetCodiSpecs($scope.Codification_Model.ItemID).then(function (response) {
                 $scope.Codification_Model.Specifications = response.data;
+            }).catch(function (response) {
+                OnFailure(response);
             });
         };
 
         $scope.InsertCodi = function () {
             codificationfactory.InsertCodi($scope.Codification_Model).then(function (response) {
                 OpenModalAfterSaveRecord(response.data);
+            }).catch(function (response) {
+                OnFailure(response);
             });
         };
 
@@ -33,6 +39,8 @@
             codificationfactory.UpdateCodi($scope.Codification_Model).then(function (response) {
                 OpenModalAfterSaveRecord(response.data);
 
+            }).catch(function (response) {
+                OnFailure(response);
             });
         };
 

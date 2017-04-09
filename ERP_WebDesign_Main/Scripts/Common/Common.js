@@ -19,5 +19,5 @@ var OnSuccess = function (result) {
 }
 
 var OnFailure = function (result) {
-
+    document.write(result.data);
 }
