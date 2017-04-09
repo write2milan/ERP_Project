@@ -12,17 +12,23 @@
         };
 
         $scope.GetItems = function () {
+            showPleaseWait();
             codificationfactory.GetCodiItems($scope.Codification_Model.GroupID).then(function (response) {
                 $scope.Codification_Model.Items = response.data;
+                hidePleaseWait();
             }).catch(function (response) {
+                hidePleaseWait();
                 OnFailure(response);
             });
         };
 
         $scope.GetSpecs = function () {
+            showPleaseWait();
             codificationfactory.GetCodiSpecs($scope.Codification_Model.ItemID).then(function (response) {
                 $scope.Codification_Model.Specifications = response.data;
+                hidePleaseWait();
             }).catch(function (response) {
+                hidePleaseWait();
                 OnFailure(response);
             });
         };
