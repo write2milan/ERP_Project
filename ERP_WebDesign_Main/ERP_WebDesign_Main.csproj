@@ -141,10 +141,12 @@
     </Compile>
     <Compile Include="Models\Base_Model\Base_Model.cs" />
     <Compile Include="Models\MasterData_Model\Codification_Model.cs" />
+    <Compile Include="Models\MasterData_Model\GroupsMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\ProductMaster_Model.cs" />
     <Compile Include="Models\User_Model\User_Model.cs" />
     <Compile Include="Model_BL\Base_BL\Base_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\Codification_BL.cs" />
+    <Compile Include="Model_BL\MasterData_BL\GroupsMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\ProductMaster_BL.cs" />
     <Compile Include="Model_BL\User_BL\Users_BL.cs" />
     <Compile Include="Model_Entity_DB\ERP_WebDesign_DB.Context.cs">

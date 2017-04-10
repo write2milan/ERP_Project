@@ -3,7 +3,7 @@
 
     var controllerModule = angular.module('ERP-CONTROLLER', []);
     controllerModule.controller('codification', ['$scope', 'codificationfactory', '$window', function ($scope, codificationfactory, $window) {
-        
+
         $scope.ErrorFlagValidation = false;
         $scope.IsCodePresent = false;
         $scope.DisableAllDropdown = false;
@@ -12,41 +12,41 @@
         };
 
         $scope.GetItems = function () {
-            showPleaseWait();
+            ERP_JS_MAIN.showPleaseWait();
             codificationfactory.GetCodiItems($scope.Codification_Model.GroupID).then(function (response) {
                 $scope.Codification_Model.Items = response.data;
-                hidePleaseWait();
+                ERP_JS_MAIN.hidePleaseWait();
             }).catch(function (response) {
-                hidePleaseWait();
-                OnFailure(response);
+                ERP_JS_MAIN.hidePleaseWait();
+                ERP_JS_MAIN.OnFailure(response);
             });
         };
 
         $scope.GetSpecs = function () {
-            showPleaseWait();
+            ERP_JS_MAIN.showPleaseWait();
             codificationfactory.GetCodiSpecs($scope.Codification_Model.ItemID).then(function (response) {
                 $scope.Codification_Model.Specifications = response.data;
-                hidePleaseWait();
+                ERP_JS_MAIN.hidePleaseWait();
             }).catch(function (response) {
-                hidePleaseWait();
-                OnFailure(response);
+                ERP_JS_MAIN.hidePleaseWait();
+                ERP_JS_MAIN.OnFailure(response);
             });
         };
 
         $scope.InsertCodi = function () {
             codificationfactory.InsertCodi($scope.Codification_Model).then(function (response) {
-                OpenModalAfterSaveRecord(response.data);
+                ERP_JS_MAIN.OpenModalAfterSaveRecord(response.data);
             }).catch(function (response) {
-                OnFailure(response);
+                ERP_JS_MAIN.OnFailure(response);
             });
         };
 
         $scope.UpdateCodi = function () {
             codificationfactory.UpdateCodi($scope.Codification_Model).then(function (response) {
-                OpenModalAfterSaveRecord(response.data);
+                ERP_JS_MAIN.OpenModalAfterSaveRecord(response.data);
 
             }).catch(function (response) {
-                OnFailure(response);
+                ERP_JS_MAIN.OnFailure(response);
             });
         };
 

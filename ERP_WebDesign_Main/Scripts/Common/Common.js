@@ -5,25 +5,30 @@
 
 })();
 
-var OpenModalAfterSaveRecord = function (url) {
-    $('#thankyouModal').modal({
-        backdrop: 'static',
-        keyboard: false
-    }).one('click', '#ok', function (e) {
-        window.location = url;
-    });
-};
 
-var OnSuccess = function (result) {
-    OpenModalAfterSaveRecord(result);
-}
+var ERP_JS_MAIN = ERP_JS_MAIN || {};
 
-var OnFailure = function (result) {
-    document.write(result.data);
-}
+ERP_JS_MAIN = (function () {
 
-var showPleaseWait = function () {
-    var modalLoading = '<div class="modal" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false role="dialog">\
+    var OpenModalAfterSaveRecord = function (url) {
+        $('#thankyouModal').modal({
+            backdrop: 'static',
+            keyboard: false
+        }).one('click', '#ok', function (e) {
+            window.location = url;
+        });
+    };
+
+    var OnSuccess = function (result) {
+        OpenModalAfterSaveRecord(result);
+    };
+
+    var OnFailure = function (result) {
+        document.write(result.data);
+    };
+
+    var showPleaseWait = function () {
+        var modalLoading = '<div class="modal" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false role="dialog">\
         <div class="modal-dialog">\
             <div class="modal-content">\
                 <div class="modal-header">\
@@ -39,14 +44,22 @@ var showPleaseWait = function () {
             </div>\
         </div>\
     </div>';
-    $(document.body).append(modalLoading);
-    $("#pleaseWaitDialog").modal("show");
-}
+        $(document.body).append(modalLoading);
+        $("#pleaseWaitDialog").modal("show");
+    };
 
-/**
- * Hides "Please wait" overlay. See function showPleaseWait().
- */
-var hidePleaseWait = function () {
-    $("#pleaseWaitDialog").modal("hide");
-    $("div#pleaseWaitDialog").remove();
-}
+    var hidePleaseWait = function () {
+        $("#pleaseWaitDialog").modal("hide");
+        $("div#pleaseWaitDialog").remove();
+    };
+
+    return {
+        OpenModalAfterSaveRecord: OpenModalAfterSaveRecord,
+        OnSuccess: OnSuccess,
+        OnFailure: OnFailure,
+        showPleaseWait: showPleaseWait,
+        hidePleaseWait: hidePleaseWait
+
+    }
+
+})();

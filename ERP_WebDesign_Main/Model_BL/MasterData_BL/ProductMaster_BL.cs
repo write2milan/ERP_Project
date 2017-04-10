@@ -39,7 +39,7 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
             return objProdMasterCollection;
 
         }
-        public override void InsertData(ProductMaster_Model entity)
+        public override object InsertData(ProductMaster_Model entity)
         {
             try
             {
@@ -65,8 +65,9 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
 
                 throw;
             }
+            return string.Empty;
         }
-        public override void UpdateData(string ItemId, ProductMaster_Model entity)
+        public override object UpdateData(string ItemId, ProductMaster_Model entity)
         {
             try
             {
@@ -85,9 +86,10 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
             {
                 throw;
             }
+            return string.Empty;
 
         }
-        public override void DeleteData(string ItemId)
+        public override object DeleteData(string ItemId)
         {
             try
             {
@@ -103,6 +105,7 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
             {
                 throw;
             }
+            return string.Empty;
         }
         public override ProductMaster_Model DetailsData(string ItemId)
         {

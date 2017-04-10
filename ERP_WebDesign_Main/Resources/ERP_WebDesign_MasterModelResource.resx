@@ -141,11 +141,29 @@
   <data name="CODI_VALIDATION_DDMESSAGE" xml:space="preserve">
     <value>Please select all the required dropdown fields.</value>
   </data>
+  <data name="GROUP_CODE" xml:space="preserve">
+    <value>Group code</value>
+  </data>
+  <data name="GROUP_CODE_NOTBLANK" xml:space="preserve">
+    <value>Please provide group code</value>
+  </data>
+  <data name="GROUP_DISPLAYNAME" xml:space="preserve">
+    <value>Group display name</value>
+  </data>
+  <data name="GROUP_DISPLAYNAME_NOTBLANK" xml:space="preserve">
+    <value>Please provide group display name</value>
+  </data>
+  <data name="GROUP_ID" xml:space="preserve">
+    <value>Group id</value>
+  </data>
+  <data name="GROUP_ID_PREFIX" xml:space="preserve">
+    <value>GRP-</value>
+  </data>
   <data name="PRODUCT_DESC" xml:space="preserve">
     <value>Product description</value>
   </data>
   <data name="PRODUCT_DESC_NOTBLANK" xml:space="preserve">
-    <value>*</value>
+    <value>Please provide product description</value>
   </data>
   <data name="PRODUCT_ID" xml:space="preserve">
     <value>Product id</value>
@@ -157,6 +175,6 @@
     <value>Product name</value>
   </data>
   <data name="PRODUCT_NAME_NOTBLANK" xml:space="preserve">
-    <value>*</value>
+    <value>Please provide product name</value>
   </data>
 </root>

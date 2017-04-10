@@ -8,7 +8,7 @@
 <h2>Product Master Create</h2>
 
 
-@using (Ajax.BeginForm("ProductMaster_Create", "MasterData", FormMethod.Post, new AjaxOptions { OnSuccess = "OnSuccess", OnFailure = "OnFailure" }, new { collection = Model }))
+@using (Ajax.BeginForm("ProductMaster_Create", "MasterData", FormMethod.Post, new AjaxOptions { OnSuccess = "ERP_JS_MAIN.OnSuccess", OnFailure = "ERP_JS_MAIN.OnFailure" }, new { collection = Model }))
 {
     @Html.AntiForgeryToken()
 

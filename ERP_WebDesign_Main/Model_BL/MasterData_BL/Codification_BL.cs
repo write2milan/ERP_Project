@@ -38,7 +38,7 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
 
             return objCodiMasterCollection;
         }
-        public override void InsertData(Codification_Model entity)
+        public override object InsertData(Codification_Model entity)
         {
             try
             {
@@ -67,8 +67,9 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
 
                 throw;
             }
+            return string.Empty;
         }
-        public override void DeleteData(string ItemId)
+        public override object DeleteData(string ItemId)
         {
             throw new NotImplementedException();
         }
@@ -108,7 +109,7 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
             }
             return objCodiMaster;
         }
-        public override void UpdateData(string ItemId, Codification_Model entity)
+        public override object UpdateData(string ItemId, Codification_Model entity)
         {
             try
             {
@@ -130,6 +131,7 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
             {
                 throw;
             }
+            return string.Empty;
         }
 
         public Codification_Model BindModelForInsertion()

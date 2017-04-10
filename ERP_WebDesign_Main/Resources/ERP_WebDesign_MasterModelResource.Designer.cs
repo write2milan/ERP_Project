@@ -133,6 +133,60 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Group code.
+        /// </summary>
+        public static string GROUP_CODE {
+            get {
+                return ResourceManager.GetString("GROUP_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide group code.
+        /// </summary>
+        public static string GROUP_CODE_NOTBLANK {
+            get {
+                return ResourceManager.GetString("GROUP_CODE_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group display name.
+        /// </summary>
+        public static string GROUP_DISPLAYNAME {
+            get {
+                return ResourceManager.GetString("GROUP_DISPLAYNAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide group display name.
+        /// </summary>
+        public static string GROUP_DISPLAYNAME_NOTBLANK {
+            get {
+                return ResourceManager.GetString("GROUP_DISPLAYNAME_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group id.
+        /// </summary>
+        public static string GROUP_ID {
+            get {
+                return ResourceManager.GetString("GROUP_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GRP-.
+        /// </summary>
+        public static string GROUP_ID_PREFIX {
+            get {
+                return ResourceManager.GetString("GROUP_ID_PREFIX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Product description.
         /// </summary>
         public static string PRODUCT_DESC {
@@ -142,7 +196,7 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to *.
+        ///   Looks up a localized string similar to Please provide product description.
         /// </summary>
         public static string PRODUCT_DESC_NOTBLANK {
             get {
@@ -178,7 +232,7 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to *.
+        ///   Looks up a localized string similar to Please provide product name.
         /// </summary>
         public static string PRODUCT_NAME_NOTBLANK {
             get {
