@@ -115,6 +115,15 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select all the required dropdown fields..
+        /// </summary>
+        public static string CODI_VALIDATION_DDMESSAGE {
+            get {
+                return ResourceManager.GetString("CODI_VALIDATION_DDMESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CODI-.
         /// </summary>
         public static string CODIFICATION_ID_PREFIX {

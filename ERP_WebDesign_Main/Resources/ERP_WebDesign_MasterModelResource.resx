@@ -138,6 +138,9 @@
   <data name="CODI_SPEC" xml:space="preserve">
     <value>Specification</value>
   </data>
+  <data name="CODI_VALIDATION_DDMESSAGE" xml:space="preserve">
+    <value>Please select all the required dropdown fields.</value>
+  </data>
   <data name="PRODUCT_DESC" xml:space="preserve">
     <value>Product description</value>
   </data>

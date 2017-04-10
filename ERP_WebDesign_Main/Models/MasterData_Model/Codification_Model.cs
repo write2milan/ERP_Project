@@ -10,6 +10,10 @@ namespace ERP_WebDesign_Main.Models.MasterData_Model
 {
     public class Codification_Model : Base_Model
     {
+        public Codification_Model()
+        {
+            ValidationMessageForDropdowns = ERP_WebDesign_MasterModelResource.CODI_VALIDATION_DDMESSAGE;
+        }
         [Display(ResourceType = typeof(ERP_WebDesign_MasterModelResource), Name = "CODI_ID")]
         public string CodificationID { get; set; }
         [Display(ResourceType = typeof(ERP_WebDesign_MasterModelResource), Name = "CODI_CODE")]
@@ -26,6 +30,7 @@ namespace ERP_WebDesign_Main.Models.MasterData_Model
         public List<CodificationSelectListItem> Groups { get; set; }
         public List<CodificationSelectListItem> Specifications { get; set; }
         public List<CodificationSelectListItem> Racks { get; set; }
+        public string ValidationMessageForDropdowns { get; set; }
 
     }
 

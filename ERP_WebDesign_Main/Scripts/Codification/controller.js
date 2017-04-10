@@ -3,7 +3,7 @@
 
     var controllerModule = angular.module('ERP-CONTROLLER', []);
     controllerModule.controller('codification', ['$scope', 'codificationfactory', '$window', function ($scope, codificationfactory, $window) {
-        $scope.ErrorMessageValidation = "Please select all the dropdown fields.";
+        
         $scope.ErrorFlagValidation = false;
         $scope.IsCodePresent = false;
         $scope.DisableAllDropdown = false;
