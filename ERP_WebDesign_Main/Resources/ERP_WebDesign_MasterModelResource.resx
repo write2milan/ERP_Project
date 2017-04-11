@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CODE_EXIST_ALERTMESSAGE" xml:space="preserve">
+    <value>Already exist code.</value>
+  </data>
   <data name="CODIFICATION_ID_PREFIX" xml:space="preserve">
     <value>CODI-</value>
   </data>
@@ -176,5 +179,23 @@
   </data>
   <data name="PRODUCT_NAME_NOTBLANK" xml:space="preserve">
     <value>Please provide product name</value>
+  </data>
+  <data name="RACK_CODE" xml:space="preserve">
+    <value>Rack code</value>
+  </data>
+  <data name="RACK_CODE_NOTBLANK" xml:space="preserve">
+    <value>Please provide rack code</value>
+  </data>
+  <data name="RACK_DISPLAYNAME" xml:space="preserve">
+    <value>Rack display name</value>
+  </data>
+  <data name="RACK_DISPLAYNAME_NOTBLANK" xml:space="preserve">
+    <value>Please provide rack display name</value>
+  </data>
+  <data name="RACK_ID" xml:space="preserve">
+    <value>Rack id</value>
+  </data>
+  <data name="RACK_ID_PREFIX" xml:space="preserve">
+    <value>RACK-</value>
   </data>
 </root>

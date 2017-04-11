@@ -61,6 +61,15 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Already exist code..
+        /// </summary>
+        public static string CODE_EXIST_ALERTMESSAGE {
+            get {
+                return ResourceManager.GetString("CODE_EXIST_ALERTMESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Code.
         /// </summary>
         public static string CODI_CODE {
@@ -237,6 +246,60 @@ namespace ERP_WebDesign_Main.Resources {
         public static string PRODUCT_NAME_NOTBLANK {
             get {
                 return ResourceManager.GetString("PRODUCT_NAME_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rack code.
+        /// </summary>
+        public static string RACK_CODE {
+            get {
+                return ResourceManager.GetString("RACK_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide rack code.
+        /// </summary>
+        public static string RACK_CODE_NOTBLANK {
+            get {
+                return ResourceManager.GetString("RACK_CODE_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rack display name.
+        /// </summary>
+        public static string RACK_DISPLAYNAME {
+            get {
+                return ResourceManager.GetString("RACK_DISPLAYNAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide rack display name.
+        /// </summary>
+        public static string RACK_DISPLAYNAME_NOTBLANK {
+            get {
+                return ResourceManager.GetString("RACK_DISPLAYNAME_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rack id.
+        /// </summary>
+        public static string RACK_ID {
+            get {
+                return ResourceManager.GetString("RACK_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RACK-.
+        /// </summary>
+        public static string RACK_ID_PREFIX {
+            get {
+                return ResourceManager.GetString("RACK_ID_PREFIX", resourceCulture);
             }
         }
     }

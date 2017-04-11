@@ -119,5 +119,21 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
             }
             return objEntityMaster;
         }
+        public object ExistCode(string code)
+        {
+            bool isExistCode = false;
+            try
+            {
+                using (ERP_DEMOEntities objContext = new ERP_DEMOEntities())
+                {
+                    isExistCode = objContext.tbl_Groups.Any(each => each.GroupCode.Equals(code, StringComparison.CurrentCultureIgnoreCase));
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return new { IsExist = isExistCode, AlertMessage = ERP_WebDesign_MasterModelResource.CODE_EXIST_ALERTMESSAGE };
+        }
     }
 }
