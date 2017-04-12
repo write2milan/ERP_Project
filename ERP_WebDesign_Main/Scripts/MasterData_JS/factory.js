@@ -44,5 +44,36 @@
 
     }]);
 
+    serviceModule.factory('groupsfactory', ['$http', function ($http) {
+        var get_IsExistCodeGroups = function (code) {
+            return $http({
+                method: 'POST',
+                url: '/MasterData/IsExistCodeGroups',
+                data: JSON.stringify({ code: code })
+            });
+        };
+
+
+        return {
+            GetIsExistCodeGroups: get_IsExistCodeGroups
+        }
+
+    }]);
+
+    serviceModule.factory('racksfactory', ['$http', function ($http) {
+        var get_IsExistCodeRacks = function (code) {
+            return $http({
+                method: 'POST',
+                url: '/MasterData/IsExistCodeRacks',
+                data: JSON.stringify({ code: code })
+            });
+        };
+
+
+        return {
+            GetIsExistCodeRacks: get_IsExistCodeRacks
+        }
+
+    }]);
 
 })();

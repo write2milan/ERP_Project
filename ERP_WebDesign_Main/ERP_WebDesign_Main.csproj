@@ -252,8 +252,8 @@
     </Content>
     <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\Codification\controller.js" />
-    <Content Include="Scripts\Codification\factory.js" />
+    <Content Include="Scripts\MasterData_JS\controller.js" />
+    <Content Include="Scripts\MasterData_JS\factory.js" />
     <Content Include="Scripts\Common\Common.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -292,6 +292,12 @@
     <Content Include="Views\MasterData\CodificationMaster_Create.cshtml" />
     <Content Include="Scripts\underscore.min.map" />
     <Content Include="Views\MasterData\CodificationMaster_Edit.cshtml" />
+    <Content Include="Views\MasterData\GroupsMaster_Index.cshtml" />
+    <Content Include="Views\MasterData\GroupsMaster_Create.cshtml" />
+    <Content Include="Views\MasterData\GroupsMaster_Edit.cshtml" />
+    <Content Include="Views\MasterData\RackMaster_Index.cshtml" />
+    <Content Include="Views\MasterData\RackMaster_Create.cshtml" />
+    <Content Include="Views\MasterData\RackMaster_Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

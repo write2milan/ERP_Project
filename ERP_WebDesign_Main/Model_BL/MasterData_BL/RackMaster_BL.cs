@@ -102,7 +102,6 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
                 {
 
                     tbl_Rack updateEntity = objContext.tbl_Rack.Where(p => p.RackID == ItemId).FirstOrDefault<tbl_Rack>();
-                    updateEntity.RackCode = entity.RackCode;
                     updateEntity.RackDisplayName = entity.RackDisplayName;
                     updateEntity.ModifiedBy = CommonHelper.CommonHelper.CurrentUserLoginName();
                     updateEntity.ModifiedDateTime = DateTime.Now;

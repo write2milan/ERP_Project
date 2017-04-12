@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace ERP_WebDesign_Main.Controllers
 {
     [AuthenticationFilter]
     public class MasterDataController : BaseController
     {
+        #region Product master
         public ActionResult ProductMaster_Index()
         {
             Model_BL.MasterData_BL.ProductMaster_BL objProductMasterBL = new Model_BL.MasterData_BL.ProductMaster_BL();
@@ -45,7 +47,9 @@ namespace ERP_WebDesign_Main.Controllers
             return Json("/MasterData/ProductMaster_Index", JsonRequestBehavior.AllowGet);
 
         }
+        #endregion
 
+        #region Codification master
         public ActionResult CodificationMaster_Index()
         {
             Model_BL.MasterData_BL.Codification_BL objCodiMasterBL = new Model_BL.MasterData_BL.Codification_BL();
@@ -92,9 +96,91 @@ namespace ERP_WebDesign_Main.Controllers
             Model_BL.MasterData_BL.Codification_BL objCodificationMasterBL = new Model_BL.MasterData_BL.Codification_BL();
             return Json(objCodificationMasterBL.PopulateSpecDropdown(itemId), JsonRequestBehavior.AllowGet);
         }
+        #endregion
 
+        #region Group master
+        public ActionResult GroupsMaster_Index()
+        {
+            Model_BL.MasterData_BL.GroupsMaster_BL objMasterBL = new Model_BL.MasterData_BL.GroupsMaster_BL();
+            return View(objMasterBL.GetAllItems());
+        }
 
+        public ActionResult GroupsMaster_Create()
+        {
+            return View();
+        }
 
+        public ActionResult GroupsMaster_Edit(string ItemId)
+        {
+            Model_BL.MasterData_BL.GroupsMaster_BL objMasterBL = new Model_BL.MasterData_BL.GroupsMaster_BL();
+            return View(objMasterBL.DetailsData(ItemId));
+        }
+        [HttpPost]
+        public JsonResult GroupsMaster_Edit(Models.MasterData_Model.GroupsMaster_Model Entity)
+        {
+            Model_BL.MasterData_BL.GroupsMaster_BL objMasterBL = new Model_BL.MasterData_BL.GroupsMaster_BL();
+            objMasterBL.UpdateData(Entity.GroupID, Entity);
+            return Json("/MasterData/GroupsMaster_Index", JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GroupsMaster_Create(Models.MasterData_Model.GroupsMaster_Model objModel)
+        {
+            Model_BL.MasterData_BL.GroupsMaster_BL objMasterBL = new Model_BL.MasterData_BL.GroupsMaster_BL();
+            objMasterBL.InsertData(objModel);
+            return Json("/MasterData/GroupsMaster_Index", JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult IsExistCodeGroups(string code)
+        {
+            Model_BL.MasterData_BL.GroupsMaster_BL objMasterBL = new Model_BL.MasterData_BL.GroupsMaster_BL();
+            return Json((new JavaScriptSerializer()).Serialize(objMasterBL.ExistCode(code)), JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
+
+        #region Rack master
+        public ActionResult RackMaster_Index()
+        {
+            Model_BL.MasterData_BL.RackMaster_BL objMasterBL = new Model_BL.MasterData_BL.RackMaster_BL();
+            return View(objMasterBL.GetAllItems());
+        }
+
+        public ActionResult RackMaster_Create()
+        {
+            return View();
+        }
+
+        public ActionResult RackMaster_Edit(string ItemId)
+        {
+            Model_BL.MasterData_BL.RackMaster_BL objMasterBL = new Model_BL.MasterData_BL.RackMaster_BL();
+            return View(objMasterBL.DetailsData(ItemId));
+        }
+        [HttpPost]
+        public JsonResult RackMaster_Edit(Models.MasterData_Model.RackMaster_Model Entity)
+        {
+            Model_BL.MasterData_BL.RackMaster_BL objMasterBL = new Model_BL.MasterData_BL.RackMaster_BL();
+            objMasterBL.UpdateData(Entity.RackID, Entity);
+            return Json("/MasterData/RackMaster_Index", JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult RackMaster_Create(Models.MasterData_Model.RackMaster_Model objModel)
+        {
+            Model_BL.MasterData_BL.RackMaster_BL objMasterBL = new Model_BL.MasterData_BL.RackMaster_BL();
+            objMasterBL.InsertData(objModel);
+            return Json("/MasterData/RackMaster_Index", JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult IsExistCodeRacks(string code)
+        {
+            Model_BL.MasterData_BL.RackMaster_BL objMasterBL = new Model_BL.MasterData_BL.RackMaster_BL();
+            return Json((new JavaScriptSerializer()).Serialize(objMasterBL.ExistCode(code)), JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
 
     }
 }

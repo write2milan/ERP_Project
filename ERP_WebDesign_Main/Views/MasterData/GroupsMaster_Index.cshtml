@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ERP_WebDesign_Main.Models.MasterData_Model.GroupsMaster_Model>
+
+@{
+    ViewBag.Title = "Groups Master";
+}
+
+<h2>Groups Master</h2>
+
+<p>
+    @Html.ActionLink("Create New", "GroupsMaster_Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.GroupCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GroupDisplayName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDateTime)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupDisplayName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDateTime)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "GroupsMaster_Edit", new { ItemId = item.GroupID })
+                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+    }
+
+</table>

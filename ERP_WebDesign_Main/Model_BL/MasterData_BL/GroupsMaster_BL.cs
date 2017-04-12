@@ -74,7 +74,6 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
                 {
 
                     tbl_Groups updateEntity = objContext.tbl_Groups.Where(p => p.GroupID == ItemId).FirstOrDefault<tbl_Groups>();
-                    updateEntity.GroupCode = entity.GroupCode;
                     updateEntity.GroupDisplayName = entity.GroupDisplayName;
                     updateEntity.ModifiedBy = CommonHelper.CommonHelper.CurrentUserLoginName();
                     updateEntity.ModifiedDateTime = DateTime.Now;

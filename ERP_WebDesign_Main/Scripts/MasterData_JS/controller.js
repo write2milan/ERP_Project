@@ -75,5 +75,45 @@
 
     }]);
 
+    controllerModule.controller('groups', ['$scope', 'groupsfactory', '$window', function ($scope, groupsfactory, $window) {
+        $scope.BtnDisable = false;
+        $scope.GC = "";
+        $scope.AlertMsg = "";
+        $scope.IsExistCodeGroups = function () {
+            ERP_JS_MAIN.showPleaseWait();
+            groupsfactory.GetIsExistCodeGroups($scope.GC).then(function (response) {
+                $scope.BtnDisable = (JSON.parse(response.data)).IsExist;
+                $scope.AlertMsg = (JSON.parse(response.data)).AlertMessage;
+                ERP_JS_MAIN.hidePleaseWait();
+            }).catch(function (response) {
+                ERP_JS_MAIN.hidePleaseWait();
+                ERP_JS_MAIN.OnFailure(response);
+            });
+
+        };
+
+
+    }]);
+
+    controllerModule.controller('racks', ['$scope', 'racksfactory', '$window', function ($scope, racksfactory, $window) {
+        $scope.BtnDisable = false;
+        $scope.RC = "";
+        $scope.AlertMsg = "";
+        $scope.IsExistCodeRacks = function () {
+            ERP_JS_MAIN.showPleaseWait();
+            racksfactory.GetIsExistCodeRacks($scope.RC).then(function (response) {
+                $scope.BtnDisable = (JSON.parse(response.data)).IsExist;
+                $scope.AlertMsg = (JSON.parse(response.data)).AlertMessage;
+                ERP_JS_MAIN.hidePleaseWait();
+            }).catch(function (response) {
+                ERP_JS_MAIN.hidePleaseWait();
+                ERP_JS_MAIN.OnFailure(response);
+            });
+
+        };
+
+
+    }]);
+
 
 })();
