@@ -142,6 +142,7 @@
     <Compile Include="Models\Base_Model\Base_Model.cs" />
     <Compile Include="Models\MasterData_Model\Codification_Model.cs" />
     <Compile Include="Models\MasterData_Model\GroupsMaster_Model.cs" />
+    <Compile Include="Models\MasterData_Model\ItemsMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\ProductMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\RackMaster_Model.cs" />
     <Compile Include="Models\User_Model\User_Model.cs" />

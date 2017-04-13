@@ -159,8 +159,29 @@
   <data name="GROUP_ID" xml:space="preserve">
     <value>Group id</value>
   </data>
+  <data name="GROUP_ID_NOTBLANK" xml:space="preserve">
+    <value>Please provide group</value>
+  </data>
   <data name="GROUP_ID_PREFIX" xml:space="preserve">
     <value>GRP-</value>
+  </data>
+  <data name="ITEMS_ID_PREFIX" xml:space="preserve">
+    <value>ITEM-</value>
+  </data>
+  <data name="ITEM_CODE" xml:space="preserve">
+    <value>Item code</value>
+  </data>
+  <data name="ITEM_CODE_NOTBLANK" xml:space="preserve">
+    <value>Please provide item code</value>
+  </data>
+  <data name="ITEM_DISPLAYNAME" xml:space="preserve">
+    <value>Item name</value>
+  </data>
+  <data name="ITEM_DISPLAYNAME_NOTBLANK" xml:space="preserve">
+    <value>Please provide item display name</value>
+  </data>
+  <data name="ITEM_ID" xml:space="preserve">
+    <value>Item id</value>
   </data>
   <data name="PRODUCT_DESC" xml:space="preserve">
     <value>Product description</value>

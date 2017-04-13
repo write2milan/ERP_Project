@@ -24,14 +24,16 @@ namespace ERP_WebDesign_Main.CustomHandleError
             {
                 //Because its a exception raised after ajax invocation
                 //Lets return Json
-                filterContext.Result = new JsonResult()
+                var partialView = new PartialViewResult()
                 {
-                    Data = filterContext.Exception.Message,
-                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                    ViewName = "Error"
                 };
-
+                partialView.ViewBag.Exception = filterContext.Exception;
                 filterContext.ExceptionHandled = true;
+                filterContext.Result = partialView;
                 filterContext.HttpContext.Response.Clear();
+                //filterContext.HttpContext.Response.StatusCode = 500;
+
             }
             else
             {

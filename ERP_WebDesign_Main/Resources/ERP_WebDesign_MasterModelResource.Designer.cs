@@ -187,11 +187,74 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide group.
+        /// </summary>
+        public static string GROUP_ID_NOTBLANK {
+            get {
+                return ResourceManager.GetString("GROUP_ID_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GRP-.
         /// </summary>
         public static string GROUP_ID_PREFIX {
             get {
                 return ResourceManager.GetString("GROUP_ID_PREFIX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item code.
+        /// </summary>
+        public static string ITEM_CODE {
+            get {
+                return ResourceManager.GetString("ITEM_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide item code.
+        /// </summary>
+        public static string ITEM_CODE_NOTBLANK {
+            get {
+                return ResourceManager.GetString("ITEM_CODE_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item name.
+        /// </summary>
+        public static string ITEM_DISPLAYNAME {
+            get {
+                return ResourceManager.GetString("ITEM_DISPLAYNAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide item display name.
+        /// </summary>
+        public static string ITEM_DISPLAYNAME_NOTBLANK {
+            get {
+                return ResourceManager.GetString("ITEM_DISPLAYNAME_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item id.
+        /// </summary>
+        public static string ITEM_ID {
+            get {
+                return ResourceManager.GetString("ITEM_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ITEM-.
+        /// </summary>
+        public static string ITEMS_ID_PREFIX {
+            get {
+                return ResourceManager.GetString("ITEMS_ID_PREFIX", resourceCulture);
             }
         }
         

@@ -14,3 +14,14 @@
         thrown in @Model.ControllerName @Model.ActionName
     </p>
 }
+
+@if (ViewBag.Exception != null)
+{
+    <h3 ERPEXCEPTION="true" style="padding-top:20px;">@ViewBag.Exception.GetType().Name</h3>
+    <pre>
+                @ViewBag.Exception.ToString()
+    </pre>
+    <p>
+
+    </p>
+}
