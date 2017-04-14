@@ -76,4 +76,20 @@
 
     }]);
 
+    serviceModule.factory('itemsfactory', ['$http', function ($http) {
+        var get_IsExistCodeItems = function (code) {
+            return $http({
+                method: 'POST',
+                url: '/MasterData/IsExistCodeItems',
+                data: JSON.stringify({ code: code })
+            });
+        };
+
+
+        return {
+            GetIsExistCodeItems: get_IsExistCodeItems
+        }
+
+    }]);
+
 })();

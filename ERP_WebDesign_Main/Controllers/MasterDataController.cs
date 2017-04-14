@@ -182,5 +182,43 @@ namespace ERP_WebDesign_Main.Controllers
 
         #endregion
 
+        #region Item master
+        public ActionResult ItemsMaster_Index()
+        {
+            Model_BL.MasterData_BL.ItemsMaster_BL objMasterBL = new Model_BL.MasterData_BL.ItemsMaster_BL();
+            return View(objMasterBL.GetAllItems());
+        }
+        public ActionResult ItemsMaster_Create()
+        {
+            Model_BL.MasterData_BL.ItemsMaster_BL objMasterBL = new Model_BL.MasterData_BL.ItemsMaster_BL();
+            return View(objMasterBL.BindModelForInsertion());
+        }
+        [HttpPost]
+        public JsonResult ItemsMaster_Create(Models.MasterData_Model.ItemsMaster_Model objModel)
+        {
+            Model_BL.MasterData_BL.ItemsMaster_BL objMasterBL = new Model_BL.MasterData_BL.ItemsMaster_BL();
+            objMasterBL.InsertData(objModel);
+            return Json("/MasterData/ItemsMaster_Index", JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult ItemsMaster_Edit(string ItemId)
+        {
+            Model_BL.MasterData_BL.ItemsMaster_BL objMasterBL = new Model_BL.MasterData_BL.ItemsMaster_BL();
+            return View(objMasterBL.DetailsData(ItemId));
+        }
+        [HttpPost]
+        public JsonResult ItemsMaster_Edit(Models.MasterData_Model.ItemsMaster_Model Entity)
+        {
+            Model_BL.MasterData_BL.ItemsMaster_BL objMasterBL = new Model_BL.MasterData_BL.ItemsMaster_BL();
+            objMasterBL.UpdateData(Entity.GroupID, Entity);
+            return Json("/MasterData/ItemsMaster_Index", JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult IsExistCodeItems(string code)
+        {
+            Model_BL.MasterData_BL.ItemsMaster_BL objMasterBL = new Model_BL.MasterData_BL.ItemsMaster_BL();
+            return Json((new JavaScriptSerializer()).Serialize(objMasterBL.ExistCode(code)), JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
     }
 }

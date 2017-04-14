@@ -115,5 +115,23 @@
 
     }]);
 
+    controllerModule.controller('items', ['$scope', 'itemsfactory', '$window', function ($scope, itemsfactory, $window) {
+        $scope.BtnDisable = false;
+        $scope.IC = "";
+        $scope.AlertMsg = "";
+        $scope.IsExistCodeItems = function () {
+            ERP_JS_MAIN.showPleaseWait();
+            itemsfactory.GetIsExistCodeRacks($scope.IC).then(function (response) {
+                $scope.BtnDisable = (JSON.parse(response.data)).IsExist;
+                $scope.AlertMsg = (JSON.parse(response.data)).AlertMessage;
+                ERP_JS_MAIN.hidePleaseWait();
+            }).catch(function (response) {
+                ERP_JS_MAIN.hidePleaseWait();
+                ERP_JS_MAIN.OnFailure(response);
+            });
 
+        };
+
+
+    }]);
 })();
