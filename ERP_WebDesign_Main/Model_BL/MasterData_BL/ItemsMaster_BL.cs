@@ -116,7 +116,6 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
 
                     tbl_Items updateEntity = objContext.tbl_Items.Where(p => p.ItemID == ItemId).FirstOrDefault<tbl_Items>();
                     updateEntity.ItemDisplayName = entity.ItemDisplayName;
-                    updateEntity.GroupID = entity.GroupID;
                     updateEntity.ModifiedBy = CommonHelper.CommonHelper.CurrentUserLoginName();
                     updateEntity.ModifiedDateTime = DateTime.Now;
                     objContext.SaveChanges();

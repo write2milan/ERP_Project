@@ -219,4 +219,28 @@
   <data name="RACK_ID_PREFIX" xml:space="preserve">
     <value>RACK-</value>
   </data>
+  <data name="SPEC_CODE" xml:space="preserve">
+    <value>Specification code</value>
+  </data>
+  <data name="SPEC_CODE_NOTBLANK" xml:space="preserve">
+    <value>Please provide code</value>
+  </data>
+  <data name="SPEC_DISPLAYNAME" xml:space="preserve">
+    <value>Specification name</value>
+  </data>
+  <data name="SPEC_DISPLAYNAME_NOTBLANK" xml:space="preserve">
+    <value>Please provide display name</value>
+  </data>
+  <data name="SPEC_GROUPID_NOTBLANK" xml:space="preserve">
+    <value>Please provide group</value>
+  </data>
+  <data name="SPEC_ID" xml:space="preserve">
+    <value>Specification id</value>
+  </data>
+  <data name="SPEC_ID_PREFIX" xml:space="preserve">
+    <value>SPEC-</value>
+  </data>
+  <data name="SPEC_ITEMID_NOTBLANK" xml:space="preserve">
+    <value>Please provide item</value>
+  </data>
 </root>

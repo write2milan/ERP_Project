@@ -147,6 +147,7 @@
           <Property Name="CreatedDateTime" Type="datetime" />
           <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
           <Property Name="ModifiedDateTime" Type="datetime" />
+          <Property Name="GroupID" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbl_User">
           <Key>
@@ -227,6 +228,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SPEC_GroupID">
+          <End Role="tbl_Groups" Type="Self.tbl_Groups" Multiplicity="0..1" />
+          <End Role="tbl_Specification" Type="Self.tbl_Specification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="tbl_Specification">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SPEC_ItemID">
           <End Role="tbl_Items" Type="Self.tbl_Items" Multiplicity="0..1" />
           <End Role="tbl_Specification" Type="Self.tbl_Specification" Multiplicity="*" />
@@ -275,6 +288,10 @@
           <AssociationSet Name="FK_SO_ProductID" Association="Self.FK_SO_ProductID">
             <End Role="tbl_ProductMaster" EntitySet="tbl_ProductMaster" />
             <End Role="tbl_SalesOrder" EntitySet="tbl_SalesOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPEC_GroupID" Association="Self.FK_SPEC_GroupID">
+            <End Role="tbl_Groups" EntitySet="tbl_Groups" />
+            <End Role="tbl_Specification" EntitySet="tbl_Specification" />
           </AssociationSet>
           <AssociationSet Name="FK_SPEC_ItemID" Association="Self.FK_SPEC_ItemID">
             <End Role="tbl_Items" EntitySet="tbl_Items" />
@@ -325,6 +342,10 @@
           <AssociationSet Name="FK_CODI_SpecificationID" Association="ERP_DEMOModel.FK_CODI_SpecificationID">
             <End Role="tbl_Specification" EntitySet="tbl_Specification" />
             <End Role="tbl_Codification" EntitySet="tbl_Codification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPEC_GroupID" Association="ERP_DEMOModel.FK_SPEC_GroupID">
+            <End Role="tbl_Groups" EntitySet="tbl_Groups" />
+            <End Role="tbl_Specification" EntitySet="tbl_Specification" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="tbl_User">
@@ -439,6 +460,7 @@
           <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tbl_Items" Relationship="ERP_DEMOModel.FK_ITEMS_GroupID" FromRole="tbl_Groups" ToRole="tbl_Items" />
           <NavigationProperty Name="tbl_Codification" Relationship="ERP_DEMOModel.FK_CODI_GroupID" FromRole="tbl_Groups" ToRole="tbl_Codification" />
+          <NavigationProperty Name="tbl_Specification" Relationship="ERP_DEMOModel.FK_SPEC_GroupID" FromRole="tbl_Groups" ToRole="tbl_Specification" />
         </EntityType>
         <EntityType Name="tbl_Items">
           <Key>
@@ -483,6 +505,8 @@
           <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tbl_Items" Relationship="ERP_DEMOModel.FK_SPEC_ItemID" FromRole="tbl_Specification" ToRole="tbl_Items" />
           <NavigationProperty Name="tbl_Codification" Relationship="ERP_DEMOModel.FK_CODI_SpecificationID" FromRole="tbl_Specification" ToRole="tbl_Codification" />
+          <Property Name="GroupID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Groups" Relationship="ERP_DEMOModel.FK_SPEC_GroupID" FromRole="tbl_Specification" ToRole="tbl_Groups" />
         </EntityType>
         <Association Name="FK_ITEMS_GroupID">
           <End Type="ERP_DEMOModel.tbl_Groups" Role="tbl_Groups" Multiplicity="0..1" />
@@ -572,6 +596,18 @@
             </Principal>
             <Dependent Role="tbl_Codification">
               <PropertyRef Name="SpecificationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPEC_GroupID">
+          <End Type="ERP_DEMOModel.tbl_Groups" Role="tbl_Groups" Multiplicity="0..1" />
+          <End Type="ERP_DEMOModel.tbl_Specification" Role="tbl_Specification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="tbl_Specification">
+              <PropertyRef Name="GroupID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -716,6 +752,7 @@
           <EntitySetMapping Name="tbl_Specification">
             <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_Specification">
               <MappingFragment StoreEntitySet="tbl_Specification">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
                 <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />

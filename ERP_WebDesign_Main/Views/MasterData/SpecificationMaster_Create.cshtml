@@ -1,0 +1,78 @@
+﻿@model ERP_WebDesign_Main.Models.MasterData_Model.SpecificationMaster_Model
+
+@{
+    ViewBag.Title = "Specification Master Create";
+}
+<script src="~/Scripts/MasterData_JS/controller.js"></script>
+<script src="~/Scripts/MasterData_JS/factory.js"></script>
+<h2>Specification Master Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" ng-controller="specification" ng-init="init(@Newtonsoft.Json.JsonConvert.SerializeObject(Model))">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GroupID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" ng-model="SpecificationMaster_Model.GroupID" ng-change="GetItems()">
+                    <option ng-repeat="row in SpecificationMaster_Model.Groups" value="{{row.Value}}">{{row.Text}}</option>
+                </select>
+                <span class="text-danger">{{Errors['objModel.GroupID']}}</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ItemID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" ng-model="SpecificationMaster_Model.ItemID">
+                    <option ng-repeat="row in SpecificationMaster_Model.Items" value="{{row.Value}}">{{row.Text}}</option>
+                </select>
+                <span class="text-danger">{{Errors['objModel.ItemID']}}</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SpecificationCode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" ng-blur="IsExistCodeSpec()" ng-keyup="IsExistCodeSpec()" class="form-control" ng-model="SpecificationMaster_Model.SpecificationCode" />
+                @Html.ValidationMessageFor(model => model.SpecificationCode, "", new { @class = "text-danger" })
+                <span class="text-danger">{{Errors['objModel.SpecificationCode']}}</span>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="BtnDisable">
+            <span class="control-label col-md-2"></span>
+            <span class="col-md-10 text-danger" ng-bind="AlertMsg">
+            </span>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SpecificationDisplayName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" class="form-control" ng-model="SpecificationMaster_Model.SpecificationDisplayName" />
+                @Html.ValidationMessageFor(model => model.SpecificationDisplayName, "", new { @class = "text-danger" })
+                <span class="text-danger">{{Errors['objModel.SpecificationDisplayName']}}</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Create" class="btn btn-default" ng-click="InsertSpec()" ng-disabled="BtnDisable" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "SpecificationMaster_Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

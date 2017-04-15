@@ -28,9 +28,11 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
         public Nullable<System.DateTime> CreatedDateTime { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDateTime { get; set; }
+        public string GroupID { get; set; }
     
         public virtual tbl_Items tbl_Items { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Codification> tbl_Codification { get; set; }
+        public virtual tbl_Groups tbl_Groups { get; set; }
     }
 }

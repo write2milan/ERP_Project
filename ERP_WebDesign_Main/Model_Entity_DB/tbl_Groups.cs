@@ -19,6 +19,7 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
         {
             this.tbl_Items = new HashSet<tbl_Items>();
             this.tbl_Codification = new HashSet<tbl_Codification>();
+            this.tbl_Specification = new HashSet<tbl_Specification>();
         }
     
         public string GroupID { get; set; }
@@ -33,5 +34,7 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
         public virtual ICollection<tbl_Items> tbl_Items { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Codification> tbl_Codification { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_Specification> tbl_Specification { get; set; }
     }
 }

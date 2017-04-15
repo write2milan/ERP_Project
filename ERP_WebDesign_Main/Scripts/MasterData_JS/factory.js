@@ -92,4 +92,38 @@
 
     }]);
 
+    serviceModule.factory('specfactory', ['$http', function ($http) {
+        var get_IsExistCodeSpec = function (code) {
+            return $http({
+                method: 'POST',
+                url: '/MasterData/IsExistSpecItems',
+                data: JSON.stringify({ code: code })
+            });
+        };
+
+        var get_Items = function (grpId) {
+            return $http({
+                method: 'POST',
+                url: '/MasterData/PopulateSpecItems',
+                data: JSON.stringify({ grpId: grpId })
+            });
+        };
+
+        var insert_Spec = function (objModel) {
+            return $http({
+                method: 'POST',
+                url: '/MasterData/SpecificationMaster_Create',
+                data: JSON.stringify({ objModel: objModel })
+            });
+        };
+
+
+        return {
+            GetIsExistCodeSpec: get_IsExistCodeSpec,
+            GetSpecItems: get_Items,
+            InsertSpec: insert_Spec
+        }
+
+    }]);
+
 })();

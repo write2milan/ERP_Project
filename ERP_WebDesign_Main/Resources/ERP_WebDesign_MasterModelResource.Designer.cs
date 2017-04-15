@@ -365,5 +365,77 @@ namespace ERP_WebDesign_Main.Resources {
                 return ResourceManager.GetString("RACK_ID_PREFIX", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specification code.
+        /// </summary>
+        public static string SPEC_CODE {
+            get {
+                return ResourceManager.GetString("SPEC_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide code.
+        /// </summary>
+        public static string SPEC_CODE_NOTBLANK {
+            get {
+                return ResourceManager.GetString("SPEC_CODE_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specification name.
+        /// </summary>
+        public static string SPEC_DISPLAYNAME {
+            get {
+                return ResourceManager.GetString("SPEC_DISPLAYNAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide display name.
+        /// </summary>
+        public static string SPEC_DISPLAYNAME_NOTBLANK {
+            get {
+                return ResourceManager.GetString("SPEC_DISPLAYNAME_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide group.
+        /// </summary>
+        public static string SPEC_GROUPID_NOTBLANK {
+            get {
+                return ResourceManager.GetString("SPEC_GROUPID_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specification id.
+        /// </summary>
+        public static string SPEC_ID {
+            get {
+                return ResourceManager.GetString("SPEC_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SPEC-.
+        /// </summary>
+        public static string SPEC_ID_PREFIX {
+            get {
+                return ResourceManager.GetString("SPEC_ID_PREFIX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide item.
+        /// </summary>
+        public static string SPEC_ITEMID_NOTBLANK {
+            get {
+                return ResourceManager.GetString("SPEC_ITEMID_NOTBLANK", resourceCulture);
+            }
+        }
     }
 }

@@ -145,6 +145,7 @@
     <Compile Include="Models\MasterData_Model\ItemsMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\ProductMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\RackMaster_Model.cs" />
+    <Compile Include="Models\MasterData_Model\SpecificationMaster_Model.cs" />
     <Compile Include="Models\User_Model\User_Model.cs" />
     <Compile Include="Model_BL\Base_BL\Base_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\Codification_BL.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="Model_BL\MasterData_BL\ItemsMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\ProductMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\RackMaster_BL.cs" />
+    <Compile Include="Model_BL\MasterData_BL\SpecificationMaster_BL.cs" />
     <Compile Include="Model_BL\User_BL\Users_BL.cs" />
     <Compile Include="Model_Entity_DB\ERP_WebDesign_DB.Context.cs">
       <AutoGen>True</AutoGen>
@@ -300,6 +302,11 @@
     <Content Include="Views\MasterData\RackMaster_Index.cshtml" />
     <Content Include="Views\MasterData\RackMaster_Create.cshtml" />
     <Content Include="Views\MasterData\RackMaster_Edit.cshtml" />
+    <Content Include="Views\MasterData\ItemsMaster_Index.cshtml" />
+    <Content Include="Views\MasterData\ItemsMaster_Create.cshtml" />
+    <Content Include="Views\MasterData\ItemsMaster_Edit.cshtml" />
+    <Content Include="Views\MasterData\SpecificationMaster_Index.cshtml" />
+    <Content Include="Views\MasterData\SpecificationMaster_Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

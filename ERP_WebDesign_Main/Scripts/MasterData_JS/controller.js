@@ -121,7 +121,55 @@
         $scope.AlertMsg = "";
         $scope.IsExistCodeItems = function () {
             ERP_JS_MAIN.showPleaseWait();
-            itemsfactory.GetIsExistCodeRacks($scope.IC).then(function (response) {
+            itemsfactory.GetIsExistCodeItems($scope.IC).then(function (response) {
+                $scope.BtnDisable = (JSON.parse(response.data)).IsExist;
+                $scope.AlertMsg = (JSON.parse(response.data)).AlertMessage;
+                ERP_JS_MAIN.hidePleaseWait();
+            }).catch(function (response) {
+                ERP_JS_MAIN.hidePleaseWait();
+                ERP_JS_MAIN.OnFailure(response);
+            });
+
+        };
+
+
+    }]);
+
+    controllerModule.controller('specification', ['$scope', 'specfactory', '$window', function ($scope, specfactory, $window) {
+        $scope.BtnDisable = false;
+        $scope.AlertMsg = "";
+        $scope.Errors = {};
+
+        $scope.init = function (SpecificationMaster_Model) {
+            $scope.SpecificationMaster_Model = SpecificationMaster_Model;
+        };
+
+        $scope.InsertSpec = function () {
+            specfactory.InsertSpec($scope.SpecificationMaster_Model).then(function (response) {
+                if (typeof (response.data.errors) !== 'undefined' && Object.keys(response.data.errors).length > 0) {
+                    $scope.Errors = response.data.errors;
+                    return;
+                }
+                ERP_JS_MAIN.OpenModalAfterSaveRecord(response.data);
+            }).catch(function (response) {
+                ERP_JS_MAIN.OnFailure(response);
+            });
+        };
+
+        $scope.GetItems = function () {
+            ERP_JS_MAIN.showPleaseWait();
+            specfactory.GetSpecItems($scope.SpecificationMaster_Model.GroupID).then(function (response) {
+                $scope.SpecificationMaster_Model.Items = response.data;
+                ERP_JS_MAIN.hidePleaseWait();
+            }).catch(function (response) {
+                ERP_JS_MAIN.hidePleaseWait();
+                ERP_JS_MAIN.OnFailure(response);
+            });
+        };
+
+        $scope.IsExistCodeSpec = function () {
+            ERP_JS_MAIN.showPleaseWait();
+            specfactory.GetIsExistCodeSpec($scope.SpecificationMaster_Model.SpecificationCode).then(function (response) {
                 $scope.BtnDisable = (JSON.parse(response.data)).IsExist;
                 $scope.AlertMsg = (JSON.parse(response.data)).AlertMessage;
                 ERP_JS_MAIN.hidePleaseWait();

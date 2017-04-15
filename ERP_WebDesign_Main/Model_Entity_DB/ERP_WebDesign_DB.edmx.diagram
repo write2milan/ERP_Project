@@ -24,6 +24,7 @@
         <AssociationConnector Association="ERP_DEMOModel.FK_CODI_ItemID" />
         <AssociationConnector Association="ERP_DEMOModel.FK_CODI_RackID" />
         <AssociationConnector Association="ERP_DEMOModel.FK_CODI_SpecificationID" />
+        <AssociationConnector Association="ERP_DEMOModel.FK_SPEC_GroupID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -209,7 +209,7 @@ namespace ERP_WebDesign_Main.Controllers
         public JsonResult ItemsMaster_Edit(Models.MasterData_Model.ItemsMaster_Model Entity)
         {
             Model_BL.MasterData_BL.ItemsMaster_BL objMasterBL = new Model_BL.MasterData_BL.ItemsMaster_BL();
-            objMasterBL.UpdateData(Entity.GroupID, Entity);
+            objMasterBL.UpdateData(Entity.ItemID, Entity);
             return Json("/MasterData/ItemsMaster_Index", JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
@@ -218,6 +218,64 @@ namespace ERP_WebDesign_Main.Controllers
             Model_BL.MasterData_BL.ItemsMaster_BL objMasterBL = new Model_BL.MasterData_BL.ItemsMaster_BL();
             return Json((new JavaScriptSerializer()).Serialize(objMasterBL.ExistCode(code)), JsonRequestBehavior.AllowGet);
         }
+        #endregion
+
+        #region Specification master
+        public ActionResult SpecificationMaster_Index()
+        {
+            Model_BL.MasterData_BL.SpecificationMaster_BL objMasterBL = new Model_BL.MasterData_BL.SpecificationMaster_BL();
+            return View(objMasterBL.GetAllItems());
+        }
+        public ActionResult SpecificationMaster_Create()
+        {
+            Model_BL.MasterData_BL.SpecificationMaster_BL objMasterBL = new Model_BL.MasterData_BL.SpecificationMaster_BL();
+            return View(objMasterBL.BindModelForInsertion());
+        }
+        [HttpPost]
+        public JsonResult SpecificationMaster_Create(Models.MasterData_Model.SpecificationMaster_Model objModel)
+        {
+            if (ModelState.IsValid)
+            {
+                Model_BL.MasterData_BL.SpecificationMaster_BL objMasterBL = new Model_BL.MasterData_BL.SpecificationMaster_BL();
+                objMasterBL.InsertData(objModel);
+                return Json("/MasterData/SpecificationMaster_Index", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                Dictionary<string, string> errors = new Dictionary<string, string>();
+                ModelState.Where(each => each.Value.Errors.Count > 0).ToList().ForEach(item =>
+                {
+                    errors.Add(item.Key, item.Value.Errors[0].ErrorMessage);
+                });
+                return Json(new { errors });
+
+            }
+        }
+        public ActionResult SpecificationMaster_Edit(string ItemId)
+        {
+            Model_BL.MasterData_BL.SpecificationMaster_BL objMasterBL = new Model_BL.MasterData_BL.SpecificationMaster_BL();
+            return View(objMasterBL.DetailsData(ItemId));
+        }
+        [HttpPost]
+        public JsonResult SpecificationMaster_Edit(Models.MasterData_Model.SpecificationMaster_Model Entity)
+        {
+            Model_BL.MasterData_BL.SpecificationMaster_BL objMasterBL = new Model_BL.MasterData_BL.SpecificationMaster_BL();
+            objMasterBL.UpdateData(Entity.GroupID, Entity);
+            return Json("/MasterData/SpecificationMaster_Index", JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult IsExistSpecItems(string code)
+        {
+            Model_BL.MasterData_BL.SpecificationMaster_BL objMasterBL = new Model_BL.MasterData_BL.SpecificationMaster_BL();
+            return Json((new JavaScriptSerializer()).Serialize(objMasterBL.ExistCode(code)), JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult PopulateSpecItems(string grpId)
+        {
+            Model_BL.MasterData_BL.SpecificationMaster_BL objMasterBL = new Model_BL.MasterData_BL.SpecificationMaster_BL();
+            return Json(objMasterBL.PopulateItemsDropdown(grpId), JsonRequestBehavior.AllowGet);
+        }
+
         #endregion
 
     }
