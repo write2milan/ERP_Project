@@ -3,34 +3,34 @@
 
     var serviceModule = angular.module('ERP-SERVICE', []);
     serviceModule.factory('codificationfactory', ['$http', function ($http) {
-        var get_Items = function (grpId) {
+        var get_Items = function (grpId, url) {
             return $http({
                 method: 'POST',
-                url: '/MasterData/PopulateCodiItems',
+                url: url,
                 data: JSON.stringify({ grpId: grpId })
             });
         };
 
-        var get_Specs = function (itemId) {
+        var get_Specs = function (itemId, url) {
             return $http({
                 method: 'POST',
-                url: '/MasterData/PopulateCodiSpecs',
+                url: url,
                 data: JSON.stringify({ itemId: itemId })
             });
         };
 
-        var insert_Codi = function (objModel) {
+        var insert_Codi = function (objModel, url) {
             return $http({
                 method: 'POST',
-                url: '/MasterData/CodificationMaster_Create',
+                url: url,
                 data: JSON.stringify({ objModel: objModel })
             });
         };
 
-        var update_Codi = function (objModel) {
+        var update_Codi = function (objModel, url) {
             return $http({
                 method: 'POST',
-                url: '/MasterData/CodificationMaster_Edit',
+                url: url,
                 data: JSON.stringify({ Entity: objModel })
             });
         };
@@ -45,10 +45,10 @@
     }]);
 
     serviceModule.factory('groupsfactory', ['$http', function ($http) {
-        var get_IsExistCodeGroups = function (code) {
+        var get_IsExistCodeGroups = function (code, url) {
             return $http({
                 method: 'POST',
-                url: '/MasterData/IsExistCodeGroups',
+                url: url,
                 data: JSON.stringify({ code: code })
             });
         };
@@ -61,10 +61,10 @@
     }]);
 
     serviceModule.factory('racksfactory', ['$http', function ($http) {
-        var get_IsExistCodeRacks = function (code) {
+        var get_IsExistCodeRacks = function (code, url) {
             return $http({
                 method: 'POST',
-                url: '/MasterData/IsExistCodeRacks',
+                url: url,
                 data: JSON.stringify({ code: code })
             });
         };
@@ -77,10 +77,10 @@
     }]);
 
     serviceModule.factory('itemsfactory', ['$http', function ($http) {
-        var get_IsExistCodeItems = function (code) {
+        var get_IsExistCodeItems = function (code, url) {
             return $http({
                 method: 'POST',
-                url: '/MasterData/IsExistCodeItems',
+                url: url,
                 data: JSON.stringify({ code: code })
             });
         };
@@ -93,34 +93,34 @@
     }]);
 
     serviceModule.factory('specfactory', ['$http', function ($http) {
-        var get_IsExistCodeSpec = function (code) {
+        var get_IsExistCodeSpec = function (code, url) {
             return $http({
                 method: 'POST',
-                url: '/MasterData/IsExistSpecItems',
+                url: url,
                 data: JSON.stringify({ code: code })
             });
         };
 
-        var get_Items = function (grpId) {
+        var get_Items = function (grpId, url) {
             return $http({
                 method: 'POST',
-                url: '/MasterData/PopulateSpecItems',
+                url: url,
                 data: JSON.stringify({ grpId: grpId })
             });
         };
 
-        var insert_Spec = function (objModel) {
+        var insert_Spec = function (objModel, url) {
             return $http({
                 method: 'POST',
-                url: '/MasterData/SpecificationMaster_Create',
+                url: url,
                 data: JSON.stringify({ objModel: objModel })
             });
         };
 
-        var update_Spec = function (objModel) {
+        var update_Spec = function (objModel, url) {
             return $http({
                 method: 'POST',
-                url: '/MasterData/SpecificationMaster_Edit',
+                url: url,
                 data: JSON.stringify({ Entity: objModel })
             });
         };

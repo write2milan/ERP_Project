@@ -19,7 +19,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.GroupID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select class="form-control" ng-model="Codification_Model.GroupID" ng-change="GetItems()" ng-disabled="DisableAllDropdown">
+                <select class="form-control" ng-model="Codification_Model.GroupID" ng-change="GetItems('@Url.Action("PopulateCodiItems","MasterData")')" ng-disabled="DisableAllDropdown">
                     <option ng-repeat="row in Codification_Model.Groups" code="{{row.Code}}" value="{{row.Value}}">{{row.DisplayText}}</option>
                 </select>
             </div>
@@ -28,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ItemID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select class="form-control" ng-model="Codification_Model.ItemID" ng-change="GetSpecs()" ng-disabled="DisableAllDropdown">
+                <select class="form-control" ng-model="Codification_Model.ItemID" ng-change="GetSpecs('@Url.Action("PopulateCodiItems","MasterData")')" ng-disabled="DisableAllDropdown">
                     <option ng-repeat="row in Codification_Model.Items" code="{{row.Code}}" value="{{row.Value}}">{{row.DisplayText}}</option>
                 </select>
             </div>
@@ -69,7 +69,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="button" value="Generate code" ng-click="GenerateCode()" class="btn btn-default" />
-                <input type="button" value="Create" ng-disabled="!IsCodePresent" class="btn btn-default" ng-click="InsertCodi()" />
+                <input type="button" value="Create" ng-disabled="!IsCodePresent" class="btn btn-default" ng-click="InsertCodi('@Url.Action("CodificationMaster_Create","MasterData")')" />
             </div>
         </div>
     </div>

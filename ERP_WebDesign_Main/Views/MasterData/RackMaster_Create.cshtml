@@ -21,7 +21,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.RackCode, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RackCode, new { htmlAttributes = new { @class = "form-control", @ng_model = "RC", @ng_blur = "IsExistCodeRacks()", @ng_keyup = "IsExistCodeRacks()" } })
+                @Html.EditorFor(model => model.RackCode, new { htmlAttributes = new { @class = "form-control", @ng_model = "RC", @ng_blur = "IsExistCodeRacks('" + @Url.Action("IsExistCodeRacks", "MasterData") + "')", @ng_keyup = "IsExistCodeRacks('" + @Url.Action("IsExistCodeRacks", "MasterData") + "')" } })
                 @Html.ValidationMessageFor(model => model.RackCode, "", new { @class = "text-danger" })
             </div>
         </div>

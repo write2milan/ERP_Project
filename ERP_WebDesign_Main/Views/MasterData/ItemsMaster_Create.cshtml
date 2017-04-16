@@ -30,7 +30,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ItemCode, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ItemCode, new { htmlAttributes = new { @class = "form-control", @ng_model = "IC", @ng_blur = "IsExistCodeItems()", @ng_keyup = "IsExistCodeItems()" } })
+                @Html.EditorFor(model => model.ItemCode, new { htmlAttributes = new { @class = "form-control", @ng_model = "IC", @ng_blur = "IsExistCodeItems('" + @Url.Action("IsExistCodeItems", "MasterData") + "')", @ng_keyup = "IsExistCodeItems('" + @Url.Action("IsExistCodeItems", "MasterData") + "')" } })
                 @Html.ValidationMessageFor(model => model.ItemCode, "", new { @class = "text-danger" })
             </div>
         </div>

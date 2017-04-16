@@ -19,7 +19,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.GroupID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select class="form-control" ng-disabled="true" ng-model="SpecificationMaster_Model.GroupID" ng-change="GetItems()">
+                <select class="form-control" ng-disabled="true" ng-model="SpecificationMaster_Model.GroupID" >
                     <option ng-repeat="row in SpecificationMaster_Model.Groups" value="{{row.Value}}">{{row.Text}}</option>
                 </select>
 
@@ -56,7 +56,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="button" value="Update" class="btn btn-default" ng-click="UpdateSpec()" />
+                <input type="button" value="Update" class="btn btn-default" ng-click="UpdateSpec('@Url.Action("SpecificationMaster_Edit","MasterData")')" />
             </div>
         </div>
     </div>

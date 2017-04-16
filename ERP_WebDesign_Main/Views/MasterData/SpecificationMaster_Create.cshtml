@@ -20,7 +20,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.GroupID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select class="form-control" ng-model="SpecificationMaster_Model.GroupID" ng-change="GetItems()">
+                <select class="form-control" ng-model="SpecificationMaster_Model.GroupID" ng-change="GetItems('@Url.Action("PopulateSpecItems","MasterData")')">
                     <option ng-repeat="row in SpecificationMaster_Model.Groups" value="{{row.Value}}">{{row.Text}}</option>
                 </select>
                 <span class="text-danger">{{Errors['objModel.GroupID']}}</span>
@@ -40,7 +40,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SpecificationCode, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="text" ng-blur="IsExistCodeSpec()" ng-keyup="IsExistCodeSpec()" class="form-control" ng-model="SpecificationMaster_Model.SpecificationCode" />
+                <input type="text" ng-blur="IsExistCodeSpec('@Url.Action("IsExistSpecItems","MasterData")')" ng-keyup="IsExistCodeSpec('@Url.Action("IsExistSpecItems","MasterData")')" class="form-control" ng-model="SpecificationMaster_Model.SpecificationCode" />
                 @Html.ValidationMessageFor(model => model.SpecificationCode, "", new { @class = "text-danger" })
                 <span class="text-danger">{{Errors['objModel.SpecificationCode']}}</span>
             </div>
@@ -63,7 +63,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="button" value="Create" class="btn btn-default" ng-click="InsertSpec()" ng-disabled="BtnDisable" />
+                <input type="button" value="Create" class="btn btn-default" ng-click="InsertSpec('@Url.Action("SpecificationMaster_Create","MasterData")')" ng-disabled="BtnDisable" />
             </div>
         </div>
     </div>
