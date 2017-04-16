@@ -242,13 +242,8 @@ namespace ERP_WebDesign_Main.Controllers
             }
             else
             {
-                Dictionary<string, string> errors = new Dictionary<string, string>();
-                ModelState.Where(each => each.Value.Errors.Count > 0).ToList().ForEach(item =>
-                {
-                    errors.Add(item.Key, item.Value.Errors[0].ErrorMessage);
-                });
+                var errors = CommonHelper.CommonHelper.GetValidationErrorsFromModel(ModelState);
                 return Json(new { errors });
-
             }
         }
         public ActionResult SpecificationMaster_Edit(string ItemId)
@@ -259,9 +254,17 @@ namespace ERP_WebDesign_Main.Controllers
         [HttpPost]
         public JsonResult SpecificationMaster_Edit(Models.MasterData_Model.SpecificationMaster_Model Entity)
         {
-            Model_BL.MasterData_BL.SpecificationMaster_BL objMasterBL = new Model_BL.MasterData_BL.SpecificationMaster_BL();
-            objMasterBL.UpdateData(Entity.GroupID, Entity);
-            return Json("/MasterData/SpecificationMaster_Index", JsonRequestBehavior.AllowGet);
+            if (ModelState.IsValid)
+            {
+                Model_BL.MasterData_BL.SpecificationMaster_BL objMasterBL = new Model_BL.MasterData_BL.SpecificationMaster_BL();
+                objMasterBL.UpdateData(Entity.SpecificationID, Entity);
+                return Json("/MasterData/SpecificationMaster_Index", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                var errors = CommonHelper.CommonHelper.GetValidationErrorsFromModel(ModelState);
+                return Json(new { errors });
+            }
         }
         [HttpPost]
         public JsonResult IsExistSpecItems(string code)

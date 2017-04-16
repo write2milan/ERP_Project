@@ -156,6 +156,19 @@
             });
         };
 
+        $scope.UpdateSpec = function () {
+            specfactory.UpdateSpec($scope.SpecificationMaster_Model).then(function (response) {
+                if (typeof (response.data.errors) !== 'undefined' && Object.keys(response.data.errors).length > 0) {
+                    $scope.Errors = response.data.errors;
+                    return;
+                }
+                ERP_JS_MAIN.OpenModalAfterSaveRecord(response.data);
+
+            }).catch(function (response) {
+                ERP_JS_MAIN.OnFailure(response);
+            });
+        };
+
         $scope.GetItems = function () {
             ERP_JS_MAIN.showPleaseWait();
             specfactory.GetSpecItems($scope.SpecificationMaster_Model.GroupID).then(function (response) {

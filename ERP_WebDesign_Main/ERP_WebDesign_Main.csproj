@@ -307,6 +307,7 @@
     <Content Include="Views\MasterData\ItemsMaster_Edit.cshtml" />
     <Content Include="Views\MasterData\SpecificationMaster_Index.cshtml" />
     <Content Include="Views\MasterData\SpecificationMaster_Create.cshtml" />
+    <Content Include="Views\MasterData\SpecificationMaster_Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

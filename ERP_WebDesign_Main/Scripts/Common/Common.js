@@ -20,7 +20,7 @@ ERP_JS_MAIN = (function () {
     };
 
     var BuildCustomPopUp = function (message) {
-        var customModal = $('<div class="custom-modal modal fade" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></div><div class="modal-body">An error occurred..</div><div class="modal-footer"><button class="btn" data-dismiss="modal">Close</button></div></div></div>');
+        var customModal = $('<div class="custom-modal modal fade" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></div><div class="modal-body">An error occurred..</div><div class="modal-footer"><button class="btn" data-dismiss="modal">Close</button></div></div></div></div>');
         $('body').append(customModal);
         $('.custom-modal').modal();
         $('.custom-modal').on('hidden', function () {

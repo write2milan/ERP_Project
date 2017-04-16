@@ -117,11 +117,20 @@
             });
         };
 
+        var update_Spec = function (objModel) {
+            return $http({
+                method: 'POST',
+                url: '/MasterData/SpecificationMaster_Edit',
+                data: JSON.stringify({ Entity: objModel })
+            });
+        };
+
 
         return {
             GetIsExistCodeSpec: get_IsExistCodeSpec,
             GetSpecItems: get_Items,
-            InsertSpec: insert_Spec
+            InsertSpec: insert_Spec,
+            UpdateSpec: update_Spec
         }
 
     }]);
