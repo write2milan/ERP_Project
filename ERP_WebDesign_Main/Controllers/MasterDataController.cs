@@ -27,7 +27,7 @@ namespace ERP_WebDesign_Main.Controllers
         {
             Model_BL.MasterData_BL.ProductMaster_BL objProductMasterBL = new Model_BL.MasterData_BL.ProductMaster_BL();
             objProductMasterBL.InsertData(collection);
-            return Json("/MasterData/ProductMaster_Index", JsonRequestBehavior.AllowGet);
+            return Json(Url.Action("ProductMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
         }
 
 
@@ -44,7 +44,7 @@ namespace ERP_WebDesign_Main.Controllers
 
             Model_BL.MasterData_BL.ProductMaster_BL objProductMasterBL = new Model_BL.MasterData_BL.ProductMaster_BL();
             objProductMasterBL.UpdateData(Entity.ProductID, Entity);
-            return Json("/MasterData/ProductMaster_Index", JsonRequestBehavior.AllowGet);
+            return Json(Url.Action("ProductMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
 
         }
         #endregion
@@ -72,7 +72,7 @@ namespace ERP_WebDesign_Main.Controllers
         {
             Model_BL.MasterData_BL.Codification_BL objCodificationMasterBL = new Model_BL.MasterData_BL.Codification_BL();
             objCodificationMasterBL.UpdateData(Entity.CodificationID, Entity);
-            return Json("/MasterData/CodificationMaster_Index", JsonRequestBehavior.AllowGet);
+            return Json(Url.Action("CodificationMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -80,7 +80,7 @@ namespace ERP_WebDesign_Main.Controllers
         {
             Model_BL.MasterData_BL.Codification_BL objCodificationMasterBL = new Model_BL.MasterData_BL.Codification_BL();
             objCodificationMasterBL.InsertData(objModel);
-            return Json("/MasterData/CodificationMaster_Index", JsonRequestBehavior.AllowGet);
+            return Json(Url.Action("CodificationMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -120,7 +120,7 @@ namespace ERP_WebDesign_Main.Controllers
         {
             Model_BL.MasterData_BL.GroupsMaster_BL objMasterBL = new Model_BL.MasterData_BL.GroupsMaster_BL();
             objMasterBL.UpdateData(Entity.GroupID, Entity);
-            return Json("/MasterData/GroupsMaster_Index", JsonRequestBehavior.AllowGet);
+            return Json(Url.Action("GroupsMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -128,7 +128,7 @@ namespace ERP_WebDesign_Main.Controllers
         {
             Model_BL.MasterData_BL.GroupsMaster_BL objMasterBL = new Model_BL.MasterData_BL.GroupsMaster_BL();
             objMasterBL.InsertData(objModel);
-            return Json("/MasterData/GroupsMaster_Index", JsonRequestBehavior.AllowGet);
+            return Json(Url.Action("GroupsMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -162,7 +162,7 @@ namespace ERP_WebDesign_Main.Controllers
         {
             Model_BL.MasterData_BL.RackMaster_BL objMasterBL = new Model_BL.MasterData_BL.RackMaster_BL();
             objMasterBL.UpdateData(Entity.RackID, Entity);
-            return Json("/MasterData/RackMaster_Index", JsonRequestBehavior.AllowGet);
+            return Json(Url.Action("RackMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -170,7 +170,7 @@ namespace ERP_WebDesign_Main.Controllers
         {
             Model_BL.MasterData_BL.RackMaster_BL objMasterBL = new Model_BL.MasterData_BL.RackMaster_BL();
             objMasterBL.InsertData(objModel);
-            return Json("/MasterData/RackMaster_Index", JsonRequestBehavior.AllowGet);
+            return Json(Url.Action("RackMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -198,7 +198,7 @@ namespace ERP_WebDesign_Main.Controllers
         {
             Model_BL.MasterData_BL.ItemsMaster_BL objMasterBL = new Model_BL.MasterData_BL.ItemsMaster_BL();
             objMasterBL.InsertData(objModel);
-            return Json("/MasterData/ItemsMaster_Index", JsonRequestBehavior.AllowGet);
+            return Json(Url.Action("ItemsMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
         }
         public ActionResult ItemsMaster_Edit(string ItemId)
         {
@@ -210,7 +210,7 @@ namespace ERP_WebDesign_Main.Controllers
         {
             Model_BL.MasterData_BL.ItemsMaster_BL objMasterBL = new Model_BL.MasterData_BL.ItemsMaster_BL();
             objMasterBL.UpdateData(Entity.ItemID, Entity);
-            return Json("/MasterData/ItemsMaster_Index", JsonRequestBehavior.AllowGet);
+            return Json(Url.Action("ItemsMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
         public JsonResult IsExistCodeItems(string code)
@@ -238,7 +238,7 @@ namespace ERP_WebDesign_Main.Controllers
             {
                 Model_BL.MasterData_BL.SpecificationMaster_BL objMasterBL = new Model_BL.MasterData_BL.SpecificationMaster_BL();
                 objMasterBL.InsertData(objModel);
-                return Json("/MasterData/SpecificationMaster_Index", JsonRequestBehavior.AllowGet);
+                return Json(Url.Action("SpecificationMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
             }
             else
             {
@@ -258,7 +258,7 @@ namespace ERP_WebDesign_Main.Controllers
             {
                 Model_BL.MasterData_BL.SpecificationMaster_BL objMasterBL = new Model_BL.MasterData_BL.SpecificationMaster_BL();
                 objMasterBL.UpdateData(Entity.SpecificationID, Entity);
-                return Json("/MasterData/SpecificationMaster_Index", JsonRequestBehavior.AllowGet);
+                return Json(Url.Action("SpecificationMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
             }
             else
             {
