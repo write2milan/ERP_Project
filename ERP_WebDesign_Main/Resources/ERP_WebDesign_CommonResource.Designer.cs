@@ -122,5 +122,23 @@ namespace ERP_WebDesign_Main.Resources {
                 return ResourceManager.GetString("MODIFIED_DATE", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This field must be 200 characters.
+        /// </summary>
+        public static string STRING_LIMIT_200_MESSAGE {
+            get {
+                return ResourceManager.GetString("STRING_LIMIT_200_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This field must be 50 characters.
+        /// </summary>
+        public static string STRING_LIMIT_50_MESSAGE {
+            get {
+                return ResourceManager.GetString("STRING_LIMIT_50_MESSAGE", resourceCulture);
+            }
+        }
     }
 }
