@@ -45,24 +45,25 @@
 
                 <div id="sidebar">
                     <ul class="nav list-group">
-                        @*<li>
-                                <a class="list-group-item" href="@Url.Action("ProductMaster_Index","MasterData")"><i class="icon-home icon-1x"></i>Product Master</a>
-                            </li>*@
-                        <li>
-                            <a class="list-group-item" href="@Url.Action("CodificationMaster_Index","MasterData")"><i class="icon-home icon-1x"></i>Codification Master</a>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString().IndexOf("ProductMaster_")>-1 ? "activeSideNav" : "")">
+                            <a class="list-group-item" href="@Url.Action("ProductMaster_Index","MasterData")"><i class="icon-home icon-1x"></i>Product Master</a>
                         </li>
-                        <li>
-                            <a class="list-group-item" href="@Url.Action("RackMaster_Index","MasterData")"><i class="icon-home icon-1x"></i>Rack Master</a>
-                        </li>
-                        <li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString().IndexOf("GroupsMaster_")>-1 ? "activeSideNav" : "")">
                             <a class="list-group-item" href="@Url.Action("GroupsMaster_Index","MasterData")"><i class="icon-home icon-1x"></i>Group Master</a>
                         </li>
-                        <li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString().IndexOf("ItemsMaster_")>-1 ? "activeSideNav" : "")">
                             <a class="list-group-item" href="@Url.Action("ItemsMaster_Index","MasterData")"><i class="icon-home icon-1x"></i>Item Master</a>
                         </li>
-                        <li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString().IndexOf("SpecificationMaster_")>-1 ? "activeSideNav" : "")">
                             <a class="list-group-item" href="@Url.Action("SpecificationMaster_Index","MasterData")"><i class="icon-home icon-1x"></i>Specification Master</a>
                         </li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString().IndexOf("RackMaster_")>-1 ? "activeSideNav" : "")">
+                            <a class="list-group-item" href="@Url.Action("RackMaster_Index","MasterData")"><i class="icon-home icon-1x"></i>Rack Master</a>
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString().IndexOf("CodificationMaster_")>-1 ? "activeSideNav" : "")">
+                            <a class="list-group-item" href="@Url.Action("CodificationMaster_Index","MasterData")"><i class="icon-home icon-1x"></i>Codification Master</a>
+                        </li>
+
                     </ul>
                 </div>
 
