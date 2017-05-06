@@ -61,7 +61,7 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Already exist code..
+        ///   Looks up a localized string similar to Already exist material code.
         /// </summary>
         public static string CODE_EXIST_ALERTMESSAGE {
             get {
@@ -70,7 +70,7 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Code.
+        ///   Looks up a localized string similar to Material code.
         /// </summary>
         public static string CODI_CODE {
             get {
@@ -385,7 +385,7 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Specification name.
+        ///   Looks up a localized string similar to Specification details.
         /// </summary>
         public static string SPEC_DISPLAYNAME {
             get {
@@ -394,7 +394,7 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please provide display name.
+        ///   Looks up a localized string similar to Please provide specification details.
         /// </summary>
         public static string SPEC_DISPLAYNAME_NOTBLANK {
             get {

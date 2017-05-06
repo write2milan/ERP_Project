@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CODE_EXIST_ALERTMESSAGE" xml:space="preserve">
-    <value>Already exist code.</value>
+    <value>Already exist material code</value>
   </data>
   <data name="CODIFICATION_ID_PREFIX" xml:space="preserve">
     <value>CODI-</value>
   </data>
   <data name="CODI_CODE" xml:space="preserve">
-    <value>Code</value>
+    <value>Material code</value>
   </data>
   <data name="CODI_GROUP" xml:space="preserve">
     <value>Group</value>
@@ -226,10 +226,10 @@
     <value>Please provide code</value>
   </data>
   <data name="SPEC_DISPLAYNAME" xml:space="preserve">
-    <value>Specification name</value>
+    <value>Specification details</value>
   </data>
   <data name="SPEC_DISPLAYNAME_NOTBLANK" xml:space="preserve">
-    <value>Please provide display name</value>
+    <value>Please provide specification details</value>
   </data>
   <data name="SPEC_GROUPID_NOTBLANK" xml:space="preserve">
     <value>Please provide group</value>
