@@ -136,7 +136,7 @@
     <value>Modified by</value>
   </data>
   <data name="MODIFIED_DATE" xml:space="preserve">
-    <value>Modified date</value>
+    <value>Modification date</value>
   </data>
   <data name="STRING_LIMIT_200_MESSAGE" xml:space="preserve">
     <value>This field must be 200 characters</value>

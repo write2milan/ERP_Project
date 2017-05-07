@@ -115,7 +115,7 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Modified date.
+        ///   Looks up a localized string similar to Modification date.
         /// </summary>
         public static string MODIFIED_DATE {
             get {
