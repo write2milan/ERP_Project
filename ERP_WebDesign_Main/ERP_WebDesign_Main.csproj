@@ -257,6 +257,7 @@
       <DependentUpon>ERP_WebDesign_DB.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\angular.min.js.map" />
+    <None Include="Properties\PublishProfiles\ERP_WebDesign_Main.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\MasterData_JS\controller.js" />
     <Content Include="Scripts\MasterData_JS\factory.js" />
