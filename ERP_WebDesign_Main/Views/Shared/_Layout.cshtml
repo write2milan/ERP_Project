@@ -45,6 +45,9 @@
 
                 <div id="sidebar">
                     <ul class="nav list-group">
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString().IndexOf("ProcessMaster_")>-1 ? "activeSideNav" : "")">
+                            <a class="list-group-item" href="@Url.Action("ProcessMaster_Index","MasterData")"><i class="icon-home icon-1x"></i>Process Master</a>
+                        </li>
                         <li class="@(ViewContext.RouteData.Values["Action"].ToString().IndexOf("ProductMaster_")>-1 ? "activeSideNav" : "")">
                             <a class="list-group-item" href="@Url.Action("ProductMaster_Index","MasterData")"><i class="icon-home icon-1x"></i>Product Master</a>
                         </li>
