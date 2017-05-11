@@ -37,5 +37,7 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
         public virtual DbSet<tbl_Rack> tbl_Rack { get; set; }
         public virtual DbSet<tbl_Specification> tbl_Specification { get; set; }
         public virtual DbSet<tbl_Codification> tbl_Codification { get; set; }
+
+        public System.Data.Entity.DbSet<ERP_WebDesign_Main.Models.MasterData_Model.ProcessMaster_Model> ProcessMaster_Model { get; set; }
     }
 }

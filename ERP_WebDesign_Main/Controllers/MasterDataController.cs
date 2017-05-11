@@ -291,5 +291,50 @@ namespace ERP_WebDesign_Main.Controllers
 
         #endregion
 
+        #region Process master
+        public ActionResult ProcessMaster_Index()
+        {
+            Model_BL.MasterData_BL.ProcessMaster_BL objProcessMasterBL = new Model_BL.MasterData_BL.ProcessMaster_BL();
+            object[] parameters = { };
+            return View(objProcessMasterBL.GetAllItems(parameters));
+        }
+        public ActionResult ProcessMaster_Create()
+        {
+            Model_BL.MasterData_BL.ProcessMaster_BL objProcessMasterBL = new Model_BL.MasterData_BL.ProcessMaster_BL();
+            return View(objProcessMasterBL.BindModelForInsertion());
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ProcessMaster_Create(Models.MasterData_Model.ProcessMaster_Model collection)
+        {
+            Model_BL.MasterData_BL.ProcessMaster_BL objProcessMasterBL = new Model_BL.MasterData_BL.ProcessMaster_BL();
+            objProcessMasterBL.InsertData(collection);
+            return Json(Url.Action("ProcessMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult ProcessMaster_Edit(string ItemId)
+        {
+            Model_BL.MasterData_BL.ProcessMaster_BL objProcessMasterBL = new Model_BL.MasterData_BL.ProcessMaster_BL();
+            return View(objProcessMasterBL.DetailsData(ItemId));
+        }
+
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ProcessMaster_Edit(Models.MasterData_Model.ProcessMaster_Model Entity)
+        {
+
+            Model_BL.MasterData_BL.ProcessMaster_BL objProcessMasterBL = new Model_BL.MasterData_BL.ProcessMaster_BL();
+            objProcessMasterBL.UpdateData( Entity);
+            return Json(Url.Action("ProcessMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
+
+        }
+        public ActionResult ProcessMaster_Details(string ItemId)
+        {
+            Model_BL.MasterData_BL.ProcessMaster_BL objProcessMasterBL = new Model_BL.MasterData_BL.ProcessMaster_BL();
+            return View(objProcessMasterBL.DetailsData(ItemId));
+        }
+        #endregion
+
     }
 }

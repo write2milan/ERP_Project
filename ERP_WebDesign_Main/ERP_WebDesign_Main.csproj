@@ -144,6 +144,8 @@
     <Compile Include="Models\MasterData_Model\Codification_Model.cs" />
     <Compile Include="Models\MasterData_Model\GroupsMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\ItemsMaster_Model.cs" />
+    <Compile Include="Models\MasterData_Model\ProcessMaster_Model.cs" />
+    <Compile Include="Models\MasterData_Model\ProductionUnitMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\ProductMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\RackMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\SpecificationMaster_Model.cs" />
@@ -152,10 +154,14 @@
     <Compile Include="Model_BL\MasterData_BL\Codification_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\GroupsMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\ItemsMaster_BL.cs" />
+    <Compile Include="Model_BL\MasterData_BL\ProcessMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\ProductMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\RackMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\SpecificationMaster_BL.cs" />
     <Compile Include="Model_BL\User_BL\Users_BL.cs" />
+    <Compile Include="Model_DAL\ERPDataService.cs" />
+    <Compile Include="Model_DAL\Interface\IRepository.cs" />
+    <Compile Include="Model_DAL\Repository\GenericRepository.cs" />
     <Compile Include="Model_Entity_DB\ERP_WebDesign_DB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -310,6 +316,10 @@
     <Content Include="Views\MasterData\SpecificationMaster_Index.cshtml" />
     <Content Include="Views\MasterData\SpecificationMaster_Create.cshtml" />
     <Content Include="Views\MasterData\SpecificationMaster_Edit.cshtml" />
+    <Content Include="Views\MasterData\ProcessMaster_Index.cshtml" />
+    <Content Include="Views\MasterData\ProcessMaster_Create.cshtml" />
+    <Content Include="Views\MasterData\ProcessMaster_Edit.cshtml" />
+    <Content Include="Views\MasterData\ProcessMaster_Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
