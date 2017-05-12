@@ -235,6 +235,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="ERP_SqlServer_Scripts\11May2017_ERP_ProcessMasterSqlScript_Milan.sql" />
+    <Content Include="ERP_SqlServer_Scripts\12May2017_ERP_ProcessMasterSqlScript_Milan.sql" />
     <Content Include="ERP_SqlServer_Scripts\16042017_ERP_SQLSCRIPT.sql" />
     <Content Include="ERP_SqlServer_Scripts\06042017_ERP.sql" />
     <Content Include="ERP_SqlServer_Scripts\26032017_ERP_CODIFICATION.sql" />
