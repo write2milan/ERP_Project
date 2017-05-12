@@ -336,5 +336,49 @@ namespace ERP_WebDesign_Main.Controllers
         }
         #endregion
 
+        #region ProductionUnit master
+        public ActionResult ProductionUnitMaster_Index()
+        {
+            Model_BL.MasterData_BL.ProductionUnitMaster_BL objProductionUnitMasterBL = new Model_BL.MasterData_BL.ProductionUnitMaster_BL();
+            object[] parameters = { };
+            return View(objProductionUnitMasterBL.GetAllItems(parameters));
+        }
+        public ActionResult ProductionUnitMaster_Create()
+        {
+           
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ProductionUnitMaster_Create(Models.MasterData_Model.ProductionUnitMaster_Model collection)
+        {
+            Model_BL.MasterData_BL.ProductionUnitMaster_BL objProductionUnitMasterBL = new Model_BL.MasterData_BL.ProductionUnitMaster_BL();
+            objProductionUnitMasterBL.InsertData(collection);
+            return Json(Url.Action("ProductionUnitMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult ProductionUnitMaster_Edit(string ItemId)
+        {
+            Model_BL.MasterData_BL.ProductionUnitMaster_BL objProductionUnitMasterBL = new Model_BL.MasterData_BL.ProductionUnitMaster_BL();
+            return View(objProductionUnitMasterBL.DetailsData(ItemId));
+        }
+
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ProductionUnitMaster_Edit(Models.MasterData_Model.ProductionUnitMaster_Model Entity)
+        {
+
+            Model_BL.MasterData_BL.ProductionUnitMaster_BL objProductionUnitMasterBL = new Model_BL.MasterData_BL.ProductionUnitMaster_BL();
+            objProductionUnitMasterBL.UpdateData(Entity);
+            return Json(Url.Action("ProductionUnitMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
+
+        }
+        public ActionResult ProductionUnitMaster_Details(string ItemId)
+        {
+            Model_BL.MasterData_BL.ProductionUnitMaster_BL objProductionUnitMasterBL = new Model_BL.MasterData_BL.ProductionUnitMaster_BL();
+            return View(objProductionUnitMasterBL.DetailsData(ItemId));
+        }
+        #endregion
     }
 }

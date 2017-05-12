@@ -264,4 +264,16 @@
   <data name="SPEC_ITEMID_NOTBLANK" xml:space="preserve">
     <value>Please provide item</value>
   </data>
+  <data name="LOCATION_ADDR" xml:space="preserve">
+    <value>Location Address</value>
+  </data>
+  <data name="LOCATION_ADDR_NOTBLANK" xml:space="preserve">
+    <value>Please provide location address</value>
+  </data>
+  <data name="LOCATION_NAME" xml:space="preserve">
+    <value>Location Name</value>
+  </data>
+  <data name="LOCATION_NAME_NOTBLANK" xml:space="preserve">
+    <value>Please provide location name</value>
+  </data>
 </root>

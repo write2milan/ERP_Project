@@ -9,6 +9,7 @@ namespace ERP_WebDesign_Main.Models.MasterData_Model
 {
     public class ProductionUnitMaster_Model : Base_Model
     {
+        [Key]
         [Display(ResourceType = typeof(ERP_WebDesign_MasterModelResource), Name = "SITE_Name")]
         [Required(ErrorMessageResourceType = typeof(ERP_WebDesign_MasterModelResource), ErrorMessageResourceName = "SITE_NAME_NOTBLANK")]
         public string Site { get; set; }

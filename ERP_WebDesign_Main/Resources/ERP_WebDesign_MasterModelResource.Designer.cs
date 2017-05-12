@@ -259,6 +259,42 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Location Address.
+        /// </summary>
+        public static string LOCATION_ADDR {
+            get {
+                return ResourceManager.GetString("LOCATION_ADDR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide location address.
+        /// </summary>
+        public static string LOCATION_ADDR_NOTBLANK {
+            get {
+                return ResourceManager.GetString("LOCATION_ADDR_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location Name.
+        /// </summary>
+        public static string LOCATION_NAME {
+            get {
+                return ResourceManager.GetString("LOCATION_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide location name.
+        /// </summary>
+        public static string LOCATION_NAME_NOTBLANK {
+            get {
+                return ResourceManager.GetString("LOCATION_NAME_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Process Description.
         /// </summary>
         public static string PROCESS_DESC {

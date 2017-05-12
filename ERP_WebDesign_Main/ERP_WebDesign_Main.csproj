@@ -155,6 +155,7 @@
     <Compile Include="Model_BL\MasterData_BL\GroupsMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\ItemsMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\ProcessMaster_BL.cs" />
+    <Compile Include="Model_BL\MasterData_BL\ProductionUnitMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\ProductMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\RackMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\SpecificationMaster_BL.cs" />
@@ -322,6 +323,10 @@
     <Content Include="Views\MasterData\ProcessMaster_Create.cshtml" />
     <Content Include="Views\MasterData\ProcessMaster_Edit.cshtml" />
     <Content Include="Views\MasterData\ProcessMaster_Details.cshtml" />
+    <Content Include="Views\MasterData\ProductionUnitMaster_Index.cshtml" />
+    <Content Include="Views\MasterData\ProductionUnitMaster_Create.cshtml" />
+    <Content Include="Views\MasterData\ProductionUnitMaster_Edit.cshtml" />
+    <Content Include="Views\MasterData\ProductionUnitMaster_Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
