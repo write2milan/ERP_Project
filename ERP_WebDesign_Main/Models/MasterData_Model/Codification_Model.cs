@@ -43,9 +43,14 @@ namespace ERP_WebDesign_Main.Models.MasterData_Model
 
     public class Codification
     {
+        public Codification()
+        {
+            NoRecordFound = ERP_WebDesign_CommonResource.CODI_VALIDATION_NORECORDFOUND;
+        }
         public List<Codification_Model> Collection { get; set; }
         public int ItemCount { get; set; }
         public int PageNo { get; set; }
         public int PageSize { get; set; }
+        public string NoRecordFound { get; set; }
     }
 }
