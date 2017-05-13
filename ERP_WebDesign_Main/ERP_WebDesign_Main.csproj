@@ -144,6 +144,8 @@
     <Compile Include="Models\MasterData_Model\Codification_Model.cs" />
     <Compile Include="Models\MasterData_Model\GroupsMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\ItemsMaster_Model.cs" />
+    <Compile Include="Models\MasterData_Model\ProcessMaster_Model.cs" />
+    <Compile Include="Models\MasterData_Model\ProductionUnitMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\ProductMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\RackMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\SpecificationMaster_Model.cs" />
@@ -152,10 +154,15 @@
     <Compile Include="Model_BL\MasterData_BL\Codification_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\GroupsMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\ItemsMaster_BL.cs" />
+    <Compile Include="Model_BL\MasterData_BL\ProcessMaster_BL.cs" />
+    <Compile Include="Model_BL\MasterData_BL\ProductionUnitMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\ProductMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\RackMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\SpecificationMaster_BL.cs" />
     <Compile Include="Model_BL\User_BL\Users_BL.cs" />
+    <Compile Include="Model_DAL\ERPDataService.cs" />
+    <Compile Include="Model_DAL\Interface\IRepository.cs" />
+    <Compile Include="Model_DAL\Repository\GenericRepository.cs" />
     <Compile Include="Model_Entity_DB\ERP_DB_SPGetCodificationSearchData_Result.cs">
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
@@ -230,6 +237,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="ERP_SqlServer_Scripts\11May2017_ERP_ProcessMasterSqlScript_Milan.sql" />
+    <Content Include="ERP_SqlServer_Scripts\12May2017_ERP_ProcessMasterSqlScript_Milan.sql" />
     <Content Include="ERP_SqlServer_Scripts\16042017_ERP_SQLSCRIPT.sql" />
     <Content Include="ERP_SqlServer_Scripts\06042017_ERP.sql" />
     <Content Include="ERP_SqlServer_Scripts\26032017_ERP_CODIFICATION.sql" />
@@ -320,6 +329,14 @@
     <Content Include="Views\MasterData\SpecificationMaster_Index.cshtml" />
     <Content Include="Views\MasterData\SpecificationMaster_Create.cshtml" />
     <Content Include="Views\MasterData\SpecificationMaster_Edit.cshtml" />
+    <Content Include="Views\MasterData\ProcessMaster_Create.cshtml" />
+    <Content Include="Views\MasterData\ProcessMaster_Details.cshtml" />
+    <Content Include="Views\MasterData\ProcessMaster_Edit.cshtml" />
+    <Content Include="Views\MasterData\ProcessMaster_Index.cshtml" />
+    <Content Include="Views\MasterData\ProductionUnitMaster_Create.cshtml" />
+    <Content Include="Views\MasterData\ProductionUnitMaster_Details.cshtml" />
+    <Content Include="Views\MasterData\ProductionUnitMaster_Edit.cshtml" />
+    <Content Include="Views\MasterData\ProductionUnitMaster_Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
