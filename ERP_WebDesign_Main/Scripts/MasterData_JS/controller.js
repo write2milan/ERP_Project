@@ -9,6 +9,8 @@
         $scope.DisableAllDropdown = false;
         $scope.MaxSize = 5;     // Limit number for pagination display number.  
         $scope.SearchText = "";
+        $scope.NoRecordFound = "";
+
 
         $scope.AlertMsg = "";
         $scope.init = function (Codification_Model) {
@@ -20,6 +22,7 @@
             $scope.TotalCount = Codification_Model.ItemCount;
             $scope.PageIndex = Codification_Model.PageNo;
             $scope.PageSizeSelected = Codification_Model.PageSize;
+            $scope.NoRecordFound = Codification_Model.NoRecordFound;
 
         };
 
