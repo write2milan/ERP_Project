@@ -156,6 +156,9 @@
     <Compile Include="Model_BL\MasterData_BL\RackMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\SpecificationMaster_BL.cs" />
     <Compile Include="Model_BL\User_BL\Users_BL.cs" />
+    <Compile Include="Model_Entity_DB\ERP_DB_SPGetCodificationSearchData_Result.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model_Entity_DB\ERP_WebDesign_DB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -259,6 +262,7 @@
     <Content Include="Scripts\angular.min.js.map" />
     <None Include="Properties\PublishProfiles\ERP_WebDesign_Main.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Common\CommonFilter.js" />
     <Content Include="Scripts\MasterData_JS\controller.js" />
     <Content Include="Scripts\MasterData_JS\factory.js" />
     <Content Include="Scripts\Common\Common.js" />
@@ -272,8 +276,13 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\ui-bootstrap-tpls-0.12.1.min.js" />
     <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\underscore.min.js" />
     <Content Include="Scripts\_references.js" />

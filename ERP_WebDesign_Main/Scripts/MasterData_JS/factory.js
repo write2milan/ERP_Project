@@ -35,11 +35,38 @@
             });
         };
 
+        var get_SearchItems = function (url, searchText) {
+            return $http({
+                method: 'POST',
+                url: url,
+                data: JSON.stringify({ searchText: searchText })
+            });
+        };
+
+        var get_PagedItems = function (url, searchText, pageNo) {
+            return $http({
+                method: 'POST',
+                url: url,
+                data: JSON.stringify({ searchText: searchText, pageNo: pageNo })
+            });
+        };
+
+        var get_IsExistCodeCodi = function (code, url, itemid) {
+            return $http({
+                method: 'POST',
+                url: url,
+                data: JSON.stringify({ code: code, itemid: itemid })
+            });
+        };
+
         return {
             GetCodiItems: get_Items,
             GetCodiSpecs: get_Specs,
             InsertCodi: insert_Codi,
-            UpdateCodi: update_Codi
+            UpdateCodi: update_Codi,
+            GetSearchItems: get_SearchItems,
+            GetPagedItems: get_PagedItems,
+            GetIsExistCodeCodi: get_IsExistCodeCodi
         }
 
     }]);

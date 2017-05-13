@@ -7,9 +7,48 @@
         $scope.ErrorFlagValidation = false;
         $scope.IsCodePresent = false;
         $scope.DisableAllDropdown = false;
+        $scope.MaxSize = 5;     // Limit number for pagination display number.  
+        $scope.SearchText = "";
+
+        $scope.AlertMsg = "";
         $scope.init = function (Codification_Model) {
             $scope.Codification_Model = Codification_Model;
         };
+
+        $scope.BindCodificationForIndex = function (Codification_Model) {
+            $scope.Codification_Model = Codification_Model.Collection;
+            $scope.TotalCount = Codification_Model.ItemCount;
+            $scope.PageIndex = Codification_Model.PageNo;
+            $scope.PageSizeSelected = Codification_Model.PageSize;
+
+        };
+
+
+        $scope.PageChanged = function (url) {
+            ERP_JS_MAIN.showPleaseWait();
+            codificationfactory.GetPagedItems(url, $scope.SearchText, $scope.PageIndex).then(function (response) {
+                $scope.BindCodificationForIndex(response.data);
+                ERP_JS_MAIN.hidePleaseWait();
+            }).catch(function (response) {
+                ERP_JS_MAIN.hidePleaseWait();
+                ERP_JS_MAIN.OnFailure(response);
+            });
+
+        };
+
+        $scope.Search = function (url) {
+            ERP_JS_MAIN.showPleaseWait();
+            codificationfactory.GetSearchItems(url, $scope.SearchText).then(function (response) {
+                $scope.BindCodificationForIndex(response.data);
+                ERP_JS_MAIN.hidePleaseWait();
+            }).catch(function (response) {
+                ERP_JS_MAIN.hidePleaseWait();
+                ERP_JS_MAIN.OnFailure(response);
+            });
+
+        };
+
+
 
         $scope.GetItems = function (url) {
             ERP_JS_MAIN.showPleaseWait();
@@ -50,7 +89,7 @@
             });
         };
 
-        $scope.GenerateCode = function () {
+        $scope.GenerateCode = function (url, itemid) {
             var selectedGrpObject = _.find($scope.Codification_Model.Groups, function (o) { return o.Value === $scope.Codification_Model.GroupID; });
             var selectedItemObject = _.find($scope.Codification_Model.Items, function (o) { return o.Value === $scope.Codification_Model.ItemID; });
             var selectedSpecsObject = _.find($scope.Codification_Model.Specifications, function (o) { return o.Value === $scope.Codification_Model.SpecificationID; });
@@ -65,11 +104,27 @@
                 $scope.DisableAllDropdown = false;
             } else {
                 $scope.ErrorFlagValidation = false;
-                $scope.IsCodePresent = true;
                 $scope.DisableAllDropdown = true;
                 $scope.Codification_Model.CodificationCode = selectedGrpObject.Code + "-" + selectedItemObject.Code
                     + "-" + selectedSpecsObject.Code + "-" + selectedRacksObject.Code;
+                if (itemid)
+                    IsExistCodeCodi(url, $scope.Codification_Model.CodificationCode, $scope.Codification_Model.CodificationID);
+                else
+                    IsExistCodeCodi(url, $scope.Codification_Model.CodificationCode);
             }
+        };
+
+        var IsExistCodeCodi = function (url, code, itemid) {
+            ERP_JS_MAIN.showPleaseWait();
+            codificationfactory.GetIsExistCodeCodi(code, url, itemid).then(function (response) {
+                $scope.IsCodePresent = !((JSON.parse(response.data)).IsExist);
+                $scope.AlertMsg = (JSON.parse(response.data)).AlertMessage;
+                ERP_JS_MAIN.hidePleaseWait();
+            }).catch(function (response) {
+                ERP_JS_MAIN.hidePleaseWait();
+                ERP_JS_MAIN.OnFailure(response);
+            });
+
         };
 
 

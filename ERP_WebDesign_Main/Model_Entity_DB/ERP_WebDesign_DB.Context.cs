@@ -12,6 +12,8 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ERP_DEMOEntities : DbContext
     {
@@ -37,5 +39,14 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
         public virtual DbSet<tbl_Rack> tbl_Rack { get; set; }
         public virtual DbSet<tbl_Specification> tbl_Specification { get; set; }
         public virtual DbSet<tbl_Codification> tbl_Codification { get; set; }
+    
+        public virtual ObjectResult<ERP_DB_SPGetCodificationSearchData_Result> ERP_DB_SPGetCodificationSearchData(string fILTER, ObjectParameter tOTALRECORDCOUNT)
+        {
+            var fILTERParameter = fILTER != null ?
+                new ObjectParameter("FILTER", fILTER) :
+                new ObjectParameter("FILTER", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ERP_DB_SPGetCodificationSearchData_Result>("ERP_DB_SPGetCodificationSearchData", fILTERParameter, tOTALRECORDCOUNT);
+        }
     }
 }

@@ -52,10 +52,30 @@ namespace ERP_WebDesign_Main.Controllers
         #endregion
 
         #region Codification master
+        [HttpPost]
+        public JsonResult IsExistCodiItems(string code = "", string itemid = "")
+        {
+            Model_BL.MasterData_BL.Codification_BL objCodificationMasterBL = new Model_BL.MasterData_BL.Codification_BL();
+            return Json((new JavaScriptSerializer()).Serialize(objCodificationMasterBL.ExistCode(code, itemid)), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult CodificationMaster_PageChanged(string searchText = "", int pageNo = CommonHelper.Constants.DEFAULT_PAGE_NO)
+        {
+            Model_BL.MasterData_BL.Codification_BL objCodificationMasterBL = new Model_BL.MasterData_BL.Codification_BL();
+            return Json(objCodificationMasterBL.GetAllItems(searchText: searchText, pageNo: pageNo, pageSize: CommonHelper.Constants.DEFAULT_PAGE_SIZE), JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult CodificationMaster_Search(string searchText = "", int pageNo = CommonHelper.Constants.DEFAULT_PAGE_NO)
+        {
+            Model_BL.MasterData_BL.Codification_BL objCodificationMasterBL = new Model_BL.MasterData_BL.Codification_BL();
+            return Json(objCodificationMasterBL.GetAllItems(searchText: searchText, pageNo: pageNo, pageSize: CommonHelper.Constants.DEFAULT_PAGE_SIZE), JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult CodificationMaster_Index()
         {
             Model_BL.MasterData_BL.Codification_BL objCodiMasterBL = new Model_BL.MasterData_BL.Codification_BL();
-            return View(objCodiMasterBL.GetAllItems());
+            return View(objCodiMasterBL.GetAllItems(searchText: "", pageNo: CommonHelper.Constants.DEFAULT_PAGE_NO, pageSize: CommonHelper.Constants.DEFAULT_PAGE_SIZE));
         }
 
         public ActionResult CodificationMaster_Create()

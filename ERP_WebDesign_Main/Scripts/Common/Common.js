@@ -1,5 +1,5 @@
 ﻿(function () {
-    var ERP_APP = angular.module('ERP-APP', ['ERP-CONTROLLER', 'ERP-SERVICE']);
+    var ERP_APP = angular.module('ERP-APP', ['ERP-CONTROLLER', 'ERP-SERVICE', 'ERP-FILTER', 'ui.bootstrap']);
     var controllerModule = angular.module('ERP-CONTROLLER', []);
     var serviceModule = angular.module('ERP-SERVICE', []);
     angular.element(document).ready(function () {

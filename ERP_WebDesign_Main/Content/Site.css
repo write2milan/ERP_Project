@@ -163,3 +163,18 @@ table, th, td {
 #sidebar li.activeSideNav a {
     background-color: #e6e6e6 !important;
 }
+
+.searchText {
+    float: right;
+}
+
+
+    .searchText input {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+.pagingFooter {
+    border: none;
+    float: right;
+}

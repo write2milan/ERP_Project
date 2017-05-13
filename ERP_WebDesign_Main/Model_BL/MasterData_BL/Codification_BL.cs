@@ -6,11 +6,57 @@ using System.Web;
 using System.Web.Mvc;
 using ERP_WebDesign_Main.Models.MasterData_Model;
 using ERP_WebDesign_Main.Resources;
+using System.Text;
+using System.Data.Entity.Core.Objects;
 
 namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
 {
     public class Codification_BL : Base_BL<Models.MasterData_Model.Codification_Model>
     {
+
+        private string CreateStoreProcXmlInput(string searchText = "", int pageNo = 1, int pageSize = 10)
+        {
+            StringBuilder spInput = new StringBuilder();
+            spInput.Append("<ROOT>");
+            spInput.Append("<CODIFICATIONCODE><![CDATA[" + searchText + "]]></CODIFICATIONCODE>");
+            spInput.Append("<PAGENO>" + pageNo + "</PAGENO>");
+            spInput.Append("<PAGESIZE>" + pageSize + "</PAGESIZE>");
+            spInput.Append("</ROOT>");
+            return spInput.ToString();
+        }
+        public Codification GetAllItems(string searchText = "", int pageNo = 1, int pageSize = 10)
+        {
+            Codification objEntity = new Codification();
+            List<Codification_Model> objCollection = new List<Codification_Model>();
+
+            try
+            {
+                using (ERP_DEMOEntities objContext = new ERP_DEMOEntities())
+                {
+                    ObjectParameter outPut = new ObjectParameter("TOTALRECORDCOUNT", typeof(Int32));
+                    objCollection = (from each in objContext.ERP_DB_SPGetCodificationSearchData(CreateStoreProcXmlInput(searchText, pageNo, pageSize), outPut).ToList<ERP_DB_SPGetCodificationSearchData_Result>()
+                                     select new Codification_Model
+                                     {
+                                         CodificationID = each.CodificationID,
+                                         CodificationCode = each.CodificationCode,
+                                         CreatedBy = each.CreatedBy,
+                                         CreatedDateTime = each.CreatedDateTime,
+                                         ModifiedBy = each.ModifiedBy,
+                                         ModifiedDateTime = each.ModifiedDateTime
+                                     }).ToList<Codification_Model>();
+                    objEntity.Collection = objCollection;
+                    objEntity.ItemCount = int.Parse(Convert.ToString(outPut.Value));
+                    objEntity.PageNo = pageNo;
+                    objEntity.PageSize = pageSize;
+
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return objEntity;
+        }
         public override IEnumerable<Codification_Model> GetAllItems()
         {
             IEnumerable<Codification_Model> objCodiMasterCollection = null;
@@ -253,6 +299,26 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
                 throw;
             }
             return objRacks;
+        }
+
+        public object ExistCode(string code, string itemid = "")
+        {
+            bool isExistCode = false;
+            try
+            {
+                using (ERP_DEMOEntities objContext = new ERP_DEMOEntities())
+                {
+                    if (!string.IsNullOrEmpty(itemid))
+                        isExistCode = objContext.tbl_Codification.Where(filter => filter.CodificationID != itemid).Any(each => each.CodificationCode.Equals(code, StringComparison.CurrentCultureIgnoreCase));
+                    else
+                        isExistCode = objContext.tbl_Codification.Any(each => each.CodificationCode.Equals(code, StringComparison.CurrentCultureIgnoreCase));
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return new { IsExist = isExistCode, AlertMessage = ERP_WebDesign_MasterModelResource.CODE_EXIST_ALERTMESSAGE };
         }
     }
 }
