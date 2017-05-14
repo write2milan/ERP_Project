@@ -276,4 +276,19 @@
   <data name="LOCATION_NAME_NOTBLANK" xml:space="preserve">
     <value>Please provide location name</value>
   </data>
+  <data name="SUBPROCESS_DESC" xml:space="preserve">
+    <value>Subprocess Description</value>
+  </data>
+  <data name="SUBPROCESS_DESC_NOTBLANK" xml:space="preserve">
+    <value>Please provide subprocess description</value>
+  </data>
+  <data name="SUBPROCESS_ID" xml:space="preserve">
+    <value>SubProcessID</value>
+  </data>
+  <data name="SUBPROCESS_NAME" xml:space="preserve">
+    <value>Subprocess Name</value>
+  </data>
+  <data name="SUBPROCESS_NAME_NOTBLANK" xml:space="preserve">
+    <value>Please provide subprocess name</value>
+  </data>
 </root>

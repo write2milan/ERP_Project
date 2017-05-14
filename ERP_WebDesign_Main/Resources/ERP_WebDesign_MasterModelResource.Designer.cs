@@ -536,5 +536,50 @@ namespace ERP_WebDesign_Main.Resources {
                 return ResourceManager.GetString("SPEC_ITEMID_NOTBLANK", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subprocess Description.
+        /// </summary>
+        public static string SUBPROCESS_DESC {
+            get {
+                return ResourceManager.GetString("SUBPROCESS_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide subprocess description.
+        /// </summary>
+        public static string SUBPROCESS_DESC_NOTBLANK {
+            get {
+                return ResourceManager.GetString("SUBPROCESS_DESC_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SubProcessID.
+        /// </summary>
+        public static string SUBPROCESS_ID {
+            get {
+                return ResourceManager.GetString("SUBPROCESS_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subprocess Name.
+        /// </summary>
+        public static string SUBPROCESS_NAME {
+            get {
+                return ResourceManager.GetString("SUBPROCESS_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide subprocess name.
+        /// </summary>
+        public static string SUBPROCESS_NAME_NOTBLANK {
+            get {
+                return ResourceManager.GetString("SUBPROCESS_NAME_NOTBLANK", resourceCulture);
+            }
+        }
     }
 }

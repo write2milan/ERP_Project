@@ -1,0 +1,66 @@
+﻿@model ERP_WebDesign_Main.Models.MasterData_Model.SubProcessMaster_Model
+
+@{
+    ViewBag.Title = "SubProcessMaster_Details";
+}
+
+<h2>Sub Process Detail </h2>
+
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SubProcessName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubProcessName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubProcessDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubProcessDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedDateTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.SubProcessID }) |*@
+    @Html.ActionLink("Back to List", "SubProcessMaster_Index")
+</p>

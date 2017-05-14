@@ -41,5 +41,7 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
         public System.Data.Entity.DbSet<ERP_WebDesign_Main.Models.MasterData_Model.ProcessMaster_Model> ProcessMaster_Model { get; set; }
 
         public System.Data.Entity.DbSet<ERP_WebDesign_Main.Models.MasterData_Model.ProductionUnitMaster_Model> ProductionUnitMaster_Model { get; set; }
+
+        public System.Data.Entity.DbSet<ERP_WebDesign_Main.Models.MasterData_Model.SubProcessMaster_Model> SubProcessMaster_Model { get; set; }
     }
 }

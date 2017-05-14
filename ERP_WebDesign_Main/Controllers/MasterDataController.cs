@@ -336,6 +336,51 @@ namespace ERP_WebDesign_Main.Controllers
         }
         #endregion
 
+        #region SubProcess master
+        public ActionResult SubProcessMaster_Index()
+        {
+            Model_BL.MasterData_BL.SubProcessMaster_BL objSubProcessMasterBL = new Model_BL.MasterData_BL.SubProcessMaster_BL();
+            object[] parameters = { };
+            return View(objSubProcessMasterBL.GetAllItems(parameters));
+        }
+        public ActionResult SubProcessMaster_Create()
+        {
+            
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult SubProcessMaster_Create(Models.MasterData_Model.SubProcessMaster_Model collection)
+        {
+            Model_BL.MasterData_BL.SubProcessMaster_BL objSubProcessMasterBL = new Model_BL.MasterData_BL.SubProcessMaster_BL();
+            objSubProcessMasterBL.InsertData(collection);
+            return Json(Url.Action("SubProcessMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult SubProcessMaster_Edit(string ItemId)
+        {
+            Model_BL.MasterData_BL.SubProcessMaster_BL objSubProcessMasterBL = new Model_BL.MasterData_BL.SubProcessMaster_BL();
+            return View(objSubProcessMasterBL.DetailsData(ItemId));
+        }
+
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult SubProcessMaster_Edit(Models.MasterData_Model.SubProcessMaster_Model Entity)
+        {
+
+            Model_BL.MasterData_BL.SubProcessMaster_BL objSubProcessMasterBL = new Model_BL.MasterData_BL.SubProcessMaster_BL();
+            objSubProcessMasterBL.UpdateData(Entity);
+            return Json(Url.Action("SubProcessMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
+
+        }
+        public ActionResult SubProcessMaster_Details(string ItemId)
+        {
+            Model_BL.MasterData_BL.SubProcessMaster_BL objSubProcessMasterBL = new Model_BL.MasterData_BL.SubProcessMaster_BL();
+            return View(objSubProcessMasterBL.DetailsData(ItemId));
+        }
+        #endregion
+
         #region ProductionUnit master
         public ActionResult ProductionUnitMaster_Index()
         {

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ERP_WebDesign_Main.Models.MasterData_Model.SubProcessMaster_Model>
+
+@{
+    ViewBag.Title = "SubProcessMaster_Index";
+}
+
+<h2>Sub Processes</h2>
+
+<p>
+    @Html.ActionLink("Create New", "SubProcessMaster_Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SubProcessName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubProcessDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDateTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubProcessName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubProcessDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDateTime)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "SubProcessMaster_Edit", new { ItemId = item.SubProcessID }) |
+            @Html.ActionLink("View", "SubProcessMaster_Details", new { ItemId = item.SubProcessID }) @*|
+            @Html.ActionLink("Delete", "Delete", new { id=item.SubProcessID })*@
+        </td>
+    </tr>
+}
+
+</table>
