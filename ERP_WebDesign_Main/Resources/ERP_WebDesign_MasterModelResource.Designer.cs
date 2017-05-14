@@ -259,6 +259,87 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Location Address.
+        /// </summary>
+        public static string LOCATION_ADDR {
+            get {
+                return ResourceManager.GetString("LOCATION_ADDR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide location address.
+        /// </summary>
+        public static string LOCATION_ADDR_NOTBLANK {
+            get {
+                return ResourceManager.GetString("LOCATION_ADDR_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location Name.
+        /// </summary>
+        public static string LOCATION_NAME {
+            get {
+                return ResourceManager.GetString("LOCATION_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide location name.
+        /// </summary>
+        public static string LOCATION_NAME_NOTBLANK {
+            get {
+                return ResourceManager.GetString("LOCATION_NAME_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Process Description.
+        /// </summary>
+        public static string PROCESS_DESC {
+            get {
+                return ResourceManager.GetString("PROCESS_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide process description.
+        /// </summary>
+        public static string PROCESS_DESC_NOTBLANK {
+            get {
+                return ResourceManager.GetString("PROCESS_DESC_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Process ID.
+        /// </summary>
+        public static string PROCESS_ID {
+            get {
+                return ResourceManager.GetString("PROCESS_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Process Name.
+        /// </summary>
+        public static string PROCESS_Name {
+            get {
+                return ResourceManager.GetString("PROCESS_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide process name.
+        /// </summary>
+        public static string PROCESS_NAME_NOTBLANK {
+            get {
+                return ResourceManager.GetString("PROCESS_NAME_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Product description.
         /// </summary>
         public static string PRODUCT_DESC {
@@ -363,6 +444,24 @@ namespace ERP_WebDesign_Main.Resources {
         public static string RACK_ID_PREFIX {
             get {
                 return ResourceManager.GetString("RACK_ID_PREFIX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Site Name.
+        /// </summary>
+        public static string SITE_Name {
+            get {
+                return ResourceManager.GetString("SITE_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide site name.
+        /// </summary>
+        public static string SITE_NAME_NOTBLANK {
+            get {
+                return ResourceManager.GetString("SITE_NAME_NOTBLANK", resourceCulture);
             }
         }
         

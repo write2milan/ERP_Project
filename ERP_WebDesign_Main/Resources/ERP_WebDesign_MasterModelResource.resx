@@ -183,6 +183,33 @@
   <data name="ITEM_ID" xml:space="preserve">
     <value>Item id</value>
   </data>
+  <data name="LOCATION_ADDR" xml:space="preserve">
+    <value>Location Address</value>
+  </data>
+  <data name="LOCATION_ADDR_NOTBLANK" xml:space="preserve">
+    <value>Please provide location address</value>
+  </data>
+  <data name="LOCATION_NAME" xml:space="preserve">
+    <value>Location Name</value>
+  </data>
+  <data name="LOCATION_NAME_NOTBLANK" xml:space="preserve">
+    <value>Please provide location name</value>
+  </data>
+  <data name="PROCESS_DESC" xml:space="preserve">
+    <value>Process Description</value>
+  </data>
+  <data name="PROCESS_DESC_NOTBLANK" xml:space="preserve">
+    <value>Please provide process description</value>
+  </data>
+  <data name="PROCESS_ID" xml:space="preserve">
+    <value>Process ID</value>
+  </data>
+  <data name="PROCESS_Name" xml:space="preserve">
+    <value>Process Name</value>
+  </data>
+  <data name="PROCESS_NAME_NOTBLANK" xml:space="preserve">
+    <value>Please provide process name</value>
+  </data>
   <data name="PRODUCT_DESC" xml:space="preserve">
     <value>Product description</value>
   </data>
@@ -218,6 +245,12 @@
   </data>
   <data name="RACK_ID_PREFIX" xml:space="preserve">
     <value>RACK-</value>
+  </data>
+  <data name="SITE_Name" xml:space="preserve">
+    <value>Site Name</value>
+  </data>
+  <data name="SITE_NAME_NOTBLANK" xml:space="preserve">
+    <value>Please provide site name</value>
   </data>
   <data name="SPEC_CODE" xml:space="preserve">
     <value>Specification code</value>
