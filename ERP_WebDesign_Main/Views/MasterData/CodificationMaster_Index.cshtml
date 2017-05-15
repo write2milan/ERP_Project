@@ -15,10 +15,8 @@
     <div class="searchText">
         <input type="text" class="form-control" data-toggle="tooltip" data-placement="top" title="Group-Item-Specification-Rack" placeholder="Search" id="searchText" ng-model="SearchText" ng-keyup="Search('@Url.Action("CodificationMaster_Search", "MasterData")')" />
     </div>
-    <div ng-if="Codification_Model.length===0" class="norecordfound">
-        <span>{{NoRecordFound}}</span>
-    </div>
-    <div ng-if="Codification_Model.length!==0">
+
+    <div>
         <table class="table">
             <tr>
 
@@ -40,7 +38,11 @@
                 <th></th>
             </tr>
 
-            <tbody>
+            <tr ng-if="Codification_Model.length===0" class="norecordfound">
+                <td colspan="6"><span>{{NoRecordFound}}</span></td>
+            </tr>
+
+            <tbody ng-if="Codification_Model.length!==0">
                 <tr ng-repeat="row in Codification_Model">
 
                     <td>
@@ -72,7 +74,7 @@
                 </tr>
             </tbody>
         </table>
-        <div class="pagingFooter">
+        <div class="pagingFooter" ng-if="Codification_Model.length!==0">
             <div class="pull-right">
                 <pagination total-items="TotalCount" ng-change="PageChanged('@Url.Action("CodificationMaster_PageChanged", "MasterData")')" items-per-page="PageSizeSelected" direction-links="true" ng-model="PageIndex" max-size="MaxSize" class="pagination" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
             </div>
