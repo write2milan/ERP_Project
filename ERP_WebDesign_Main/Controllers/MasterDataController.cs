@@ -52,6 +52,13 @@ namespace ERP_WebDesign_Main.Controllers
         #endregion
 
         #region Codification master
+
+        public ActionResult CodificationMaster_Details(string CodiId)
+        {
+            Model_BL.MasterData_BL.Codification_BL objCodificationMasterBL = new Model_BL.MasterData_BL.Codification_BL();
+            return View(objCodificationMasterBL.DetailsData(CodiId));
+        }
+
         [HttpPost]
         public JsonResult IsExistCodiItems(string code = "", string itemid = "")
         {

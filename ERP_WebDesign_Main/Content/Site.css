@@ -177,6 +177,7 @@ table, th, td {
 .pagingFooter {
     border: none;
     float: right;
+    padding-bottom: 20px;
 }
 
 .norecordfound {

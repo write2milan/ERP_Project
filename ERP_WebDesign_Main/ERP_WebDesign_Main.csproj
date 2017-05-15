@@ -337,6 +337,7 @@
     <Content Include="Views\MasterData\ProductionUnitMaster_Details.cshtml" />
     <Content Include="Views\MasterData\ProductionUnitMaster_Edit.cshtml" />
     <Content Include="Views\MasterData\ProductionUnitMaster_Index.cshtml" />
+    <Content Include="Views\MasterData\CodificationMaster_Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

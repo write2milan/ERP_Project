@@ -66,15 +66,13 @@
 
                     </td>
                     <td>
-                        <a href="@Url.Action("CodificationMaster_Edit","MasterData")?CodiId={{row.CodificationID}}">Edit</a>
-                        @*@Html.ActionLink("Edit", "CodificationMaster_Edit", new { CodiId = item.CodificationID })*@
-                        @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
-                        @*@Html.ActionLink("Delete", "Delete", new { ItemId = item.ProductID  })*@
+                        <a href="@Url.Action("CodificationMaster_Edit","MasterData")?CodiId={{row.CodificationID}}">Edit</a> |
+                        <a href="@Url.Action("CodificationMaster_Details","MasterData")?CodiId={{row.CodificationID}}">View</a>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <div class="pagingFooter" ng-if="Codification_Model.length!==0">
+        <div class="pagingFooter" ng-show="Codification_Model.length!==0">
             <div class="pull-right">
                 <pagination total-items="TotalCount" ng-change="PageChanged('@Url.Action("CodificationMaster_PageChanged", "MasterData")')" items-per-page="PageSizeSelected" direction-links="true" ng-model="PageIndex" max-size="MaxSize" class="pagination" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
             </div>
