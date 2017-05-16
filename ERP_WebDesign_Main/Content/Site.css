@@ -156,9 +156,9 @@ h4 {
     margin-bottom: 10px;
 }
 
-table, th, td {
+/*table, th, td {
     border: 2px solid black;
-}
+}*/
 
 #sidebar li.activeSideNav a {
     background-color: #e6e6e6 !important;
