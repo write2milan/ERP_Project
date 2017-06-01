@@ -24,17 +24,22 @@ namespace ERP_WebDesign_Main
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                      "~/Scripts/angular.min.js"));
+                      "~/Scripts/angular.min.js", "~/Scripts/ui-bootstrap-tpls-0.12.1.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/underscore").Include(
                       "~/Scripts/underscore.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/moment").Include(
+                      "~/Scripts/moment.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/commonscript").Include(
-                      "~/Scripts/Common/Common.js"));
+                      "~/Scripts/Common/Common.js", "~/Scripts/Common/CommonFilter.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            
         }
     }
 }

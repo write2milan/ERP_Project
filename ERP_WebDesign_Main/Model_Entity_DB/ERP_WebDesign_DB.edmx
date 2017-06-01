@@ -252,6 +252,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="ERP_DB_SPGetCodificationSearchData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FILTER" Type="xml" Mode="In" />
+          <Parameter Name="TOTALRECORDCOUNT" Type="int" Mode="InOut" />
+        </Function>
         <EntityContainer Name="ERP_DEMOModelStoreContainer">
           <EntitySet Name="tbl_Codification" EntityType="Self.tbl_Codification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_ExceptionLogger" EntityType="Self.tbl_ExceptionLogger" Schema="dbo" store:Type="Tables" />
@@ -347,6 +351,10 @@
             <End Role="tbl_Groups" EntitySet="tbl_Groups" />
             <End Role="tbl_Specification" EntitySet="tbl_Specification" />
           </AssociationSet>
+          <FunctionImport Name="ERP_DB_SPGetCodificationSearchData" ReturnType="Collection(ERP_DEMOModel.ERP_DB_SPGetCodificationSearchData_Result)">
+            <Parameter Name="FILTER" Mode="In" Type="String" />
+            <Parameter Name="TOTALRECORDCOUNT" Mode="InOut" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_User">
           <Key>
@@ -611,6 +619,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="ERP_DB_SPGetCodificationSearchData_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="CodificationCode" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="ItemID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="GroupID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SpecificationID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RackID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ModifiedDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="CodificationID" Nullable="false" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -780,6 +801,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ERP_DB_SPGetCodificationSearchData" FunctionName="ERP_DEMOModel.Store.ERP_DB_SPGetCodificationSearchData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERP_DEMOModel.ERP_DB_SPGetCodificationSearchData_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CodificationCode" ColumnName="CodificationCode" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="SpecificationID" ColumnName="SpecificationID" />
+                <ScalarProperty Name="RackID" ColumnName="RackID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="CodificationID" ColumnName="CodificationID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

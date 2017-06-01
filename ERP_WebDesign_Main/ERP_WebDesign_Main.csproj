@@ -149,7 +149,6 @@
     <Compile Include="Models\MasterData_Model\ProductMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\RackMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\SpecificationMaster_Model.cs" />
-    <Compile Include="Models\MasterData_Model\SubProcessMaster_Model.cs" />
     <Compile Include="Models\User_Model\User_Model.cs" />
     <Compile Include="Model_BL\Base_BL\Base_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\Codification_BL.cs" />
@@ -160,11 +159,13 @@
     <Compile Include="Model_BL\MasterData_BL\ProductMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\RackMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\SpecificationMaster_BL.cs" />
-    <Compile Include="Model_BL\MasterData_BL\SubProcessMaster_BL.cs" />
     <Compile Include="Model_BL\User_BL\Users_BL.cs" />
     <Compile Include="Model_DAL\ERPDataService.cs" />
     <Compile Include="Model_DAL\Interface\IRepository.cs" />
     <Compile Include="Model_DAL\Repository\GenericRepository.cs" />
+    <Compile Include="Model_Entity_DB\ERP_DB_SPGetCodificationSearchData_Result.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model_Entity_DB\ERP_WebDesign_DB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -270,6 +271,7 @@
     <Content Include="Scripts\angular.min.js.map" />
     <None Include="Properties\PublishProfiles\ERP_WebDesign_Main.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Common\CommonFilter.js" />
     <Content Include="Scripts\MasterData_JS\controller.js" />
     <Content Include="Scripts\MasterData_JS\factory.js" />
     <Content Include="Scripts\Common\Common.js" />
@@ -283,8 +285,13 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\ui-bootstrap-tpls-0.12.1.min.js" />
     <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\underscore.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -322,18 +329,15 @@
     <Content Include="Views\MasterData\SpecificationMaster_Index.cshtml" />
     <Content Include="Views\MasterData\SpecificationMaster_Create.cshtml" />
     <Content Include="Views\MasterData\SpecificationMaster_Edit.cshtml" />
-    <Content Include="Views\MasterData\ProcessMaster_Index.cshtml" />
     <Content Include="Views\MasterData\ProcessMaster_Create.cshtml" />
-    <Content Include="Views\MasterData\ProcessMaster_Edit.cshtml" />
     <Content Include="Views\MasterData\ProcessMaster_Details.cshtml" />
-    <Content Include="Views\MasterData\ProductionUnitMaster_Index.cshtml" />
+    <Content Include="Views\MasterData\ProcessMaster_Edit.cshtml" />
+    <Content Include="Views\MasterData\ProcessMaster_Index.cshtml" />
     <Content Include="Views\MasterData\ProductionUnitMaster_Create.cshtml" />
-    <Content Include="Views\MasterData\ProductionUnitMaster_Edit.cshtml" />
     <Content Include="Views\MasterData\ProductionUnitMaster_Details.cshtml" />
-    <Content Include="Views\MasterData\SubProcessMaster_Index.cshtml" />
-    <Content Include="Views\MasterData\SubProcessMaster_Create.cshtml" />
-    <Content Include="Views\MasterData\SubProcessMaster_Edit.cshtml" />
-    <Content Include="Views\MasterData\SubProcessMaster_Details.cshtml" />
+    <Content Include="Views\MasterData\ProductionUnitMaster_Edit.cshtml" />
+    <Content Include="Views\MasterData\ProductionUnitMaster_Index.cshtml" />
+    <Content Include="Views\MasterData\CodificationMaster_Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

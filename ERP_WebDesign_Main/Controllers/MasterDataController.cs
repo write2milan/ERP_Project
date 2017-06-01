@@ -52,10 +52,37 @@ namespace ERP_WebDesign_Main.Controllers
         #endregion
 
         #region Codification master
+
+        public ActionResult CodificationMaster_Details(string CodiId)
+        {
+            Model_BL.MasterData_BL.Codification_BL objCodificationMasterBL = new Model_BL.MasterData_BL.Codification_BL();
+            return View(objCodificationMasterBL.DetailsData(CodiId));
+        }
+
+        [HttpPost]
+        public JsonResult IsExistCodiItems(string code = "", string itemid = "")
+        {
+            Model_BL.MasterData_BL.Codification_BL objCodificationMasterBL = new Model_BL.MasterData_BL.Codification_BL();
+            return Json((new JavaScriptSerializer()).Serialize(objCodificationMasterBL.ExistCode(code, itemid)), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult CodificationMaster_PageChanged(string searchText = "", int pageNo = CommonHelper.Constants.DEFAULT_PAGE_NO)
+        {
+            Model_BL.MasterData_BL.Codification_BL objCodificationMasterBL = new Model_BL.MasterData_BL.Codification_BL();
+            return Json(objCodificationMasterBL.GetAllItems(searchText: searchText, pageNo: pageNo, pageSize: CommonHelper.Constants.DEFAULT_PAGE_SIZE), JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult CodificationMaster_Search(string searchText = "", int pageNo = CommonHelper.Constants.DEFAULT_PAGE_NO)
+        {
+            Model_BL.MasterData_BL.Codification_BL objCodificationMasterBL = new Model_BL.MasterData_BL.Codification_BL();
+            return Json(objCodificationMasterBL.GetAllItems(searchText: searchText, pageNo: pageNo, pageSize: CommonHelper.Constants.DEFAULT_PAGE_SIZE), JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult CodificationMaster_Index()
         {
             Model_BL.MasterData_BL.Codification_BL objCodiMasterBL = new Model_BL.MasterData_BL.Codification_BL();
-            return View(objCodiMasterBL.GetAllItems());
+            return View(objCodiMasterBL.GetAllItems(searchText: "", pageNo: CommonHelper.Constants.DEFAULT_PAGE_NO, pageSize: CommonHelper.Constants.DEFAULT_PAGE_SIZE));
         }
 
         public ActionResult CodificationMaster_Create()
@@ -291,96 +318,6 @@ namespace ERP_WebDesign_Main.Controllers
 
         #endregion
 
-        #region Process master
-        public ActionResult ProcessMaster_Index()
-        {
-            Model_BL.MasterData_BL.ProcessMaster_BL objProcessMasterBL = new Model_BL.MasterData_BL.ProcessMaster_BL();
-            object[] parameters = { };
-            return View(objProcessMasterBL.GetAllItems(parameters));
-        }
-        public ActionResult ProcessMaster_Create()
-        {
-            Model_BL.MasterData_BL.ProcessMaster_BL objProcessMasterBL = new Model_BL.MasterData_BL.ProcessMaster_BL();
-            return View(objProcessMasterBL.BindModelForInsertion());
-        }
-
-        [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult ProcessMaster_Create(Models.MasterData_Model.ProcessMaster_Model collection)
-        {
-            Model_BL.MasterData_BL.ProcessMaster_BL objProcessMasterBL = new Model_BL.MasterData_BL.ProcessMaster_BL();
-            objProcessMasterBL.InsertData(collection);
-            return Json(Url.Action("ProcessMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
-        }
-        public ActionResult ProcessMaster_Edit(string ItemId)
-        {
-            Model_BL.MasterData_BL.ProcessMaster_BL objProcessMasterBL = new Model_BL.MasterData_BL.ProcessMaster_BL();
-            return View(objProcessMasterBL.DetailsData(ItemId));
-        }
-
-
-        [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult ProcessMaster_Edit(Models.MasterData_Model.ProcessMaster_Model Entity)
-        {
-
-            Model_BL.MasterData_BL.ProcessMaster_BL objProcessMasterBL = new Model_BL.MasterData_BL.ProcessMaster_BL();
-            objProcessMasterBL.UpdateData( Entity);
-            return Json(Url.Action("ProcessMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
-
-        }
-        public ActionResult ProcessMaster_Details(string ItemId)
-        {
-            Model_BL.MasterData_BL.ProcessMaster_BL objProcessMasterBL = new Model_BL.MasterData_BL.ProcessMaster_BL();
-            return View(objProcessMasterBL.DetailsData(ItemId));
-        }
-        #endregion
-
-        #region SubProcess master
-        public ActionResult SubProcessMaster_Index()
-        {
-            Model_BL.MasterData_BL.SubProcessMaster_BL objSubProcessMasterBL = new Model_BL.MasterData_BL.SubProcessMaster_BL();
-            object[] parameters = { };
-            return View(objSubProcessMasterBL.GetAllItems(parameters));
-        }
-        public ActionResult SubProcessMaster_Create()
-        {
-            
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult SubProcessMaster_Create(Models.MasterData_Model.SubProcessMaster_Model collection)
-        {
-            Model_BL.MasterData_BL.SubProcessMaster_BL objSubProcessMasterBL = new Model_BL.MasterData_BL.SubProcessMaster_BL();
-            objSubProcessMasterBL.InsertData(collection);
-            return Json(Url.Action("SubProcessMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
-        }
-        public ActionResult SubProcessMaster_Edit(string ItemId)
-        {
-            Model_BL.MasterData_BL.SubProcessMaster_BL objSubProcessMasterBL = new Model_BL.MasterData_BL.SubProcessMaster_BL();
-            return View(objSubProcessMasterBL.DetailsData(ItemId));
-        }
-
-
-        [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult SubProcessMaster_Edit(Models.MasterData_Model.SubProcessMaster_Model Entity)
-        {
-
-            Model_BL.MasterData_BL.SubProcessMaster_BL objSubProcessMasterBL = new Model_BL.MasterData_BL.SubProcessMaster_BL();
-            objSubProcessMasterBL.UpdateData(Entity);
-            return Json(Url.Action("SubProcessMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
-
-        }
-        public ActionResult SubProcessMaster_Details(string ItemId)
-        {
-            Model_BL.MasterData_BL.SubProcessMaster_BL objSubProcessMasterBL = new Model_BL.MasterData_BL.SubProcessMaster_BL();
-            return View(objSubProcessMasterBL.DetailsData(ItemId));
-        }
-        #endregion
-
         #region ProductionUnit master
         public ActionResult ProductionUnitMaster_Index()
         {
@@ -390,7 +327,7 @@ namespace ERP_WebDesign_Main.Controllers
         }
         public ActionResult ProductionUnitMaster_Create()
         {
-           
+
             return View();
         }
 
@@ -425,5 +362,51 @@ namespace ERP_WebDesign_Main.Controllers
             return View(objProductionUnitMasterBL.DetailsData(ItemId));
         }
         #endregion
+
+        #region Process master
+        public ActionResult ProcessMaster_Index()
+        {
+            Model_BL.MasterData_BL.ProcessMaster_BL objProcessMasterBL = new Model_BL.MasterData_BL.ProcessMaster_BL();
+            object[] parameters = { };
+            return View(objProcessMasterBL.GetAllItems(parameters));
+        }
+        public ActionResult ProcessMaster_Create()
+        {
+            Model_BL.MasterData_BL.ProcessMaster_BL objProcessMasterBL = new Model_BL.MasterData_BL.ProcessMaster_BL();
+            return View(objProcessMasterBL.BindModelForInsertion());
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ProcessMaster_Create(Models.MasterData_Model.ProcessMaster_Model collection)
+        {
+            Model_BL.MasterData_BL.ProcessMaster_BL objProcessMasterBL = new Model_BL.MasterData_BL.ProcessMaster_BL();
+            objProcessMasterBL.InsertData(collection);
+            return Json(Url.Action("ProcessMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult ProcessMaster_Edit(string ItemId)
+        {
+            Model_BL.MasterData_BL.ProcessMaster_BL objProcessMasterBL = new Model_BL.MasterData_BL.ProcessMaster_BL();
+            return View(objProcessMasterBL.DetailsData(ItemId));
+        }
+
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ProcessMaster_Edit(Models.MasterData_Model.ProcessMaster_Model Entity)
+        {
+
+            Model_BL.MasterData_BL.ProcessMaster_BL objProcessMasterBL = new Model_BL.MasterData_BL.ProcessMaster_BL();
+            objProcessMasterBL.UpdateData(Entity);
+            return Json(Url.Action("ProcessMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
+
+        }
+        public ActionResult ProcessMaster_Details(string ItemId)
+        {
+            Model_BL.MasterData_BL.ProcessMaster_BL objProcessMasterBL = new Model_BL.MasterData_BL.ProcessMaster_BL();
+            return View(objProcessMasterBL.DetailsData(ItemId));
+        }
+        #endregion
+
     }
 }

@@ -61,6 +61,15 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No record found.
+        /// </summary>
+        public static string CODI_VALIDATION_NORECORDFOUND {
+            get {
+                return ResourceManager.GetString("CODI_VALIDATION_NORECORDFOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Created by.
         /// </summary>
         public static string CREATED_BY {

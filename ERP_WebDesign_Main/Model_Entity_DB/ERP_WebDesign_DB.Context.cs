@@ -12,19 +12,21 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
+
     public partial class ERP_DEMOEntities : DbContext
     {
         public ERP_DEMOEntities()
             : base("name=ERP_DEMOEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<tbl_User> tbl_User { get; set; }
         public virtual DbSet<tbl_ExceptionLogger> tbl_ExceptionLogger { get; set; }
         public virtual DbSet<tbl_ProcessMaster> tbl_ProcessMaster { get; set; }
@@ -42,6 +44,14 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
 
         public System.Data.Entity.DbSet<ERP_WebDesign_Main.Models.MasterData_Model.ProductionUnitMaster_Model> ProductionUnitMaster_Model { get; set; }
 
-        public System.Data.Entity.DbSet<ERP_WebDesign_Main.Models.MasterData_Model.SubProcessMaster_Model> SubProcessMaster_Model { get; set; }
+
+        public virtual ObjectResult<ERP_DB_SPGetCodificationSearchData_Result> ERP_DB_SPGetCodificationSearchData(string fILTER, ObjectParameter tOTALRECORDCOUNT)
+        {
+            var fILTERParameter = fILTER != null ?
+                new ObjectParameter("FILTER", fILTER) :
+                new ObjectParameter("FILTER", typeof(string));
+
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ERP_DB_SPGetCodificationSearchData_Result>("ERP_DB_SPGetCodificationSearchData", fILTERParameter, tOTALRECORDCOUNT);
+        }
     }
 }

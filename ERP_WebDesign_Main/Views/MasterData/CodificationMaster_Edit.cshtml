@@ -65,10 +65,16 @@
             </span>
         </div>
 
+        <div class="form-group" ng-if="!IsCodePresent">
+            <span class="control-label col-md-2"></span>
+            <span class="col-md-10 text-danger" ng-bind="AlertMsg">
+            </span>
+        </div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="button" value="Generate code" ng-click="GenerateCode()" class="btn btn-default" />
-                <input type="button" value="Update" ng-disabled="!IsCodePresent" class="btn btn-default" ng-click="UpdateCodi('@Url.Action("CodificationMaster_Edit","MasterData")')" / />
+                <input type="button" value="Generate code" ng-click="GenerateCode('@Url.Action("IsExistCodiItems","MasterData")',true)" class="btn btn-default" />
+                <input type="button" value="Update" ng-disabled="!IsCodePresent" class="btn btn-default" ng-click="UpdateCodi('@Url.Action("CodificationMaster_Edit","MasterData")')" />
             </div>
         </div>
     </div>
