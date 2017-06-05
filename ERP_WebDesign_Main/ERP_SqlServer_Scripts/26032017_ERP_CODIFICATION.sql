@@ -243,3 +243,55 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_SPEC_ItemID]') AND parent_object_id = OBJECT_ID(N'[dbo].[tbl_Specification]'))
 ALTER TABLE [dbo].[tbl_Specification] CHECK CONSTRAINT [FK_SPEC_ItemID]
 GO
+
+CREATE PROCEDURE [dbo].[ERP_DB_SPGetCodificationSearchData]  
+(  
+ @FILTER XML,  
+ @TOTALRECORDCOUNT INT OUTPUT  
+)  
+AS  
+BEGIN  
+ SET NOCOUNT ON;  
+ DECLARE @CODIFICATIONCODE NVARCHAR(200);  
+ DECLARE @PAGENO INT;  
+ DECLARE @PAGESIZE INT;  
+ DECLARE @SORTFIELD VARCHAR(50);  
+ DECLARE @SORTDIR VARCHAR(10);  
+ DECLARE @ORDERBY NVARCHAR(200);   
+   
+ DECLARE @tbl_CODITEMP TABLE (  
+      [Id] INT IDENTITY(1,1) PRIMARY KEY NOT NULL,  
+      [CodificationID] [nvarchar](50) NOT NULL,  
+      [CodificationCode] [nvarchar](200) NOT NULL,  
+      [ItemID] [nvarchar](50) NULL,  
+      [GroupID] [nvarchar](50) NULL,  
+      [SpecificationID] [nvarchar](50) NULL,  
+      [RackID] [nvarchar](50) NULL,  
+      [CreatedBy] [varchar](50) NULL,  
+      [CreatedDateTime] [datetime] NULL,  
+      [ModifiedBy] [varchar](50) NULL,  
+      [ModifiedDateTime] [datetime] NULL  
+      )  
+ SELECT   
+   @CODIFICATIONCODE = COALESCE(A.B.value('CODIFICATIONCODE[1]','NVARCHAR(200)'),NULL),  
+   --@SORTFIELD = COALESCE(A.B.value('SORT[1]','VARCHAR(50)'),'PLNT_CD'),  
+   --@SORTDIR = COALESCE(A.B.value('SORTDIR[1]','VARCHAR(10)'),'ASC'),  
+   @PAGENO = COALESCE(A.B.value('PAGENO[1]','INT'),1),  
+   @PAGESIZE = COALESCE(A.B.value('PAGESIZE[1]','INT'),1)  
+   FROM @FILTER.nodes('ROOT') A(B)  
+     
+  
+   
+ --SET @ORDERBY = @SORTFIELD + ' ' +@SORTDIR       
+   
+ INSERT INTO @tbl_CODITEMP([CodificationID],[CodificationCode],[ItemID],[GroupID],[SpecificationID],[RackID],[CreatedBy],[CreatedDateTime],[ModifiedBy],[ModifiedDateTime])  
+ SELECT [CodificationID],[CodificationCode],[ItemID],[GroupID],[SpecificationID],[RackID],[CreatedBy],[CreatedDateTime],[ModifiedBy],[ModifiedDateTime]  
+ FROM tbl_Codification AS CODI  
+ WHERE (@CODIFICATIONCODE IS NULL OR CODI.CodificationCode LIKE @CODIFICATIONCODE + '%' )  
+   
+   
+ SELECT @TOTALRECORDCOUNT = COUNT(1)  FROM @tbl_CODITEMP  
+ SELECT * FROM @tbl_CODITEMP WHERE Id BETWEEN ((@PAGENO -1) * @PAGESIZE + 1) AND(@PAGENO * @PAGESIZE)  
+   
+END  
+  
