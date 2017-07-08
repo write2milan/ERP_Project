@@ -276,4 +276,19 @@
   <data name="SPEC_ITEMID_NOTBLANK" xml:space="preserve">
     <value>Please provide item</value>
   </data>
+  <data name="SUBPROCESS_DESC" xml:space="preserve">
+    <value>Sub Process description</value>
+  </data>
+  <data name="SUBPROCESS_DESC_NOTBLANK" xml:space="preserve">
+    <value>Please provide sub process description</value>
+  </data>
+  <data name="SUBPROCESS_ID" xml:space="preserve">
+    <value>Sub Process ID</value>
+  </data>
+  <data name="SUBPROCESS_NAME" xml:space="preserve">
+    <value>Sub Process Name</value>
+  </data>
+  <data name="SUBPROCESS_NAME_NOTBLANK" xml:space="preserve">
+    <value>Please provide sub process name</value>
+  </data>
 </root>

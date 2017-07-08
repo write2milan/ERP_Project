@@ -538,7 +538,7 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Subprocess Description.
+        ///   Looks up a localized string similar to Sub Process description.
         /// </summary>
         public static string SUBPROCESS_DESC {
             get {
@@ -547,7 +547,7 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please provide subprocess description.
+        ///   Looks up a localized string similar to Please provide sub process description.
         /// </summary>
         public static string SUBPROCESS_DESC_NOTBLANK {
             get {
@@ -556,7 +556,7 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SubProcessID.
+        ///   Looks up a localized string similar to Sub Process ID.
         /// </summary>
         public static string SUBPROCESS_ID {
             get {
@@ -565,7 +565,7 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Subprocess Name.
+        ///   Looks up a localized string similar to Sub Process Name.
         /// </summary>
         public static string SUBPROCESS_NAME {
             get {
@@ -574,7 +574,7 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please provide subprocess name.
+        ///   Looks up a localized string similar to Please provide sub process name.
         /// </summary>
         public static string SUBPROCESS_NAME_NOTBLANK {
             get {
