@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ERP_WebDesign_Main.Models.MasterData_Model
 {
@@ -19,5 +20,11 @@ namespace ERP_WebDesign_Main.Models.MasterData_Model
         [Required(ErrorMessageResourceType = typeof(ERP_WebDesign_MasterModelResource), ErrorMessageResourceName = "SUBPROCESS_DESC_NOTBLANK")]
         [DataType(DataType.MultilineText)]
         public string SubProcessDesc { get; set; }
+        /*[Display(ResourceType = typeof(ERP_WebDesign_MasterModelResource), Name = "PROCESS_Name")]
+        [Required(ErrorMessageResourceType = typeof(ERP_WebDesign_MasterModelResource), ErrorMessageResourceName = "PROCESS_NAME_NOTBLANK")]       
+        public string ProcessName { get; set; }
+        [Required(ErrorMessageResourceType = typeof(ERP_WebDesign_MasterModelResource), ErrorMessageResourceName = "PROCESS_NAME_NOTBLANK")]
+        public string ProcessID { get; set; }
+        public List<SelectListItem> Processes { get; set; }*/
     }
 }

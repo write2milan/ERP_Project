@@ -1,9 +1,11 @@
 ﻿using ERP_WebDesign_Main.Model_DAL;
 using ERP_WebDesign_Main.Models.MasterData_Model;
+using ERP_WebDesign_Main.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
 {
@@ -22,6 +24,8 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
                                                          SubProcessID  = each.SubProcessID,
                                                          SubProcessName = each.SubProcessName,
                                                          SubProcessDesc = each.SubProcessDesc,
+                                                         //ProcessID = each.ProcessID,
+                                                         //ProcessName = each.ProcessName,
                                                          CreatedBy = each.CreatedBy,
                                                          CreatedDateTime = each.CreatedDateTime,
                                                          ModifiedBy = each.ModifiedBy,
@@ -40,6 +44,46 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
 
 
         }
+       /* public SubProcessMaster_Model  BindModelForInsertion()
+        {
+            SubProcessMaster_Model objSubProcessModel = new SubProcessMaster_Model();
+            try
+            {
+                objSubProcessModel.Processes = PopulateProcessesDropdown();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return objSubProcessModel;
+        }
+        private List<SelectListItem> PopulateProcessesDropdown()
+        {
+            List<SelectListItem> objProcess = new List<SelectListItem>();
+
+            try
+            {
+                using (ERPDataService<SubProcessMaster_Model> erpServ = new ERPDataService<SubProcessMaster_Model>())
+                {
+                    string spQuery = "[Get_AllProcesses]";
+                    object[] parameters = { };
+                    objProcess = (from each in erpServ.GetAll(spQuery, parameters)
+                                select new SelectListItem
+                                {
+                                    Text = each.ProcessName,
+                                    Value = each.ProcessID
+                                }
+                              ).ToList<SelectListItem>();
+                    objProcess.Add(new SelectListItem { Text = ERP_WebDesign_CommonResource.DEFAULT_DROPDOWN_TEXT, Value = ERP_WebDesign_CommonResource.DEFAULT_DROPDOWN_VALUE, Selected = true });
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return objProcess;
+        }*/
         public object InsertData(SubProcessMaster_Model entity)
         {
             try
@@ -48,7 +92,8 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
                 string spQuery = "[Create_SubProcess] {0}, {1}, {2}, {3}, {4}, {5}";
                 object[] parameters = {
                                         entity.SubProcessName,
-                                        entity.SubProcessDesc,                                       
+                                        entity.SubProcessDesc,
+                                        //entity.ProcessID,
                                         CommonHelper.CommonHelper.CurrentUserLoginName(),
                                         CommonHelper.CommonHelper.CurrentUserLoginName(),
                                         DateTime.Now,
