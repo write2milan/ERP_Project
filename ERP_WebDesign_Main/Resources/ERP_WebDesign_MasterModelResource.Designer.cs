@@ -205,6 +205,24 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Installation date.
+        /// </summary>
+        public static string INSTALL_DATE {
+            get {
+                return ResourceManager.GetString("INSTALL_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide machine installation date.
+        /// </summary>
+        public static string INSTALL_DATE_NOTBLANK {
+            get {
+                return ResourceManager.GetString("INSTALL_DATE_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item code.
         /// </summary>
         public static string ITEM_CODE {
@@ -291,6 +309,177 @@ namespace ERP_WebDesign_Main.Resources {
         public static string LOCATION_NAME_NOTBLANK {
             get {
                 return ResourceManager.GetString("LOCATION_NAME_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Machine description.
+        /// </summary>
+        public static string MACHINE_DESC {
+            get {
+                return ResourceManager.GetString("MACHINE_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide mechine description.
+        /// </summary>
+        public static string MACHINE_DESC_NOTBLANK {
+            get {
+                return ResourceManager.GetString("MACHINE_DESC_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Machine ID.
+        /// </summary>
+        public static string MACHINE_ID {
+            get {
+                return ResourceManager.GetString("MACHINE_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Machine life.
+        /// </summary>
+        public static string MACHINE_LIFE {
+            get {
+                return ResourceManager.GetString("MACHINE_LIFE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide machine life.
+        /// </summary>
+        public static string MACHINE_LIFE_NOTBLANK {
+            get {
+                return ResourceManager.GetString("MACHINE_LIFE_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Machine Name.
+        /// </summary>
+        public static string MACHINE_Name {
+            get {
+                return ResourceManager.GetString("MACHINE_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide machine name.
+        /// </summary>
+        public static string MACHINE_NAME_NOTBLANK {
+            get {
+                return ResourceManager.GetString("MACHINE_NAME_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oil required.
+        /// </summary>
+        public static string MACHINE_OILREQUIRED {
+            get {
+                return ResourceManager.GetString("MACHINE_OILREQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide oil required for the machine.
+        /// </summary>
+        public static string MACHINE_OILREQUIRED_NOTBLANK {
+            get {
+                return ResourceManager.GetString("MACHINE_OILREQUIRED_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to power required for the machine .
+        /// </summary>
+        public static string MACHINE_POWERREQUIRED {
+            get {
+                return ResourceManager.GetString("MACHINE_POWERREQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide power required for the machine.
+        /// </summary>
+        public static string MACHINE_POWERREQUIRED_NOTBLANK {
+            get {
+                return ResourceManager.GetString("MACHINE_POWERREQUIRED_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard output quantity.
+        /// </summary>
+        public static string MACHINE_STANDARDOUTPUTQTY {
+            get {
+                return ResourceManager.GetString("MACHINE_STANDARDOUTPUTQTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide standard output quantity.
+        /// </summary>
+        public static string MACHINE_STANDARDOUTPUTQTY_NOTBLANK {
+            get {
+                return ResourceManager.GetString("MACHINE_STANDARDOUTPUTQTY_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard output unit.
+        /// </summary>
+        public static string MACHINE_STANDARDOUTPUTUNIT {
+            get {
+                return ResourceManager.GetString("MACHINE_STANDARDOUTPUTUNIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide standard output unit.
+        /// </summary>
+        public static string MACHINE_STANDARDOUTPUTUNIT_NOTBLANK {
+            get {
+                return ResourceManager.GetString("MACHINE_STANDARDOUTPUTUNIT_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Machine running time.
+        /// </summary>
+        public static string MACHINE_STANDARDRUNNINGTIME {
+            get {
+                return ResourceManager.GetString("MACHINE_STANDARDRUNNINGTIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide standard running time.
+        /// </summary>
+        public static string MACHINE_STANDARDRUNNINGTIME_NOTBLANK {
+            get {
+                return ResourceManager.GetString("MACHINE_STANDARDRUNNINGTIME_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Machine warranty period.
+        /// </summary>
+        public static string MACHINE_WARRANTYPERIOD {
+            get {
+                return ResourceManager.GetString("MACHINE_WARRANTYPERIOD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide machine warranty period.
+        /// </summary>
+        public static string MACHINE_WARRANTYPERIOD_NOTBLANK {
+            get {
+                return ResourceManager.GetString("MACHINE_WARRANTYPERIOD_NOTBLANK", resourceCulture);
             }
         }
         

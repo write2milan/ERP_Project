@@ -1,0 +1,130 @@
+﻿@model ERP_WebDesign_Main.Models.MasterData_Model.MachineMaster_Model
+
+@{
+    ViewBag.Title = "MachineMaster_Details";
+}
+
+<h2>Machine Details</h2>
+
+<div>
+    @*<h4>MachineMaster_Model</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MachineName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MachineDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InstallDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InstallDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MCLife)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MCLife)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WarrantyPeriod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WarrantyPeriod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OilRequired)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OilRequired)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PowerRequired)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PowerRequired)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StandardOutputQTY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StandardOutputQTY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StandardOutputUnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StandardOutputUnit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StandardRunningTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StandardRunningTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedDateTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.MachineID }) |*@
+    @Html.ActionLink("Back to Machine List", "MachineMaster_Index")
+</p>

@@ -291,4 +291,67 @@
   <data name="SUBPROCESS_NAME_NOTBLANK" xml:space="preserve">
     <value>Please provide sub process name</value>
   </data>
+  <data name="INSTALL_DATE" xml:space="preserve">
+    <value>Installation date</value>
+  </data>
+  <data name="INSTALL_DATE_NOTBLANK" xml:space="preserve">
+    <value>Please provide machine installation date</value>
+  </data>
+  <data name="MACHINE_DESC" xml:space="preserve">
+    <value>Machine description</value>
+  </data>
+  <data name="MACHINE_DESC_NOTBLANK" xml:space="preserve">
+    <value>Please provide mechine description</value>
+  </data>
+  <data name="MACHINE_ID" xml:space="preserve">
+    <value>Machine ID</value>
+  </data>
+  <data name="MACHINE_LIFE" xml:space="preserve">
+    <value>Machine life</value>
+  </data>
+  <data name="MACHINE_LIFE_NOTBLANK" xml:space="preserve">
+    <value>Please provide machine life</value>
+  </data>
+  <data name="MACHINE_Name" xml:space="preserve">
+    <value>Machine Name</value>
+  </data>
+  <data name="MACHINE_NAME_NOTBLANK" xml:space="preserve">
+    <value>Please provide machine name</value>
+  </data>
+  <data name="MACHINE_OILREQUIRED" xml:space="preserve">
+    <value>Oil required</value>
+  </data>
+  <data name="MACHINE_OILREQUIRED_NOTBLANK" xml:space="preserve">
+    <value>Please provide oil required for the machine</value>
+  </data>
+  <data name="MACHINE_POWERREQUIRED" xml:space="preserve">
+    <value>power required for the machine </value>
+  </data>
+  <data name="MACHINE_POWERREQUIRED_NOTBLANK" xml:space="preserve">
+    <value>Please provide power required for the machine</value>
+  </data>
+  <data name="MACHINE_STANDARDOUTPUTQTY" xml:space="preserve">
+    <value>Standard output quantity</value>
+  </data>
+  <data name="MACHINE_STANDARDOUTPUTQTY_NOTBLANK" xml:space="preserve">
+    <value>Please provide standard output quantity</value>
+  </data>
+  <data name="MACHINE_STANDARDOUTPUTUNIT" xml:space="preserve">
+    <value>Standard output unit</value>
+  </data>
+  <data name="MACHINE_STANDARDOUTPUTUNIT_NOTBLANK" xml:space="preserve">
+    <value>Please provide standard output unit</value>
+  </data>
+  <data name="MACHINE_STANDARDRUNNINGTIME" xml:space="preserve">
+    <value>Machine running time</value>
+  </data>
+  <data name="MACHINE_STANDARDRUNNINGTIME_NOTBLANK" xml:space="preserve">
+    <value>Please provide standard running time</value>
+  </data>
+  <data name="MACHINE_WARRANTYPERIOD" xml:space="preserve">
+    <value>Machine warranty period</value>
+  </data>
+  <data name="MACHINE_WARRANTYPERIOD_NOTBLANK" xml:space="preserve">
+    <value>Please provide machine warranty period</value>
+  </data>
 </root>

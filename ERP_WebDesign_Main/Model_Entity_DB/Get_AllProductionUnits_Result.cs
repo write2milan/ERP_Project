@@ -10,16 +10,9 @@
 namespace ERP_WebDesign_Main.Model_Entity_DB
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tbl_ProductionUnitMaster
+    public partial class Get_AllProductionUnits_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbl_ProductionUnitMaster()
-        {
-            this.tbl_ProcessMaster = new HashSet<tbl_ProcessMaster>();
-        }
-    
         public string Site { get; set; }
         public string Location { get; set; }
         public string Address { get; set; }
@@ -27,8 +20,5 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
         public Nullable<System.DateTime> CreatedDateTime { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDateTime { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_ProcessMaster> tbl_ProcessMaster { get; set; }
     }
 }

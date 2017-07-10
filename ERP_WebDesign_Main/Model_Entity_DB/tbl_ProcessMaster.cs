@@ -14,6 +14,12 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
     
     public partial class tbl_ProcessMaster
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbl_ProcessMaster()
+        {
+            this.tbl_SubProcess = new HashSet<tbl_SubProcess>();
+        }
+    
         public string ProcessID { get; set; }
         public string ProcessName { get; set; }
         public string ProcessDesc { get; set; }
@@ -22,5 +28,9 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
         public Nullable<System.DateTime> CreatedDateTime { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDateTime { get; set; }
+    
+        public virtual tbl_ProductionUnitMaster tbl_ProductionUnitMaster { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_SubProcess> tbl_SubProcess { get; set; }
     }
 }

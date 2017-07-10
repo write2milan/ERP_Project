@@ -12,23 +12,22 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_ProductionUnitMaster
+    public partial class tbl_LabourMaster
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbl_ProductionUnitMaster()
-        {
-            this.tbl_ProcessMaster = new HashSet<tbl_ProcessMaster>();
-        }
-    
-        public string Site { get; set; }
-        public string Location { get; set; }
+        public string LabourID { get; set; }
+        public string Name { get; set; }
         public string Address { get; set; }
+        public string Contact { get; set; }
+        public string DailyWage { get; set; }
+        public string DailyWageFrequency { get; set; }
+        public string OTHourlyRate { get; set; }
+        public string SkillSet { get; set; }
+        public string StandardWorkingHr { get; set; }
+        public string Shift { get; set; }
+        public string Role { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedDateTime { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDateTime { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_ProcessMaster> tbl_ProcessMaster { get; set; }
     }
 }

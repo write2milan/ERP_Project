@@ -25,6 +25,12 @@
         <AssociationConnector Association="ERP_DEMOModel.FK_CODI_RackID" />
         <AssociationConnector Association="ERP_DEMOModel.FK_CODI_SpecificationID" />
         <AssociationConnector Association="ERP_DEMOModel.FK_SPEC_GroupID" />
+        <EntityTypeShape EntityType="ERP_DEMOModel.tbl_LabourMaster" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="ERP_DEMOModel.tbl_MachineMaster" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ERP_DEMOModel.tbl_SubProcess" Width="1.5" PointX="3" PointY="6.875" />
+        <EntityTypeShape EntityType="ERP_DEMOModel.tbl_ToolMaster" Width="1.5" PointX="7.375" PointY="10.75" />
+        <AssociationConnector Association="ERP_DEMOModel.FK_tbl_ProcessMaster_tbl_ProductionUnitMaster" />
+        <AssociationConnector Association="ERP_DEMOModel.FK_tbl_SubProcess_tbl_ProcessMaster" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

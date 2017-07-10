@@ -56,6 +56,46 @@
           <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
           <Property Name="ModifiedDateTime" Type="datetime" />
         </EntityType>
+        <EntityType Name="tbl_LabourMaster">
+          <Key>
+            <PropertyRef Name="LabourID" />
+          </Key>
+          <Property Name="LabourID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="50" />
+          <Property Name="DailyWage" Type="nvarchar" MaxLength="50" />
+          <Property Name="DailyWageFrequency" Type="nchar" MaxLength="10" />
+          <Property Name="OTHourlyRate" Type="nchar" MaxLength="10" />
+          <Property Name="SkillSet" Type="nvarchar" MaxLength="50" />
+          <Property Name="StandardWorkingHr" Type="nchar" MaxLength="10" />
+          <Property Name="Shift" Type="nchar" MaxLength="10" />
+          <Property Name="Role" Type="nchar" MaxLength="10" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_MachineMaster">
+          <Key>
+            <PropertyRef Name="MachineID" />
+          </Key>
+          <Property Name="MachineID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MachineName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MachineDesc" Type="nvarchar" MaxLength="500" />
+          <Property Name="InstallDate" Type="date" />
+          <Property Name="MCLife" Type="nvarchar" MaxLength="50" />
+          <Property Name="WarrantyPeriod" Type="nvarchar" MaxLength="50" />
+          <Property Name="OilRequired" Type="nvarchar" MaxLength="50" />
+          <Property Name="PowerRequired" Type="nvarchar" MaxLength="50" />
+          <Property Name="StandardOutputQTY" Type="nvarchar" MaxLength="50" />
+          <Property Name="StandardOutputUnit" Type="nchar" MaxLength="10" />
+          <Property Name="StandardRunningTime" Type="nchar" MaxLength="10" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+        </EntityType>
         <EntityType Name="tbl_ProcessMaster">
           <Key>
             <PropertyRef Name="ProcessID" />
@@ -63,7 +103,7 @@
           <Property Name="ProcessID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ProcessName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ProcessDesc" Type="nvarchar" MaxLength="500" />
-          <Property Name="Site" Type="nvarchar" MaxLength="500" />
+          <Property Name="Site" Type="nvarchar" MaxLength="100" />
           <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
           <Property Name="CreatedDateTime" Type="datetime" />
           <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
@@ -148,6 +188,31 @@
           <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
           <Property Name="ModifiedDateTime" Type="datetime" />
           <Property Name="GroupID" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_SubProcess">
+          <Key>
+            <PropertyRef Name="SubProcessID" />
+          </Key>
+          <Property Name="SubProcessID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubProcessName" Type="nvarchar" MaxLength="100" />
+          <Property Name="SubProcessDesc" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+          <Property Name="ProcessID" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_ToolMaster">
+          <Key>
+            <PropertyRef Name="ToolID" />
+          </Key>
+          <Property Name="ToolID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ToolName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ToolDesc" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
         </EntityType>
         <EntityType Name="tbl_User">
           <Key>
@@ -252,15 +317,137 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbl_ProcessMaster_tbl_ProductionUnitMaster">
+          <End Role="tbl_ProductionUnitMaster" Type="Self.tbl_ProductionUnitMaster" Multiplicity="0..1" />
+          <End Role="tbl_ProcessMaster" Type="Self.tbl_ProcessMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ProductionUnitMaster">
+              <PropertyRef Name="Site" />
+            </Principal>
+            <Dependent Role="tbl_ProcessMaster">
+              <PropertyRef Name="Site" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_SubProcess_tbl_ProcessMaster">
+          <End Role="tbl_ProcessMaster" Type="Self.tbl_ProcessMaster" Multiplicity="0..1" />
+          <End Role="tbl_SubProcess" Type="Self.tbl_SubProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ProcessMaster">
+              <PropertyRef Name="ProcessID" />
+            </Principal>
+            <Dependent Role="tbl_SubProcess">
+              <PropertyRef Name="ProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Create_Machine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MachineName" Type="nvarchar" Mode="In" />
+          <Parameter Name="MachineDesc" Type="nvarchar" Mode="In" />
+          <Parameter Name="InstallDate" Type="date" Mode="In" />
+          <Parameter Name="MCLife" Type="nvarchar" Mode="In" />
+          <Parameter Name="WarrantyPeriod" Type="nvarchar" Mode="In" />
+          <Parameter Name="OilRequired" Type="nvarchar" Mode="In" />
+          <Parameter Name="PowerRequired" Type="nvarchar" Mode="In" />
+          <Parameter Name="StandardOutputQTY" Type="nvarchar" Mode="In" />
+          <Parameter Name="StandardOutputUnit" Type="nchar" Mode="In" />
+          <Parameter Name="StandardRunningTime" Type="nchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedDateTime" Type="datetime" Mode="In" />
+          <Parameter Name="ModifiedDateTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Create_Process" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProcessName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ProcessDesc" Type="nvarchar" Mode="In" />
+          <Parameter Name="Site" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedDateTime" Type="datetime" Mode="In" />
+          <Parameter Name="ModifiedDateTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Create_ProductionUnit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Site" Type="nvarchar" Mode="In" />
+          <Parameter Name="Location" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedDateTime" Type="datetime" Mode="In" />
+          <Parameter Name="ModifiedDateTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Create_SubProcess" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubProcessName" Type="nvarchar" Mode="In" />
+          <Parameter Name="SubProcessDesc" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedDateTime" Type="datetime" Mode="In" />
+          <Parameter Name="ModifiedDateTime" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="ERP_DB_SPGetCodificationSearchData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FILTER" Type="xml" Mode="In" />
           <Parameter Name="TOTALRECORDCOUNT" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="Get_AllMachines" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_AllProcesses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_AllProductionUnits" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_AllSites" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_AllSubProcess" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_MachineByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="Get_ProcessByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="Get_ProductionUnitByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Site" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Get_SubProcessByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubProcessID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Machine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MachineID" Type="nvarchar" Mode="In" />
+          <Parameter Name="MachineName" Type="nvarchar" Mode="In" />
+          <Parameter Name="MachineDesc" Type="nvarchar" Mode="In" />
+          <Parameter Name="InstallDate" Type="date" Mode="In" />
+          <Parameter Name="MCLife" Type="nvarchar" Mode="In" />
+          <Parameter Name="WarrantyPeriod" Type="nvarchar" Mode="In" />
+          <Parameter Name="OilRequired" Type="nvarchar" Mode="In" />
+          <Parameter Name="PowerRequired" Type="nvarchar" Mode="In" />
+          <Parameter Name="StandardOutputQTY" Type="nvarchar" Mode="In" />
+          <Parameter Name="StandardOutputUnit" Type="nchar" Mode="In" />
+          <Parameter Name="StandardRunningTime" Type="nchar" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="ModifiedDateTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Update_Process" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProcessID" Type="nvarchar" Mode="In" />
+          <Parameter Name="ProcessName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ProcessDesc" Type="nvarchar" Mode="In" />
+          <Parameter Name="Site" Type="nvarchar" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="ModifiedDateTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Update_ProductionUnit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Site" Type="nvarchar" Mode="In" />
+          <Parameter Name="Location" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ModifiedDateTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Update_SubProcess" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubProcessID" Type="nvarchar" Mode="In" />
+          <Parameter Name="SubProcessName" Type="nvarchar" Mode="In" />
+          <Parameter Name="SubProcessDesc" Type="nvarchar" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="ModifiedDateTime" Type="datetime" Mode="In" />
         </Function>
         <EntityContainer Name="ERP_DEMOModelStoreContainer">
           <EntitySet Name="tbl_Codification" EntityType="Self.tbl_Codification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_ExceptionLogger" EntityType="Self.tbl_ExceptionLogger" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Groups" EntityType="Self.tbl_Groups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Items" EntityType="Self.tbl_Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_LabourMaster" EntityType="Self.tbl_LabourMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_MachineMaster" EntityType="Self.tbl_MachineMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_ProcessMaster" EntityType="Self.tbl_ProcessMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_ProductionUnitMaster" EntityType="Self.tbl_ProductionUnitMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_ProductMaster" EntityType="Self.tbl_ProductMaster" Schema="dbo" store:Type="Tables" />
@@ -268,6 +455,8 @@
           <EntitySet Name="tbl_SalesOrder" EntityType="Self.tbl_SalesOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_ShiftMaster" EntityType="Self.tbl_ShiftMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Specification" EntityType="Self.tbl_Specification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SubProcess" EntityType="Self.tbl_SubProcess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ToolMaster" EntityType="Self.tbl_ToolMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CODI_GroupID" Association="Self.FK_CODI_GroupID">
             <End Role="tbl_Groups" EntitySet="tbl_Groups" />
@@ -300,6 +489,14 @@
           <AssociationSet Name="FK_SPEC_ItemID" Association="Self.FK_SPEC_ItemID">
             <End Role="tbl_Items" EntitySet="tbl_Items" />
             <End Role="tbl_Specification" EntitySet="tbl_Specification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ProcessMaster_tbl_ProductionUnitMaster" Association="Self.FK_tbl_ProcessMaster_tbl_ProductionUnitMaster">
+            <End Role="tbl_ProductionUnitMaster" EntitySet="tbl_ProductionUnitMaster" />
+            <End Role="tbl_ProcessMaster" EntitySet="tbl_ProcessMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_SubProcess_tbl_ProcessMaster" Association="Self.FK_tbl_SubProcess_tbl_ProcessMaster">
+            <End Role="tbl_ProcessMaster" EntitySet="tbl_ProcessMaster" />
+            <End Role="tbl_SubProcess" EntitySet="tbl_SubProcess" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -355,6 +552,114 @@
             <Parameter Name="FILTER" Mode="In" Type="String" />
             <Parameter Name="TOTALRECORDCOUNT" Mode="InOut" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="tbl_LabourMaster" EntityType="ERP_DEMOModel.tbl_LabourMaster" />
+          <EntitySet Name="tbl_MachineMaster" EntityType="ERP_DEMOModel.tbl_MachineMaster" />
+          <EntitySet Name="tbl_SubProcess" EntityType="ERP_DEMOModel.tbl_SubProcess" />
+          <EntitySet Name="tbl_ToolMaster" EntityType="ERP_DEMOModel.tbl_ToolMaster" />
+          <AssociationSet Name="FK_tbl_ProcessMaster_tbl_ProductionUnitMaster" Association="ERP_DEMOModel.FK_tbl_ProcessMaster_tbl_ProductionUnitMaster">
+            <End Role="tbl_ProductionUnitMaster" EntitySet="tbl_ProductionUnitMaster" />
+            <End Role="tbl_ProcessMaster" EntitySet="tbl_ProcessMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_SubProcess_tbl_ProcessMaster" Association="ERP_DEMOModel.FK_tbl_SubProcess_tbl_ProcessMaster">
+            <End Role="tbl_ProcessMaster" EntitySet="tbl_ProcessMaster" />
+            <End Role="tbl_SubProcess" EntitySet="tbl_SubProcess" />
+          </AssociationSet>
+          <FunctionImport Name="Create_Machine">
+            <Parameter Name="MachineName" Mode="In" Type="String" />
+            <Parameter Name="MachineDesc" Mode="In" Type="String" />
+            <Parameter Name="InstallDate" Mode="In" Type="DateTime" />
+            <Parameter Name="MCLife" Mode="In" Type="String" />
+            <Parameter Name="WarrantyPeriod" Mode="In" Type="String" />
+            <Parameter Name="OilRequired" Mode="In" Type="String" />
+            <Parameter Name="PowerRequired" Mode="In" Type="String" />
+            <Parameter Name="StandardOutputQTY" Mode="In" Type="String" />
+            <Parameter Name="StandardOutputUnit" Mode="In" Type="String" />
+            <Parameter Name="StandardRunningTime" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="String" />
+            <Parameter Name="CreatedDateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="ModifiedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Create_Process">
+            <Parameter Name="ProcessName" Mode="In" Type="String" />
+            <Parameter Name="ProcessDesc" Mode="In" Type="String" />
+            <Parameter Name="Site" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="String" />
+            <Parameter Name="CreatedDateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="ModifiedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Create_ProductionUnit">
+            <Parameter Name="Site" Mode="In" Type="String" />
+            <Parameter Name="Location" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="String" />
+            <Parameter Name="CreatedDateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="ModifiedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Create_SubProcess">
+            <Parameter Name="SubProcessName" Mode="In" Type="String" />
+            <Parameter Name="SubProcessDesc" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="String" />
+            <Parameter Name="CreatedDateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="ModifiedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Get_AllMachines" ReturnType="Collection(ERP_DEMOModel.Get_AllMachines_Result)" />
+          <FunctionImport Name="Get_AllProcesses" ReturnType="Collection(ERP_DEMOModel.Get_AllProcesses_Result)" />
+          <FunctionImport Name="Get_AllProductionUnits" ReturnType="Collection(ERP_DEMOModel.Get_AllProductionUnits_Result)" />
+          <FunctionImport Name="Get_AllSites" ReturnType="Collection(String)" />
+          <FunctionImport Name="Get_AllSubProcess" ReturnType="Collection(ERP_DEMOModel.Get_AllSubProcess_Result)" />
+          <FunctionImport Name="Get_MachineByID" ReturnType="Collection(ERP_DEMOModel.Get_MachineByID_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="Get_ProcessByID" ReturnType="Collection(ERP_DEMOModel.Get_ProcessByID_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="Get_ProductionUnitByID" ReturnType="Collection(ERP_DEMOModel.Get_ProductionUnitByID_Result)">
+            <Parameter Name="Site" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_SubProcessByID" ReturnType="Collection(ERP_DEMOModel.Get_SubProcessByID_Result)">
+            <Parameter Name="SubProcessID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Machine">
+            <Parameter Name="MachineID" Mode="In" Type="String" />
+            <Parameter Name="MachineName" Mode="In" Type="String" />
+            <Parameter Name="MachineDesc" Mode="In" Type="String" />
+            <Parameter Name="InstallDate" Mode="In" Type="DateTime" />
+            <Parameter Name="MCLife" Mode="In" Type="String" />
+            <Parameter Name="WarrantyPeriod" Mode="In" Type="String" />
+            <Parameter Name="OilRequired" Mode="In" Type="String" />
+            <Parameter Name="PowerRequired" Mode="In" Type="String" />
+            <Parameter Name="StandardOutputQTY" Mode="In" Type="String" />
+            <Parameter Name="StandardOutputUnit" Mode="In" Type="String" />
+            <Parameter Name="StandardRunningTime" Mode="In" Type="String" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="String" />
+            <Parameter Name="ModifiedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Process">
+            <Parameter Name="ProcessID" Mode="In" Type="String" />
+            <Parameter Name="ProcessName" Mode="In" Type="String" />
+            <Parameter Name="ProcessDesc" Mode="In" Type="String" />
+            <Parameter Name="Site" Mode="In" Type="String" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="String" />
+            <Parameter Name="ModifiedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Update_ProductionUnit">
+            <Parameter Name="Site" Mode="In" Type="String" />
+            <Parameter Name="Location" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="String" />
+            <Parameter Name="ModifiedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Update_SubProcess">
+            <Parameter Name="SubProcessID" Mode="In" Type="String" />
+            <Parameter Name="SubProcessName" Mode="In" Type="String" />
+            <Parameter Name="SubProcessDesc" Mode="In" Type="String" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="String" />
+            <Parameter Name="ModifiedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_User">
           <Key>
@@ -381,11 +686,13 @@
           <Property Name="ProcessID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ProcessName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ProcessDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Site" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Site" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_ProductionUnitMaster" Relationship="ERP_DEMOModel.FK_tbl_ProcessMaster_tbl_ProductionUnitMaster" FromRole="tbl_ProcessMaster" ToRole="tbl_ProductionUnitMaster" />
+          <NavigationProperty Name="tbl_SubProcess" Relationship="ERP_DEMOModel.FK_tbl_SubProcess_tbl_ProcessMaster" FromRole="tbl_ProcessMaster" ToRole="tbl_SubProcess" />
         </EntityType>
         <EntityType Name="tbl_ProductionUnitMaster">
           <Key>
@@ -398,6 +705,7 @@
           <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_ProcessMaster" Relationship="ERP_DEMOModel.FK_tbl_ProcessMaster_tbl_ProductionUnitMaster" FromRole="tbl_ProductionUnitMaster" ToRole="tbl_ProcessMaster" />
         </EntityType>
         <EntityType Name="tbl_ProductMaster">
           <Key>
@@ -632,6 +940,188 @@
           <Property Type="DateTime" Name="ModifiedDateTime" Nullable="true" Precision="23" />
           <Property Type="String" Name="CodificationID" Nullable="false" MaxLength="50" />
         </ComplexType>
+        <EntityType Name="tbl_LabourMaster">
+          <Key>
+            <PropertyRef Name="LabourID" />
+          </Key>
+          <Property Name="LabourID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DailyWage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DailyWageFrequency" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="OTHourlyRate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SkillSet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StandardWorkingHr" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Shift" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_MachineMaster">
+          <Key>
+            <PropertyRef Name="MachineID" />
+          </Key>
+          <Property Name="MachineID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MachineName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MachineDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="InstallDate" Type="DateTime" Precision="0" />
+          <Property Name="MCLife" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WarrantyPeriod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OilRequired" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PowerRequired" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StandardOutputQTY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StandardOutputUnit" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="StandardRunningTime" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_SubProcess">
+          <Key>
+            <PropertyRef Name="SubProcessID" />
+          </Key>
+          <Property Name="SubProcessID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubProcessName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SubProcessDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ProcessID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_ProcessMaster" Relationship="ERP_DEMOModel.FK_tbl_SubProcess_tbl_ProcessMaster" FromRole="tbl_SubProcess" ToRole="tbl_ProcessMaster" />
+        </EntityType>
+        <EntityType Name="tbl_ToolMaster">
+          <Key>
+            <PropertyRef Name="ToolID" />
+          </Key>
+          <Property Name="ToolID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ToolName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ToolDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_tbl_ProcessMaster_tbl_ProductionUnitMaster">
+          <End Type="ERP_DEMOModel.tbl_ProductionUnitMaster" Role="tbl_ProductionUnitMaster" Multiplicity="0..1" />
+          <End Type="ERP_DEMOModel.tbl_ProcessMaster" Role="tbl_ProcessMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ProductionUnitMaster">
+              <PropertyRef Name="Site" />
+            </Principal>
+            <Dependent Role="tbl_ProcessMaster">
+              <PropertyRef Name="Site" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_SubProcess_tbl_ProcessMaster">
+          <End Type="ERP_DEMOModel.tbl_ProcessMaster" Role="tbl_ProcessMaster" Multiplicity="0..1" />
+          <End Type="ERP_DEMOModel.tbl_SubProcess" Role="tbl_SubProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ProcessMaster">
+              <PropertyRef Name="ProcessID" />
+            </Principal>
+            <Dependent Role="tbl_SubProcess">
+              <PropertyRef Name="ProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Get_AllMachines_Result">
+          <Property Type="String" Name="MachineID" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MachineName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MachineDesc" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="InstallDate" Nullable="true" />
+          <Property Type="String" Name="MCLife" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="WarrantyPeriod" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OilRequired" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PowerRequired" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="StandardOutputQTY" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="StandardOutputUnit" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="StandardRunningTime" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ModifiedDateTime" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Get_AllProcesses_Result">
+          <Property Type="String" Name="ProcessID" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ProcessName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ProcessDesc" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Site" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ModifiedDateTime" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Get_AllProductionUnits_Result">
+          <Property Type="String" Name="Site" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ModifiedDateTime" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Get_AllSubProcess_Result">
+          <Property Type="String" Name="SubProcessID" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SubProcessName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SubProcessDesc" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ModifiedDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ProcessID" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_MachineByID_Result">
+          <Property Type="String" Name="MachineID" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MachineName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MachineDesc" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="InstallDate" Nullable="true" />
+          <Property Type="String" Name="MCLife" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="WarrantyPeriod" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OilRequired" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PowerRequired" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="StandardOutputQTY" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="StandardOutputUnit" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="StandardRunningTime" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ModifiedDateTime" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Get_ProcessByID_Result">
+          <Property Type="String" Name="ProcessID" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ProcessName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ProcessDesc" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Site" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ModifiedDateTime" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Get_ProductionUnitByID_Result">
+          <Property Type="String" Name="Site" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ModifiedDateTime" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Get_SubProcessByID_Result">
+          <Property Type="String" Name="SubProcessID" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SubProcessName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SubProcessDesc" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ModifiedDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ProcessID" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -818,6 +1308,208 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="tbl_LabourMaster">
+            <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_LabourMaster">
+              <MappingFragment StoreEntitySet="tbl_LabourMaster">
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Shift" ColumnName="Shift" />
+                <ScalarProperty Name="StandardWorkingHr" ColumnName="StandardWorkingHr" />
+                <ScalarProperty Name="SkillSet" ColumnName="SkillSet" />
+                <ScalarProperty Name="OTHourlyRate" ColumnName="OTHourlyRate" />
+                <ScalarProperty Name="DailyWageFrequency" ColumnName="DailyWageFrequency" />
+                <ScalarProperty Name="DailyWage" ColumnName="DailyWage" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LabourID" ColumnName="LabourID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_MachineMaster">
+            <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_MachineMaster">
+              <MappingFragment StoreEntitySet="tbl_MachineMaster">
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="StandardRunningTime" ColumnName="StandardRunningTime" />
+                <ScalarProperty Name="StandardOutputUnit" ColumnName="StandardOutputUnit" />
+                <ScalarProperty Name="StandardOutputQTY" ColumnName="StandardOutputQTY" />
+                <ScalarProperty Name="PowerRequired" ColumnName="PowerRequired" />
+                <ScalarProperty Name="OilRequired" ColumnName="OilRequired" />
+                <ScalarProperty Name="WarrantyPeriod" ColumnName="WarrantyPeriod" />
+                <ScalarProperty Name="MCLife" ColumnName="MCLife" />
+                <ScalarProperty Name="InstallDate" ColumnName="InstallDate" />
+                <ScalarProperty Name="MachineDesc" ColumnName="MachineDesc" />
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+                <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SubProcess">
+            <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_SubProcess">
+              <MappingFragment StoreEntitySet="tbl_SubProcess">
+                <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="SubProcessDesc" ColumnName="SubProcessDesc" />
+                <ScalarProperty Name="SubProcessName" ColumnName="SubProcessName" />
+                <ScalarProperty Name="SubProcessID" ColumnName="SubProcessID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ToolMaster">
+            <EntityTypeMapping TypeName="ERP_DEMOModel.tbl_ToolMaster">
+              <MappingFragment StoreEntitySet="tbl_ToolMaster">
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ToolDesc" ColumnName="ToolDesc" />
+                <ScalarProperty Name="ToolName" ColumnName="ToolName" />
+                <ScalarProperty Name="ToolID" ColumnName="ToolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Create_Machine" FunctionName="ERP_DEMOModel.Store.Create_Machine" />
+          <FunctionImportMapping FunctionImportName="Create_Process" FunctionName="ERP_DEMOModel.Store.Create_Process" />
+          <FunctionImportMapping FunctionImportName="Create_ProductionUnit" FunctionName="ERP_DEMOModel.Store.Create_ProductionUnit" />
+          <FunctionImportMapping FunctionImportName="Create_SubProcess" FunctionName="ERP_DEMOModel.Store.Create_SubProcess" />
+          <FunctionImportMapping FunctionImportName="Get_AllMachines" FunctionName="ERP_DEMOModel.Store.Get_AllMachines">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERP_DEMOModel.Get_AllMachines_Result">
+                <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+                <ScalarProperty Name="MachineDesc" ColumnName="MachineDesc" />
+                <ScalarProperty Name="InstallDate" ColumnName="InstallDate" />
+                <ScalarProperty Name="MCLife" ColumnName="MCLife" />
+                <ScalarProperty Name="WarrantyPeriod" ColumnName="WarrantyPeriod" />
+                <ScalarProperty Name="OilRequired" ColumnName="OilRequired" />
+                <ScalarProperty Name="PowerRequired" ColumnName="PowerRequired" />
+                <ScalarProperty Name="StandardOutputQTY" ColumnName="StandardOutputQTY" />
+                <ScalarProperty Name="StandardOutputUnit" ColumnName="StandardOutputUnit" />
+                <ScalarProperty Name="StandardRunningTime" ColumnName="StandardRunningTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_AllProcesses" FunctionName="ERP_DEMOModel.Store.Get_AllProcesses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERP_DEMOModel.Get_AllProcesses_Result">
+                <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+                <ScalarProperty Name="ProcessName" ColumnName="ProcessName" />
+                <ScalarProperty Name="ProcessDesc" ColumnName="ProcessDesc" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_AllProductionUnits" FunctionName="ERP_DEMOModel.Store.Get_AllProductionUnits">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERP_DEMOModel.Get_AllProductionUnits_Result">
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_AllSites" FunctionName="ERP_DEMOModel.Store.Get_AllSites" />
+          <FunctionImportMapping FunctionImportName="Get_AllSubProcess" FunctionName="ERP_DEMOModel.Store.Get_AllSubProcess">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERP_DEMOModel.Get_AllSubProcess_Result">
+                <ScalarProperty Name="SubProcessID" ColumnName="SubProcessID" />
+                <ScalarProperty Name="SubProcessName" ColumnName="SubProcessName" />
+                <ScalarProperty Name="SubProcessDesc" ColumnName="SubProcessDesc" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_MachineByID" FunctionName="ERP_DEMOModel.Store.Get_MachineByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERP_DEMOModel.Get_MachineByID_Result">
+                <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+                <ScalarProperty Name="MachineDesc" ColumnName="MachineDesc" />
+                <ScalarProperty Name="InstallDate" ColumnName="InstallDate" />
+                <ScalarProperty Name="MCLife" ColumnName="MCLife" />
+                <ScalarProperty Name="WarrantyPeriod" ColumnName="WarrantyPeriod" />
+                <ScalarProperty Name="OilRequired" ColumnName="OilRequired" />
+                <ScalarProperty Name="PowerRequired" ColumnName="PowerRequired" />
+                <ScalarProperty Name="StandardOutputQTY" ColumnName="StandardOutputQTY" />
+                <ScalarProperty Name="StandardOutputUnit" ColumnName="StandardOutputUnit" />
+                <ScalarProperty Name="StandardRunningTime" ColumnName="StandardRunningTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_ProcessByID" FunctionName="ERP_DEMOModel.Store.Get_ProcessByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERP_DEMOModel.Get_ProcessByID_Result">
+                <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+                <ScalarProperty Name="ProcessName" ColumnName="ProcessName" />
+                <ScalarProperty Name="ProcessDesc" ColumnName="ProcessDesc" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_ProductionUnitByID" FunctionName="ERP_DEMOModel.Store.Get_ProductionUnitByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERP_DEMOModel.Get_ProductionUnitByID_Result">
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_SubProcessByID" FunctionName="ERP_DEMOModel.Store.Get_SubProcessByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERP_DEMOModel.Get_SubProcessByID_Result">
+                <ScalarProperty Name="SubProcessID" ColumnName="SubProcessID" />
+                <ScalarProperty Name="SubProcessName" ColumnName="SubProcessName" />
+                <ScalarProperty Name="SubProcessDesc" ColumnName="SubProcessDesc" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Update_Machine" FunctionName="ERP_DEMOModel.Store.Update_Machine" />
+          <FunctionImportMapping FunctionImportName="Update_Process" FunctionName="ERP_DEMOModel.Store.Update_Process" />
+          <FunctionImportMapping FunctionImportName="Update_ProductionUnit" FunctionName="ERP_DEMOModel.Store.Update_ProductionUnit" />
+          <FunctionImportMapping FunctionImportName="Update_SubProcess" FunctionName="ERP_DEMOModel.Store.Update_SubProcess" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

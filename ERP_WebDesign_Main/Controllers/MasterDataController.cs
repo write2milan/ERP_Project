@@ -454,5 +454,51 @@ namespace ERP_WebDesign_Main.Controllers
         }
         #endregion
 
+        #region machine master
+        public ActionResult MachineMaster_Index()
+        {
+            Model_BL.MasterData_BL.MachineMaster_BL  objMachineMasterBL = new Model_BL.MasterData_BL.MachineMaster_BL ();
+            object[] parameters = { };
+            return View(objMachineMasterBL.GetAllItems(parameters));
+        }
+        public ActionResult MachineMaster_Create()
+        {
+            //Model_BL.MasterData_BL.SubProcessMaster_BL  objSubProcessMasterBL = new Model_BL.MasterData_BL.SubProcessMaster_BL ();
+            //return View(objSubProcessMasterBL.BindModelForInsertion());
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult MachineMaster_Create(Models.MasterData_Model.MachineMaster_Model  collection)
+        {
+            Model_BL.MasterData_BL.MachineMaster_BL objMachineMasterBL = new Model_BL.MasterData_BL.MachineMaster_BL();
+            objMachineMasterBL.InsertData(collection);
+            return Json(Url.Action("MachineMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult MachineMaster_Edit(string ItemId)
+        {
+            Model_BL.MasterData_BL.MachineMaster_BL objMachineMasterBL = new Model_BL.MasterData_BL.MachineMaster_BL();
+            return View(objMachineMasterBL.DetailsData(ItemId));
+        }
+
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult MachineMaster_Edit(Models.MasterData_Model.MachineMaster_Model Entity)
+        {
+
+            Model_BL.MasterData_BL.MachineMaster_BL objMachineMasterBL = new Model_BL.MasterData_BL.MachineMaster_BL();
+            objMachineMasterBL.UpdateData(Entity);
+            return Json(Url.Action("MachineMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
+
+        }
+        public ActionResult MachineMaster_Details(string ItemId)
+        {
+            Model_BL.MasterData_BL.MachineMaster_BL objMachineMasterBL = new Model_BL.MasterData_BL.MachineMaster_BL();
+            return View(objMachineMasterBL.DetailsData(ItemId));
+        }
+        #endregion
+
     }
 }

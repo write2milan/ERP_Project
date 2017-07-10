@@ -1,0 +1,111 @@
+﻿@model IEnumerable<ERP_WebDesign_Main.Models.MasterData_Model.MachineMaster_Model>
+
+@{
+    ViewBag.Title = "Machine Master";
+}
+
+<h2>Listing of Machines</h2>
+
+<p>
+    @Html.ActionLink("Create New", "MachineMaster_Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MachineName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MachineDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstallDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MCLife)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WarrantyPeriod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OilRequired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PowerRequired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StandardOutputQTY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StandardOutputUnit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StandardRunningTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDateTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MachineName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MachineDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstallDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MCLife)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WarrantyPeriod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OilRequired)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PowerRequired)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StandardOutputQTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StandardOutputUnit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StandardRunningTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDateTime)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "MachineMaster_Edit", new { ItemId = item.MachineID }) |
+            @Html.ActionLink("Details", "MachineMaster_Details", new { ItemId = item.MachineID }) @*|
+            @Html.ActionLink("Delete", "Delete", new { id=item.MachineID })*@
+        </td>
+    </tr>
+}
+
+</table>

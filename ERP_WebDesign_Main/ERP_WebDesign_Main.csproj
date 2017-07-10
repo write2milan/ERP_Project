@@ -144,6 +144,7 @@
     <Compile Include="Models\MasterData_Model\Codification_Model.cs" />
     <Compile Include="Models\MasterData_Model\GroupsMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\ItemsMaster_Model.cs" />
+    <Compile Include="Models\MasterData_Model\MachineMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\ProcessMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\ProductionUnitMaster_Model.cs" />
     <Compile Include="Models\MasterData_Model\ProductMaster_Model.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="Model_BL\MasterData_BL\Codification_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\GroupsMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\ItemsMaster_BL.cs" />
+    <Compile Include="Model_BL\MasterData_BL\MachineMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\ProcessMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\ProductionUnitMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\ProductMaster_BL.cs" />
@@ -183,6 +185,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ERP_WebDesign_DB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model_Entity_DB\Get_AllMachines_Result.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\Get_AllProcesses_Result.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\Get_AllProductionUnits_Result.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\Get_AllSubProcess_Result.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\Get_MachineByID_Result.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\Get_ProcessByID_Result.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\Get_ProductionUnitByID_Result.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\Get_SubProcessByID_Result.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model_Entity_DB\tbl_Codification.cs">
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
@@ -193,6 +219,12 @@
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Model_Entity_DB\tbl_Items.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\tbl_LabourMaster.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\tbl_MachineMaster.cs">
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Model_Entity_DB\tbl_ProcessMaster.cs">
@@ -214,6 +246,12 @@
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Model_Entity_DB\tbl_Specification.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\tbl_SubProcess.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\tbl_ToolMaster.cs">
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Model_Entity_DB\tbl_User.cs">
@@ -344,6 +382,10 @@
     <Content Include="Views\MasterData\SubProcessMaster_Details.cshtml" />
     <Content Include="Views\MasterData\SubProcessMaster_Edit.cshtml" />
     <Content Include="Views\MasterData\SubProcessMaster_Index.cshtml" />
+    <Content Include="Views\MasterData\MachineMaster_Index.cshtml" />
+    <Content Include="Views\MasterData\MachineMaster_Create.cshtml" />
+    <Content Include="Views\MasterData\MachineMaster_Edit.cshtml" />
+    <Content Include="Views\MasterData\MachineMaster_Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

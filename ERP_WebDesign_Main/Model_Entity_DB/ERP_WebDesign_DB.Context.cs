@@ -14,19 +14,19 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-
+    
     public partial class ERP_DEMOEntities : DbContext
     {
         public ERP_DEMOEntities()
             : base("name=ERP_DEMOEntities")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<tbl_User> tbl_User { get; set; }
         public virtual DbSet<tbl_ExceptionLogger> tbl_ExceptionLogger { get; set; }
         public virtual DbSet<tbl_ProcessMaster> tbl_ProcessMaster { get; set; }
@@ -39,19 +39,373 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
         public virtual DbSet<tbl_Rack> tbl_Rack { get; set; }
         public virtual DbSet<tbl_Specification> tbl_Specification { get; set; }
         public virtual DbSet<tbl_Codification> tbl_Codification { get; set; }
-
-        public System.Data.Entity.DbSet<ERP_WebDesign_Main.Models.MasterData_Model.ProcessMaster_Model> ProcessMaster_Model { get; set; }
-
-        public System.Data.Entity.DbSet<ERP_WebDesign_Main.Models.MasterData_Model.ProductionUnitMaster_Model> ProductionUnitMaster_Model { get; set; }
-
-
+        public virtual DbSet<tbl_LabourMaster> tbl_LabourMaster { get; set; }
+        public virtual DbSet<tbl_MachineMaster> tbl_MachineMaster { get; set; }
+        public virtual DbSet<tbl_SubProcess> tbl_SubProcess { get; set; }
+        public virtual DbSet<tbl_ToolMaster> tbl_ToolMaster { get; set; }
+    
         public virtual ObjectResult<ERP_DB_SPGetCodificationSearchData_Result> ERP_DB_SPGetCodificationSearchData(string fILTER, ObjectParameter tOTALRECORDCOUNT)
         {
             var fILTERParameter = fILTER != null ?
                 new ObjectParameter("FILTER", fILTER) :
                 new ObjectParameter("FILTER", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ERP_DB_SPGetCodificationSearchData_Result>("ERP_DB_SPGetCodificationSearchData", fILTERParameter, tOTALRECORDCOUNT);
         }
+    
+        public virtual int Create_Machine(string machineName, string machineDesc, Nullable<System.DateTime> installDate, string mCLife, string warrantyPeriod, string oilRequired, string powerRequired, string standardOutputQTY, string standardOutputUnit, string standardRunningTime, string createdBy, string modifiedBy, Nullable<System.DateTime> createdDateTime, Nullable<System.DateTime> modifiedDateTime)
+        {
+            var machineNameParameter = machineName != null ?
+                new ObjectParameter("MachineName", machineName) :
+                new ObjectParameter("MachineName", typeof(string));
+    
+            var machineDescParameter = machineDesc != null ?
+                new ObjectParameter("MachineDesc", machineDesc) :
+                new ObjectParameter("MachineDesc", typeof(string));
+    
+            var installDateParameter = installDate.HasValue ?
+                new ObjectParameter("InstallDate", installDate) :
+                new ObjectParameter("InstallDate", typeof(System.DateTime));
+    
+            var mCLifeParameter = mCLife != null ?
+                new ObjectParameter("MCLife", mCLife) :
+                new ObjectParameter("MCLife", typeof(string));
+    
+            var warrantyPeriodParameter = warrantyPeriod != null ?
+                new ObjectParameter("WarrantyPeriod", warrantyPeriod) :
+                new ObjectParameter("WarrantyPeriod", typeof(string));
+    
+            var oilRequiredParameter = oilRequired != null ?
+                new ObjectParameter("OilRequired", oilRequired) :
+                new ObjectParameter("OilRequired", typeof(string));
+    
+            var powerRequiredParameter = powerRequired != null ?
+                new ObjectParameter("PowerRequired", powerRequired) :
+                new ObjectParameter("PowerRequired", typeof(string));
+    
+            var standardOutputQTYParameter = standardOutputQTY != null ?
+                new ObjectParameter("StandardOutputQTY", standardOutputQTY) :
+                new ObjectParameter("StandardOutputQTY", typeof(string));
+    
+            var standardOutputUnitParameter = standardOutputUnit != null ?
+                new ObjectParameter("StandardOutputUnit", standardOutputUnit) :
+                new ObjectParameter("StandardOutputUnit", typeof(string));
+    
+            var standardRunningTimeParameter = standardRunningTime != null ?
+                new ObjectParameter("StandardRunningTime", standardRunningTime) :
+                new ObjectParameter("StandardRunningTime", typeof(string));
+    
+            var createdByParameter = createdBy != null ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(string));
+    
+            var modifiedByParameter = modifiedBy != null ?
+                new ObjectParameter("ModifiedBy", modifiedBy) :
+                new ObjectParameter("ModifiedBy", typeof(string));
+    
+            var createdDateTimeParameter = createdDateTime.HasValue ?
+                new ObjectParameter("CreatedDateTime", createdDateTime) :
+                new ObjectParameter("CreatedDateTime", typeof(System.DateTime));
+    
+            var modifiedDateTimeParameter = modifiedDateTime.HasValue ?
+                new ObjectParameter("ModifiedDateTime", modifiedDateTime) :
+                new ObjectParameter("ModifiedDateTime", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Create_Machine", machineNameParameter, machineDescParameter, installDateParameter, mCLifeParameter, warrantyPeriodParameter, oilRequiredParameter, powerRequiredParameter, standardOutputQTYParameter, standardOutputUnitParameter, standardRunningTimeParameter, createdByParameter, modifiedByParameter, createdDateTimeParameter, modifiedDateTimeParameter);
+        }
+    
+        public virtual int Create_Process(string processName, string processDesc, string site, string createdBy, string modifiedBy, Nullable<System.DateTime> createdDateTime, Nullable<System.DateTime> modifiedDateTime)
+        {
+            var processNameParameter = processName != null ?
+                new ObjectParameter("ProcessName", processName) :
+                new ObjectParameter("ProcessName", typeof(string));
+    
+            var processDescParameter = processDesc != null ?
+                new ObjectParameter("ProcessDesc", processDesc) :
+                new ObjectParameter("ProcessDesc", typeof(string));
+    
+            var siteParameter = site != null ?
+                new ObjectParameter("Site", site) :
+                new ObjectParameter("Site", typeof(string));
+    
+            var createdByParameter = createdBy != null ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(string));
+    
+            var modifiedByParameter = modifiedBy != null ?
+                new ObjectParameter("ModifiedBy", modifiedBy) :
+                new ObjectParameter("ModifiedBy", typeof(string));
+    
+            var createdDateTimeParameter = createdDateTime.HasValue ?
+                new ObjectParameter("CreatedDateTime", createdDateTime) :
+                new ObjectParameter("CreatedDateTime", typeof(System.DateTime));
+    
+            var modifiedDateTimeParameter = modifiedDateTime.HasValue ?
+                new ObjectParameter("ModifiedDateTime", modifiedDateTime) :
+                new ObjectParameter("ModifiedDateTime", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Create_Process", processNameParameter, processDescParameter, siteParameter, createdByParameter, modifiedByParameter, createdDateTimeParameter, modifiedDateTimeParameter);
+        }
+    
+        public virtual int Create_ProductionUnit(string site, string location, string address, string createdBy, string modifiedBy, Nullable<System.DateTime> createdDateTime, Nullable<System.DateTime> modifiedDateTime)
+        {
+            var siteParameter = site != null ?
+                new ObjectParameter("Site", site) :
+                new ObjectParameter("Site", typeof(string));
+    
+            var locationParameter = location != null ?
+                new ObjectParameter("Location", location) :
+                new ObjectParameter("Location", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var createdByParameter = createdBy != null ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(string));
+    
+            var modifiedByParameter = modifiedBy != null ?
+                new ObjectParameter("ModifiedBy", modifiedBy) :
+                new ObjectParameter("ModifiedBy", typeof(string));
+    
+            var createdDateTimeParameter = createdDateTime.HasValue ?
+                new ObjectParameter("CreatedDateTime", createdDateTime) :
+                new ObjectParameter("CreatedDateTime", typeof(System.DateTime));
+    
+            var modifiedDateTimeParameter = modifiedDateTime.HasValue ?
+                new ObjectParameter("ModifiedDateTime", modifiedDateTime) :
+                new ObjectParameter("ModifiedDateTime", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Create_ProductionUnit", siteParameter, locationParameter, addressParameter, createdByParameter, modifiedByParameter, createdDateTimeParameter, modifiedDateTimeParameter);
+        }
+    
+        public virtual int Create_SubProcess(string subProcessName, string subProcessDesc, string createdBy, string modifiedBy, Nullable<System.DateTime> createdDateTime, Nullable<System.DateTime> modifiedDateTime)
+        {
+            var subProcessNameParameter = subProcessName != null ?
+                new ObjectParameter("SubProcessName", subProcessName) :
+                new ObjectParameter("SubProcessName", typeof(string));
+    
+            var subProcessDescParameter = subProcessDesc != null ?
+                new ObjectParameter("SubProcessDesc", subProcessDesc) :
+                new ObjectParameter("SubProcessDesc", typeof(string));
+    
+            var createdByParameter = createdBy != null ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(string));
+    
+            var modifiedByParameter = modifiedBy != null ?
+                new ObjectParameter("ModifiedBy", modifiedBy) :
+                new ObjectParameter("ModifiedBy", typeof(string));
+    
+            var createdDateTimeParameter = createdDateTime.HasValue ?
+                new ObjectParameter("CreatedDateTime", createdDateTime) :
+                new ObjectParameter("CreatedDateTime", typeof(System.DateTime));
+    
+            var modifiedDateTimeParameter = modifiedDateTime.HasValue ?
+                new ObjectParameter("ModifiedDateTime", modifiedDateTime) :
+                new ObjectParameter("ModifiedDateTime", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Create_SubProcess", subProcessNameParameter, subProcessDescParameter, createdByParameter, modifiedByParameter, createdDateTimeParameter, modifiedDateTimeParameter);
+        }
+    
+        public virtual ObjectResult<Get_AllMachines_Result> Get_AllMachines()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_AllMachines_Result>("Get_AllMachines");
+        }
+    
+        public virtual ObjectResult<Get_AllProcesses_Result> Get_AllProcesses()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_AllProcesses_Result>("Get_AllProcesses");
+        }
+    
+        public virtual ObjectResult<Get_AllProductionUnits_Result> Get_AllProductionUnits()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_AllProductionUnits_Result>("Get_AllProductionUnits");
+        }
+    
+        public virtual ObjectResult<string> Get_AllSites()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("Get_AllSites");
+        }
+    
+        public virtual ObjectResult<Get_AllSubProcess_Result> Get_AllSubProcess()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_AllSubProcess_Result>("Get_AllSubProcess");
+        }
+    
+        public virtual ObjectResult<Get_MachineByID_Result> Get_MachineByID(Nullable<long> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_MachineByID_Result>("Get_MachineByID", idParameter);
+        }
+    
+        public virtual ObjectResult<Get_ProcessByID_Result> Get_ProcessByID(Nullable<long> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_ProcessByID_Result>("Get_ProcessByID", idParameter);
+        }
+    
+        public virtual ObjectResult<Get_ProductionUnitByID_Result> Get_ProductionUnitByID(string site)
+        {
+            var siteParameter = site != null ?
+                new ObjectParameter("Site", site) :
+                new ObjectParameter("Site", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_ProductionUnitByID_Result>("Get_ProductionUnitByID", siteParameter);
+        }
+    
+        public virtual ObjectResult<Get_SubProcessByID_Result> Get_SubProcessByID(string subProcessID)
+        {
+            var subProcessIDParameter = subProcessID != null ?
+                new ObjectParameter("SubProcessID", subProcessID) :
+                new ObjectParameter("SubProcessID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_SubProcessByID_Result>("Get_SubProcessByID", subProcessIDParameter);
+        }
+    
+        public virtual int Update_Machine(string machineID, string machineName, string machineDesc, Nullable<System.DateTime> installDate, string mCLife, string warrantyPeriod, string oilRequired, string powerRequired, string standardOutputQTY, string standardOutputUnit, string standardRunningTime, string modifiedBy, Nullable<System.DateTime> modifiedDateTime)
+        {
+            var machineIDParameter = machineID != null ?
+                new ObjectParameter("MachineID", machineID) :
+                new ObjectParameter("MachineID", typeof(string));
+    
+            var machineNameParameter = machineName != null ?
+                new ObjectParameter("MachineName", machineName) :
+                new ObjectParameter("MachineName", typeof(string));
+    
+            var machineDescParameter = machineDesc != null ?
+                new ObjectParameter("MachineDesc", machineDesc) :
+                new ObjectParameter("MachineDesc", typeof(string));
+    
+            var installDateParameter = installDate.HasValue ?
+                new ObjectParameter("InstallDate", installDate) :
+                new ObjectParameter("InstallDate", typeof(System.DateTime));
+    
+            var mCLifeParameter = mCLife != null ?
+                new ObjectParameter("MCLife", mCLife) :
+                new ObjectParameter("MCLife", typeof(string));
+    
+            var warrantyPeriodParameter = warrantyPeriod != null ?
+                new ObjectParameter("WarrantyPeriod", warrantyPeriod) :
+                new ObjectParameter("WarrantyPeriod", typeof(string));
+    
+            var oilRequiredParameter = oilRequired != null ?
+                new ObjectParameter("OilRequired", oilRequired) :
+                new ObjectParameter("OilRequired", typeof(string));
+    
+            var powerRequiredParameter = powerRequired != null ?
+                new ObjectParameter("PowerRequired", powerRequired) :
+                new ObjectParameter("PowerRequired", typeof(string));
+    
+            var standardOutputQTYParameter = standardOutputQTY != null ?
+                new ObjectParameter("StandardOutputQTY", standardOutputQTY) :
+                new ObjectParameter("StandardOutputQTY", typeof(string));
+    
+            var standardOutputUnitParameter = standardOutputUnit != null ?
+                new ObjectParameter("StandardOutputUnit", standardOutputUnit) :
+                new ObjectParameter("StandardOutputUnit", typeof(string));
+    
+            var standardRunningTimeParameter = standardRunningTime != null ?
+                new ObjectParameter("StandardRunningTime", standardRunningTime) :
+                new ObjectParameter("StandardRunningTime", typeof(string));
+    
+            var modifiedByParameter = modifiedBy != null ?
+                new ObjectParameter("ModifiedBy", modifiedBy) :
+                new ObjectParameter("ModifiedBy", typeof(string));
+    
+            var modifiedDateTimeParameter = modifiedDateTime.HasValue ?
+                new ObjectParameter("ModifiedDateTime", modifiedDateTime) :
+                new ObjectParameter("ModifiedDateTime", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_Machine", machineIDParameter, machineNameParameter, machineDescParameter, installDateParameter, mCLifeParameter, warrantyPeriodParameter, oilRequiredParameter, powerRequiredParameter, standardOutputQTYParameter, standardOutputUnitParameter, standardRunningTimeParameter, modifiedByParameter, modifiedDateTimeParameter);
+        }
+    
+        public virtual int Update_Process(string processID, string processName, string processDesc, string site, string modifiedBy, Nullable<System.DateTime> modifiedDateTime)
+        {
+            var processIDParameter = processID != null ?
+                new ObjectParameter("ProcessID", processID) :
+                new ObjectParameter("ProcessID", typeof(string));
+    
+            var processNameParameter = processName != null ?
+                new ObjectParameter("ProcessName", processName) :
+                new ObjectParameter("ProcessName", typeof(string));
+    
+            var processDescParameter = processDesc != null ?
+                new ObjectParameter("ProcessDesc", processDesc) :
+                new ObjectParameter("ProcessDesc", typeof(string));
+    
+            var siteParameter = site != null ?
+                new ObjectParameter("Site", site) :
+                new ObjectParameter("Site", typeof(string));
+    
+            var modifiedByParameter = modifiedBy != null ?
+                new ObjectParameter("ModifiedBy", modifiedBy) :
+                new ObjectParameter("ModifiedBy", typeof(string));
+    
+            var modifiedDateTimeParameter = modifiedDateTime.HasValue ?
+                new ObjectParameter("ModifiedDateTime", modifiedDateTime) :
+                new ObjectParameter("ModifiedDateTime", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_Process", processIDParameter, processNameParameter, processDescParameter, siteParameter, modifiedByParameter, modifiedDateTimeParameter);
+        }
+    
+        public virtual int Update_ProductionUnit(string site, string location, string address, string modifiedBy, Nullable<System.DateTime> modifiedDateTime)
+        {
+            var siteParameter = site != null ?
+                new ObjectParameter("Site", site) :
+                new ObjectParameter("Site", typeof(string));
+    
+            var locationParameter = location != null ?
+                new ObjectParameter("Location", location) :
+                new ObjectParameter("Location", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var modifiedByParameter = modifiedBy != null ?
+                new ObjectParameter("ModifiedBy", modifiedBy) :
+                new ObjectParameter("ModifiedBy", typeof(string));
+    
+            var modifiedDateTimeParameter = modifiedDateTime.HasValue ?
+                new ObjectParameter("ModifiedDateTime", modifiedDateTime) :
+                new ObjectParameter("ModifiedDateTime", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_ProductionUnit", siteParameter, locationParameter, addressParameter, modifiedByParameter, modifiedDateTimeParameter);
+        }
+    
+        public virtual int Update_SubProcess(string subProcessID, string subProcessName, string subProcessDesc, string modifiedBy, Nullable<System.DateTime> modifiedDateTime)
+        {
+            var subProcessIDParameter = subProcessID != null ?
+                new ObjectParameter("SubProcessID", subProcessID) :
+                new ObjectParameter("SubProcessID", typeof(string));
+    
+            var subProcessNameParameter = subProcessName != null ?
+                new ObjectParameter("SubProcessName", subProcessName) :
+                new ObjectParameter("SubProcessName", typeof(string));
+    
+            var subProcessDescParameter = subProcessDesc != null ?
+                new ObjectParameter("SubProcessDesc", subProcessDesc) :
+                new ObjectParameter("SubProcessDesc", typeof(string));
+    
+            var modifiedByParameter = modifiedBy != null ?
+                new ObjectParameter("ModifiedBy", modifiedBy) :
+                new ObjectParameter("ModifiedBy", typeof(string));
+    
+            var modifiedDateTimeParameter = modifiedDateTime.HasValue ?
+                new ObjectParameter("ModifiedDateTime", modifiedDateTime) :
+                new ObjectParameter("ModifiedDateTime", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_SubProcess", subProcessIDParameter, subProcessNameParameter, subProcessDescParameter, modifiedByParameter, modifiedDateTimeParameter);
+        }
+
+        public System.Data.Entity.DbSet<ERP_WebDesign_Main.Models.MasterData_Model.MachineMaster_Model> MachineMaster_Model { get; set; }
     }
 }
