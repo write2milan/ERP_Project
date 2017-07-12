@@ -424,7 +424,7 @@ namespace ERP_WebDesign_Main.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult SubProcessMaster_Create(Models.MasterData_Model.SubProcessMaster_Model  collection)
+        public ActionResult SubProcessMaster_Create(Models.MasterData_Model.ToolMaster_Model  collection)
         {
             Model_BL.MasterData_BL.SubProcessMaster_BL  objSubProcessMasterBL = new Model_BL.MasterData_BL.SubProcessMaster_BL ();
             objSubProcessMasterBL.InsertData(collection);
@@ -439,7 +439,7 @@ namespace ERP_WebDesign_Main.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult SubProcessMaster_Edit(Models.MasterData_Model.SubProcessMaster_Model  Entity)
+        public ActionResult SubProcessMaster_Edit(Models.MasterData_Model.ToolMaster_Model  Entity)
         {
 
             Model_BL.MasterData_BL.SubProcessMaster_BL  objSubProcessMasterBL = new Model_BL.MasterData_BL.SubProcessMaster_BL ();
@@ -497,6 +497,52 @@ namespace ERP_WebDesign_Main.Controllers
         {
             Model_BL.MasterData_BL.MachineMaster_BL objMachineMasterBL = new Model_BL.MasterData_BL.MachineMaster_BL();
             return View(objMachineMasterBL.DetailsData(ItemId));
+        }
+        #endregion
+
+        #region Tool master
+        public ActionResult ToolMaster_Index()
+        {
+            Model_BL.MasterData_BL.ToolMaster_BL objToolMasterBL = new Model_BL.MasterData_BL.ToolMaster_BL();
+            object[] parameters = { };
+            return View(objToolMasterBL.GetAllItems(parameters));
+        }
+        public ActionResult ToolMaster_Create()
+        {
+            //Model_BL.MasterData_BL.SubProcessMaster_BL  objSubProcessMasterBL = new Model_BL.MasterData_BL.SubProcessMaster_BL ();
+            //return View(objSubProcessMasterBL.BindModelForInsertion());
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ToolMaster_Create(Models.MasterData_Model.ToolMaster_Model collection)
+        {
+            Model_BL.MasterData_BL.ToolMaster_BL objToolMasterBL = new Model_BL.MasterData_BL.ToolMaster_BL();
+            objToolMasterBL.InsertData(collection);
+            return Json(Url.Action("ToolMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult ToolMaster_Edit(string ItemId)
+        {
+            Model_BL.MasterData_BL.ToolMaster_BL objToolMasterBL = new Model_BL.MasterData_BL.ToolMaster_BL();
+            return View(objToolMasterBL.DetailsData(ItemId));
+        }
+
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ToolMaster_Edit(Models.MasterData_Model.ToolMaster_Model Entity)
+        {
+
+            Model_BL.MasterData_BL.ToolMaster_BL objToolMasterBL = new Model_BL.MasterData_BL.ToolMaster_BL();
+            objToolMasterBL.UpdateData(Entity);
+            return Json(Url.Action("ToolMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
+
+        }
+        public ActionResult ToolMaster_Details(string ItemId)
+        {
+            Model_BL.MasterData_BL.ToolMaster_BL objToolMasterBL = new Model_BL.MasterData_BL.ToolMaster_BL();
+            return View(objToolMasterBL.DetailsData(ItemId));
         }
         #endregion
 
