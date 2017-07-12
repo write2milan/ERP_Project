@@ -770,5 +770,50 @@ namespace ERP_WebDesign_Main.Resources {
                 return ResourceManager.GetString("SUBPROCESS_NAME_NOTBLANK", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tool Description.
+        /// </summary>
+        public static string Tool_DESC {
+            get {
+                return ResourceManager.GetString("Tool_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide tool description.
+        /// </summary>
+        public static string Tool_DESC_NOTBLANK {
+            get {
+                return ResourceManager.GetString("Tool_DESC_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tool ID.
+        /// </summary>
+        public static string Tool_ID {
+            get {
+                return ResourceManager.GetString("Tool_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tool Name.
+        /// </summary>
+        public static string Tool_NAME {
+            get {
+                return ResourceManager.GetString("Tool_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide tool name.
+        /// </summary>
+        public static string Tool_NAME_NOTBLANK {
+            get {
+                return ResourceManager.GetString("Tool_NAME_NOTBLANK", resourceCulture);
+            }
+        }
     }
 }

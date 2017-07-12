@@ -354,4 +354,19 @@
   <data name="MACHINE_WARRANTYPERIOD_NOTBLANK" xml:space="preserve">
     <value>Please provide machine warranty period</value>
   </data>
+  <data name="Tool_DESC" xml:space="preserve">
+    <value>Tool Description</value>
+  </data>
+  <data name="Tool_DESC_NOTBLANK" xml:space="preserve">
+    <value>Please provide tool description</value>
+  </data>
+  <data name="Tool_ID" xml:space="preserve">
+    <value>Tool ID</value>
+  </data>
+  <data name="Tool_NAME" xml:space="preserve">
+    <value>Tool Name</value>
+  </data>
+  <data name="Tool_NAME_NOTBLANK" xml:space="preserve">
+    <value>Please provide tool name</value>
+  </data>
 </root>

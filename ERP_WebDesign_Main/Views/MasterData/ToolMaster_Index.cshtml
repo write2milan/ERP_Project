@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ERP_WebDesign_Main.Models.MasterData_Model.ToolMaster_Model>
+
+@{
+    ViewBag.Title = "ToolMaster_Index";
+}
+
+<h2>List Of Available Tools</h2>
+
+<p>
+    @Html.ActionLink("Create New", "ToolMaster_Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ToolName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToolDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDateTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToolName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToolDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDateTime)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "ToolMaster_Edit", new { ItemId = item.ToolID }) |
+            @Html.ActionLink("Details", "ToolMaster_Details", new { ItemId = item.ToolID }) @*|
+            @Html.ActionLink("Delete", "Delete", new { id=item.ToolID })*@
+        </td>
+    </tr>
+}
+
+</table>

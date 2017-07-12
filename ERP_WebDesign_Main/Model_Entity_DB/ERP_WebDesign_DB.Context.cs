@@ -407,5 +407,7 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
         }
 
         public System.Data.Entity.DbSet<ERP_WebDesign_Main.Models.MasterData_Model.MachineMaster_Model> MachineMaster_Model { get; set; }
+
+        public System.Data.Entity.DbSet<ERP_WebDesign_Main.Models.MasterData_Model.ToolMaster_Model> ToolMaster_Model { get; set; }
     }
 }

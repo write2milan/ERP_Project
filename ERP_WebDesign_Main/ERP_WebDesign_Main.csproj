@@ -388,6 +388,10 @@
     <Content Include="Views\MasterData\MachineMaster_Create.cshtml" />
     <Content Include="Views\MasterData\MachineMaster_Edit.cshtml" />
     <Content Include="Views\MasterData\MachineMaster_Details.cshtml" />
+    <Content Include="Views\MasterData\ToolMaster_Index.cshtml" />
+    <Content Include="Views\MasterData\ToolMaster_Create.cshtml" />
+    <Content Include="Views\MasterData\ToolMaster_Edit.cshtml" />
+    <Content Include="Views\MasterData\ToolMaster_Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

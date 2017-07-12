@@ -1,0 +1,66 @@
+﻿@model ERP_WebDesign_Main.Models.MasterData_Model.ToolMaster_Model
+
+@{
+    ViewBag.Title = "ToolMaster_Details";
+}
+
+<h2>Details of the Tool</h2>
+
+<div>
+    <h4>ToolMaster_Model</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ToolName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToolName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ToolDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToolDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedDateTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.ToolID }) |*@
+    @Html.ActionLink("Back to List", "ToolMaster_Index")
+</p>
