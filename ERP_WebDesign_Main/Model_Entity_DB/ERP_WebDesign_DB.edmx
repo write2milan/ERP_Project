@@ -341,6 +341,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Create_Labour" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Contact" Type="nvarchar" Mode="In" />
+          <Parameter Name="DailyWage" Type="nvarchar" Mode="In" />
+          <Parameter Name="DailyWageFrequency" Type="nchar" Mode="In" />
+          <Parameter Name="OTHourlyRate" Type="nchar" Mode="In" />
+          <Parameter Name="SkillSet" Type="nvarchar" Mode="In" />
+          <Parameter Name="StandardWorkingHr" Type="nchar" Mode="In" />
+          <Parameter Name="Shift" Type="nchar" Mode="In" />
+          <Parameter Name="Role" Type="nchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="CreatedDateTime" Type="datetime" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ModifiedDateTime" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="Create_Machine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MachineName" Type="nvarchar" Mode="In" />
           <Parameter Name="MachineDesc" Type="nvarchar" Mode="In" />
@@ -383,15 +399,28 @@
           <Parameter Name="CreatedDateTime" Type="datetime" Mode="In" />
           <Parameter Name="ModifiedDateTime" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="Create_Tool" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ToolName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ToolDesc" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="CreatedDateTime" Type="datetime" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ModifiedDateTime" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="ERP_DB_SPGetCodificationSearchData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FILTER" Type="xml" Mode="In" />
           <Parameter Name="TOTALRECORDCOUNT" Type="int" Mode="InOut" />
         </Function>
+        <Function Name="Get_AllLabours" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Get_AllMachines" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Get_AllProcesses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Get_AllProductionUnits" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Get_AllSites" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Get_AllSubProcess" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_AllTools" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_LabourByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="bigint" Mode="In" />
+        </Function>
         <Function Name="Get_MachineByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="bigint" Mode="In" />
         </Function>
@@ -403,6 +432,24 @@
         </Function>
         <Function Name="Get_SubProcessByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="SubProcessID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Get_ToolByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="Update_Labour" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LabourID" Type="nvarchar" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Contact" Type="nvarchar" Mode="In" />
+          <Parameter Name="DailyWage" Type="nvarchar" Mode="In" />
+          <Parameter Name="DailyWageFrequency" Type="nchar" Mode="In" />
+          <Parameter Name="OTHourlyRate" Type="nchar" Mode="In" />
+          <Parameter Name="SkillSet" Type="nvarchar" Mode="In" />
+          <Parameter Name="StandardWorkingHr" Type="nchar" Mode="In" />
+          <Parameter Name="Shift" Type="nchar" Mode="In" />
+          <Parameter Name="Role" Type="nchar" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ModifiedDateTime" Type="datetime" Mode="In" />
         </Function>
         <Function Name="Update_Machine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MachineID" Type="nvarchar" Mode="In" />
@@ -439,6 +486,13 @@
           <Parameter Name="SubProcessName" Type="nvarchar" Mode="In" />
           <Parameter Name="SubProcessDesc" Type="nvarchar" Mode="In" />
           <Parameter Name="ModifiedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="ModifiedDateTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Update_Tool" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ToolID" Type="nvarchar" Mode="In" />
+          <Parameter Name="ToolName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ToolDesc" Type="nvarchar" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="varchar" Mode="In" />
           <Parameter Name="ModifiedDateTime" Type="datetime" Mode="In" />
         </Function>
         <EntityContainer Name="ERP_DEMOModelStoreContainer">
@@ -612,16 +666,16 @@
           <FunctionImport Name="Get_AllSites" ReturnType="Collection(String)" />
           <FunctionImport Name="Get_AllSubProcess" ReturnType="Collection(ERP_DEMOModel.Get_AllSubProcess_Result)" />
           <FunctionImport Name="Get_MachineByID" ReturnType="Collection(ERP_DEMOModel.Get_MachineByID_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int64" />
+          <Parameter Name="Id" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="Get_ProcessByID" ReturnType="Collection(ERP_DEMOModel.Get_ProcessByID_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int64" />
+          <Parameter Name="Id" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="Get_ProductionUnitByID" ReturnType="Collection(ERP_DEMOModel.Get_ProductionUnitByID_Result)">
-            <Parameter Name="Site" Mode="In" Type="String" />
+          <Parameter Name="Site" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Get_SubProcessByID" ReturnType="Collection(ERP_DEMOModel.Get_SubProcessByID_Result)">
-            <Parameter Name="SubProcessID" Mode="In" Type="String" />
+          <Parameter Name="SubProcessID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Update_Machine">
             <Parameter Name="MachineID" Mode="In" Type="String" />
@@ -657,6 +711,60 @@
             <Parameter Name="SubProcessID" Mode="In" Type="String" />
             <Parameter Name="SubProcessName" Mode="In" Type="String" />
             <Parameter Name="SubProcessDesc" Mode="In" Type="String" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="String" />
+            <Parameter Name="ModifiedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Create_Labour">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Contact" Mode="In" Type="String" />
+            <Parameter Name="DailyWage" Mode="In" Type="String" />
+            <Parameter Name="DailyWageFrequency" Mode="In" Type="String" />
+            <Parameter Name="OTHourlyRate" Mode="In" Type="String" />
+            <Parameter Name="SkillSet" Mode="In" Type="String" />
+            <Parameter Name="StandardWorkingHr" Mode="In" Type="String" />
+            <Parameter Name="Shift" Mode="In" Type="String" />
+            <Parameter Name="Role" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="CreatedDateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="String" />
+            <Parameter Name="ModifiedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Create_Tool">
+            <Parameter Name="ToolName" Mode="In" Type="String" />
+            <Parameter Name="ToolDesc" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="CreatedDateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="String" />
+            <Parameter Name="ModifiedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Get_AllLabours" ReturnType="Collection(ERP_DEMOModel.Get_AllLabours_Result)" />
+          <FunctionImport Name="Get_AllTools" ReturnType="Collection(ERP_DEMOModel.Get_AllTools_Result)" />
+          <FunctionImport Name="Get_LabourByID" ReturnType="Collection(ERP_DEMOModel.Get_LabourByID_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="Get_ToolByID" ReturnType="Collection(ERP_DEMOModel.Get_ToolByID_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Labour">
+            <Parameter Name="LabourID" Mode="In" Type="String" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Contact" Mode="In" Type="String" />
+            <Parameter Name="DailyWage" Mode="In" Type="String" />
+            <Parameter Name="DailyWageFrequency" Mode="In" Type="String" />
+            <Parameter Name="OTHourlyRate" Mode="In" Type="String" />
+            <Parameter Name="SkillSet" Mode="In" Type="String" />
+            <Parameter Name="StandardWorkingHr" Mode="In" Type="String" />
+            <Parameter Name="Shift" Mode="In" Type="String" />
+            <Parameter Name="Role" Mode="In" Type="String" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="String" />
+            <Parameter Name="ModifiedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Tool">
+            <Parameter Name="ToolID" Mode="In" Type="String" />
+            <Parameter Name="ToolName" Mode="In" Type="String" />
+            <Parameter Name="ToolDesc" Mode="In" Type="String" />
             <Parameter Name="ModifiedBy" Mode="In" Type="String" />
             <Parameter Name="ModifiedDateTime" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -1122,6 +1230,58 @@
           <Property Type="DateTime" Name="ModifiedDateTime" Nullable="true" Precision="23" />
           <Property Type="String" Name="ProcessID" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="Get_AllLabours_Result">
+          <Property Type="String" Name="LabourID" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Contact" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DailyWage" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DailyWageFrequency" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="OTHourlyRate" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="SkillSet" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="StandardWorkingHr" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Shift" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Role" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ModifiedDateTime" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Get_AllTools_Result">
+          <Property Type="String" Name="ToolID" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ToolName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ToolDesc" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ModifiedDateTime" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Get_LabourByID_Result">
+          <Property Type="String" Name="LabourID" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Contact" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DailyWage" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DailyWageFrequency" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="OTHourlyRate" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="SkillSet" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="StandardWorkingHr" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Shift" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Role" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ModifiedDateTime" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Get_ToolByID_Result">
+          <Property Type="String" Name="ToolID" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ToolName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ToolDesc" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ModifiedDateTime" Nullable="true" Precision="23" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1510,6 +1670,78 @@
           <FunctionImportMapping FunctionImportName="Update_Process" FunctionName="ERP_DEMOModel.Store.Update_Process" />
           <FunctionImportMapping FunctionImportName="Update_ProductionUnit" FunctionName="ERP_DEMOModel.Store.Update_ProductionUnit" />
           <FunctionImportMapping FunctionImportName="Update_SubProcess" FunctionName="ERP_DEMOModel.Store.Update_SubProcess" />
+          <FunctionImportMapping FunctionImportName="Create_Labour" FunctionName="ERP_DEMOModel.Store.Create_Labour" />
+          <FunctionImportMapping FunctionImportName="Create_Tool" FunctionName="ERP_DEMOModel.Store.Create_Tool" />
+          <FunctionImportMapping FunctionImportName="Get_AllLabours" FunctionName="ERP_DEMOModel.Store.Get_AllLabours">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERP_DEMOModel.Get_AllLabours_Result">
+                <ScalarProperty Name="LabourID" ColumnName="LabourID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="DailyWage" ColumnName="DailyWage" />
+                <ScalarProperty Name="DailyWageFrequency" ColumnName="DailyWageFrequency" />
+                <ScalarProperty Name="OTHourlyRate" ColumnName="OTHourlyRate" />
+                <ScalarProperty Name="SkillSet" ColumnName="SkillSet" />
+                <ScalarProperty Name="StandardWorkingHr" ColumnName="StandardWorkingHr" />
+                <ScalarProperty Name="Shift" ColumnName="Shift" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_AllTools" FunctionName="ERP_DEMOModel.Store.Get_AllTools">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERP_DEMOModel.Get_AllTools_Result">
+                <ScalarProperty Name="ToolID" ColumnName="ToolID" />
+                <ScalarProperty Name="ToolName" ColumnName="ToolName" />
+                <ScalarProperty Name="ToolDesc" ColumnName="ToolDesc" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_LabourByID" FunctionName="ERP_DEMOModel.Store.Get_LabourByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERP_DEMOModel.Get_LabourByID_Result">
+                <ScalarProperty Name="LabourID" ColumnName="LabourID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="DailyWage" ColumnName="DailyWage" />
+                <ScalarProperty Name="DailyWageFrequency" ColumnName="DailyWageFrequency" />
+                <ScalarProperty Name="OTHourlyRate" ColumnName="OTHourlyRate" />
+                <ScalarProperty Name="SkillSet" ColumnName="SkillSet" />
+                <ScalarProperty Name="StandardWorkingHr" ColumnName="StandardWorkingHr" />
+                <ScalarProperty Name="Shift" ColumnName="Shift" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_ToolByID" FunctionName="ERP_DEMOModel.Store.Get_ToolByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERP_DEMOModel.Get_ToolByID_Result">
+                <ScalarProperty Name="ToolID" ColumnName="ToolID" />
+                <ScalarProperty Name="ToolName" ColumnName="ToolName" />
+                <ScalarProperty Name="ToolDesc" ColumnName="ToolDesc" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Update_Labour" FunctionName="ERP_DEMOModel.Store.Update_Labour" />
+          <FunctionImportMapping FunctionImportName="Update_Tool" FunctionName="ERP_DEMOModel.Store.Update_Tool" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
