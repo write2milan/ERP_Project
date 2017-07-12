@@ -187,6 +187,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ERP_WebDesign_DB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model_Entity_DB\Get_AllLabours_Result.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model_Entity_DB\Get_AllMachines_Result.cs">
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
@@ -199,6 +202,12 @@
     <Compile Include="Model_Entity_DB\Get_AllSubProcess_Result.cs">
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model_Entity_DB\Get_AllTools_Result.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\Get_LabourByID_Result.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model_Entity_DB\Get_MachineByID_Result.cs">
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
@@ -209,6 +218,9 @@
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Model_Entity_DB\Get_SubProcessByID_Result.cs">
+      <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model_Entity_DB\Get_ToolByID_Result.cs">
       <DependentUpon>ERP_WebDesign_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Model_Entity_DB\tbl_Codification.cs">

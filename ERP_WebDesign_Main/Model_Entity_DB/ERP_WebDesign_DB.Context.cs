@@ -405,9 +405,205 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_SubProcess", subProcessIDParameter, subProcessNameParameter, subProcessDescParameter, modifiedByParameter, modifiedDateTimeParameter);
         }
-
-        public System.Data.Entity.DbSet<ERP_WebDesign_Main.Models.MasterData_Model.MachineMaster_Model> MachineMaster_Model { get; set; }
-
-        public System.Data.Entity.DbSet<ERP_WebDesign_Main.Models.MasterData_Model.ToolMaster_Model> ToolMaster_Model { get; set; }
+    
+        public virtual int Create_Labour(string name, string address, string contact, string dailyWage, string dailyWageFrequency, string oTHourlyRate, string skillSet, string standardWorkingHr, string shift, string role, string createdBy, Nullable<System.DateTime> createdDateTime, string modifiedBy, Nullable<System.DateTime> modifiedDateTime)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var contactParameter = contact != null ?
+                new ObjectParameter("Contact", contact) :
+                new ObjectParameter("Contact", typeof(string));
+    
+            var dailyWageParameter = dailyWage != null ?
+                new ObjectParameter("DailyWage", dailyWage) :
+                new ObjectParameter("DailyWage", typeof(string));
+    
+            var dailyWageFrequencyParameter = dailyWageFrequency != null ?
+                new ObjectParameter("DailyWageFrequency", dailyWageFrequency) :
+                new ObjectParameter("DailyWageFrequency", typeof(string));
+    
+            var oTHourlyRateParameter = oTHourlyRate != null ?
+                new ObjectParameter("OTHourlyRate", oTHourlyRate) :
+                new ObjectParameter("OTHourlyRate", typeof(string));
+    
+            var skillSetParameter = skillSet != null ?
+                new ObjectParameter("SkillSet", skillSet) :
+                new ObjectParameter("SkillSet", typeof(string));
+    
+            var standardWorkingHrParameter = standardWorkingHr != null ?
+                new ObjectParameter("StandardWorkingHr", standardWorkingHr) :
+                new ObjectParameter("StandardWorkingHr", typeof(string));
+    
+            var shiftParameter = shift != null ?
+                new ObjectParameter("Shift", shift) :
+                new ObjectParameter("Shift", typeof(string));
+    
+            var roleParameter = role != null ?
+                new ObjectParameter("Role", role) :
+                new ObjectParameter("Role", typeof(string));
+    
+            var createdByParameter = createdBy != null ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(string));
+    
+            var createdDateTimeParameter = createdDateTime.HasValue ?
+                new ObjectParameter("CreatedDateTime", createdDateTime) :
+                new ObjectParameter("CreatedDateTime", typeof(System.DateTime));
+    
+            var modifiedByParameter = modifiedBy != null ?
+                new ObjectParameter("ModifiedBy", modifiedBy) :
+                new ObjectParameter("ModifiedBy", typeof(string));
+    
+            var modifiedDateTimeParameter = modifiedDateTime.HasValue ?
+                new ObjectParameter("ModifiedDateTime", modifiedDateTime) :
+                new ObjectParameter("ModifiedDateTime", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Create_Labour", nameParameter, addressParameter, contactParameter, dailyWageParameter, dailyWageFrequencyParameter, oTHourlyRateParameter, skillSetParameter, standardWorkingHrParameter, shiftParameter, roleParameter, createdByParameter, createdDateTimeParameter, modifiedByParameter, modifiedDateTimeParameter);
+        }
+    
+        public virtual int Create_Tool(string toolName, string toolDesc, string createdBy, Nullable<System.DateTime> createdDateTime, string modifiedBy, Nullable<System.DateTime> modifiedDateTime)
+        {
+            var toolNameParameter = toolName != null ?
+                new ObjectParameter("ToolName", toolName) :
+                new ObjectParameter("ToolName", typeof(string));
+    
+            var toolDescParameter = toolDesc != null ?
+                new ObjectParameter("ToolDesc", toolDesc) :
+                new ObjectParameter("ToolDesc", typeof(string));
+    
+            var createdByParameter = createdBy != null ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(string));
+    
+            var createdDateTimeParameter = createdDateTime.HasValue ?
+                new ObjectParameter("CreatedDateTime", createdDateTime) :
+                new ObjectParameter("CreatedDateTime", typeof(System.DateTime));
+    
+            var modifiedByParameter = modifiedBy != null ?
+                new ObjectParameter("ModifiedBy", modifiedBy) :
+                new ObjectParameter("ModifiedBy", typeof(string));
+    
+            var modifiedDateTimeParameter = modifiedDateTime.HasValue ?
+                new ObjectParameter("ModifiedDateTime", modifiedDateTime) :
+                new ObjectParameter("ModifiedDateTime", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Create_Tool", toolNameParameter, toolDescParameter, createdByParameter, createdDateTimeParameter, modifiedByParameter, modifiedDateTimeParameter);
+        }
+    
+        public virtual ObjectResult<Get_AllLabours_Result> Get_AllLabours()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_AllLabours_Result>("Get_AllLabours");
+        }
+    
+        public virtual ObjectResult<Get_AllTools_Result> Get_AllTools()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_AllTools_Result>("Get_AllTools");
+        }
+    
+        public virtual ObjectResult<Get_LabourByID_Result> Get_LabourByID(Nullable<long> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_LabourByID_Result>("Get_LabourByID", idParameter);
+        }
+    
+        public virtual ObjectResult<Get_ToolByID_Result> Get_ToolByID(Nullable<long> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_ToolByID_Result>("Get_ToolByID", idParameter);
+        }
+    
+        public virtual int Update_Labour(string labourID, string name, string address, string contact, string dailyWage, string dailyWageFrequency, string oTHourlyRate, string skillSet, string standardWorkingHr, string shift, string role, string modifiedBy, Nullable<System.DateTime> modifiedDateTime)
+        {
+            var labourIDParameter = labourID != null ?
+                new ObjectParameter("LabourID", labourID) :
+                new ObjectParameter("LabourID", typeof(string));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var contactParameter = contact != null ?
+                new ObjectParameter("Contact", contact) :
+                new ObjectParameter("Contact", typeof(string));
+    
+            var dailyWageParameter = dailyWage != null ?
+                new ObjectParameter("DailyWage", dailyWage) :
+                new ObjectParameter("DailyWage", typeof(string));
+    
+            var dailyWageFrequencyParameter = dailyWageFrequency != null ?
+                new ObjectParameter("DailyWageFrequency", dailyWageFrequency) :
+                new ObjectParameter("DailyWageFrequency", typeof(string));
+    
+            var oTHourlyRateParameter = oTHourlyRate != null ?
+                new ObjectParameter("OTHourlyRate", oTHourlyRate) :
+                new ObjectParameter("OTHourlyRate", typeof(string));
+    
+            var skillSetParameter = skillSet != null ?
+                new ObjectParameter("SkillSet", skillSet) :
+                new ObjectParameter("SkillSet", typeof(string));
+    
+            var standardWorkingHrParameter = standardWorkingHr != null ?
+                new ObjectParameter("StandardWorkingHr", standardWorkingHr) :
+                new ObjectParameter("StandardWorkingHr", typeof(string));
+    
+            var shiftParameter = shift != null ?
+                new ObjectParameter("Shift", shift) :
+                new ObjectParameter("Shift", typeof(string));
+    
+            var roleParameter = role != null ?
+                new ObjectParameter("Role", role) :
+                new ObjectParameter("Role", typeof(string));
+    
+            var modifiedByParameter = modifiedBy != null ?
+                new ObjectParameter("ModifiedBy", modifiedBy) :
+                new ObjectParameter("ModifiedBy", typeof(string));
+    
+            var modifiedDateTimeParameter = modifiedDateTime.HasValue ?
+                new ObjectParameter("ModifiedDateTime", modifiedDateTime) :
+                new ObjectParameter("ModifiedDateTime", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_Labour", labourIDParameter, nameParameter, addressParameter, contactParameter, dailyWageParameter, dailyWageFrequencyParameter, oTHourlyRateParameter, skillSetParameter, standardWorkingHrParameter, shiftParameter, roleParameter, modifiedByParameter, modifiedDateTimeParameter);
+        }
+    
+        public virtual int Update_Tool(string toolID, string toolName, string toolDesc, string modifiedBy, Nullable<System.DateTime> modifiedDateTime)
+        {
+            var toolIDParameter = toolID != null ?
+                new ObjectParameter("ToolID", toolID) :
+                new ObjectParameter("ToolID", typeof(string));
+    
+            var toolNameParameter = toolName != null ?
+                new ObjectParameter("ToolName", toolName) :
+                new ObjectParameter("ToolName", typeof(string));
+    
+            var toolDescParameter = toolDesc != null ?
+                new ObjectParameter("ToolDesc", toolDesc) :
+                new ObjectParameter("ToolDesc", typeof(string));
+    
+            var modifiedByParameter = modifiedBy != null ?
+                new ObjectParameter("ModifiedBy", modifiedBy) :
+                new ObjectParameter("ModifiedBy", typeof(string));
+    
+            var modifiedDateTimeParameter = modifiedDateTime.HasValue ?
+                new ObjectParameter("ModifiedDateTime", modifiedDateTime) :
+                new ObjectParameter("ModifiedDateTime", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_Tool", toolIDParameter, toolNameParameter, toolDescParameter, modifiedByParameter, modifiedDateTimeParameter);
+        }
     }
 }
