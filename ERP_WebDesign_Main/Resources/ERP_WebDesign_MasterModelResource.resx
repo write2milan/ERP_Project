@@ -369,4 +369,67 @@
   <data name="Tool_NAME_NOTBLANK" xml:space="preserve">
     <value>Please provide tool name</value>
   </data>
+  <data name="DAILYWAGE_FREQUENCY" xml:space="preserve">
+    <value>Daily Wage Frequency</value>
+  </data>
+  <data name="DAILYWAGE_FREQUENCY_NOTBLANK" xml:space="preserve">
+    <value>Please provide daily wage frequency</value>
+  </data>
+  <data name="LABOUR_ADDR" xml:space="preserve">
+    <value>Labour Address</value>
+  </data>
+  <data name="LABOUR_ADDR_NOTBLANK" xml:space="preserve">
+    <value>Please provide labour address</value>
+  </data>
+  <data name="LABOUR_CONTACT" xml:space="preserve">
+    <value>Labour Name</value>
+  </data>
+  <data name="LABOUR_CONTACT_NOTBLANK" xml:space="preserve">
+    <value>Please provide labour contact</value>
+  </data>
+  <data name="LABOUR_DAILYWAGE" xml:space="preserve">
+    <value>Labour Daily Wage</value>
+  </data>
+  <data name="LABOUR_DAILYWAGE_NOTBLANK" xml:space="preserve">
+    <value>Please provide daily wage</value>
+  </data>
+  <data name="LABOUR_HOURLYRATE" xml:space="preserve">
+    <value>Labour Hourly Rate</value>
+  </data>
+  <data name="LABOUR_HOURLYRATE_NOTBLANK" xml:space="preserve">
+    <value>Please provide labour hourly rate</value>
+  </data>
+  <data name="LABOUR_ID" xml:space="preserve">
+    <value>Labour ID</value>
+  </data>
+  <data name="LABOUR_Name" xml:space="preserve">
+    <value>Labour Name</value>
+  </data>
+  <data name="LABOUR_NAME_NOTBLANK" xml:space="preserve">
+    <value>Please provide labour name</value>
+  </data>
+  <data name="LABOUR_ROLE" xml:space="preserve">
+    <value>Labour Role</value>
+  </data>
+  <data name="LABOUR_ROLE_NOTBLANK" xml:space="preserve">
+    <value>Please provide labour role</value>
+  </data>
+  <data name="LABOUR_SHIFT" xml:space="preserve">
+    <value>Labour Shift</value>
+  </data>
+  <data name="LABOUR_SHIFT_NOTBLANK" xml:space="preserve">
+    <value>Please provide labour shift</value>
+  </data>
+  <data name="LABOUR_SKILLSET" xml:space="preserve">
+    <value>Labour Skill Sets</value>
+  </data>
+  <data name="LABOUR_SKILLSET_NOTBLANK" xml:space="preserve">
+    <value>Please provide labour skill sets</value>
+  </data>
+  <data name="LABOUR_STDWORKINGHR" xml:space="preserve">
+    <value>Labour Standard Working Hour</value>
+  </data>
+  <data name="LABOUR_STDWORKINGHR_NOTBLANK" xml:space="preserve">
+    <value>Please provide labour standard working hour</value>
+  </data>
 </root>

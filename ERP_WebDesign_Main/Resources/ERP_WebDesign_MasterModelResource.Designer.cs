@@ -142,6 +142,24 @@ namespace ERP_WebDesign_Main.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Daily Wage Frequency.
+        /// </summary>
+        public static string DAILYWAGE_FREQUENCY {
+            get {
+                return ResourceManager.GetString("DAILYWAGE_FREQUENCY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide daily wage frequency.
+        /// </summary>
+        public static string DAILYWAGE_FREQUENCY_NOTBLANK {
+            get {
+                return ResourceManager.GetString("DAILYWAGE_FREQUENCY_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Group code.
         /// </summary>
         public static string GROUP_CODE {
@@ -273,6 +291,177 @@ namespace ERP_WebDesign_Main.Resources {
         public static string ITEMS_ID_PREFIX {
             get {
                 return ResourceManager.GetString("ITEMS_ID_PREFIX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Labour Address.
+        /// </summary>
+        public static string LABOUR_ADDR {
+            get {
+                return ResourceManager.GetString("LABOUR_ADDR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide labour address.
+        /// </summary>
+        public static string LABOUR_ADDR_NOTBLANK {
+            get {
+                return ResourceManager.GetString("LABOUR_ADDR_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Labour Name.
+        /// </summary>
+        public static string LABOUR_CONTACT {
+            get {
+                return ResourceManager.GetString("LABOUR_CONTACT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide labour contact.
+        /// </summary>
+        public static string LABOUR_CONTACT_NOTBLANK {
+            get {
+                return ResourceManager.GetString("LABOUR_CONTACT_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Labour Daily Wage.
+        /// </summary>
+        public static string LABOUR_DAILYWAGE {
+            get {
+                return ResourceManager.GetString("LABOUR_DAILYWAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide daily wage.
+        /// </summary>
+        public static string LABOUR_DAILYWAGE_NOTBLANK {
+            get {
+                return ResourceManager.GetString("LABOUR_DAILYWAGE_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Labour Hourly Rate.
+        /// </summary>
+        public static string LABOUR_HOURLYRATE {
+            get {
+                return ResourceManager.GetString("LABOUR_HOURLYRATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide labour hourly rate.
+        /// </summary>
+        public static string LABOUR_HOURLYRATE_NOTBLANK {
+            get {
+                return ResourceManager.GetString("LABOUR_HOURLYRATE_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Labour ID.
+        /// </summary>
+        public static string LABOUR_ID {
+            get {
+                return ResourceManager.GetString("LABOUR_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Labour Name.
+        /// </summary>
+        public static string LABOUR_Name {
+            get {
+                return ResourceManager.GetString("LABOUR_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide labour name.
+        /// </summary>
+        public static string LABOUR_NAME_NOTBLANK {
+            get {
+                return ResourceManager.GetString("LABOUR_NAME_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Labour Role.
+        /// </summary>
+        public static string LABOUR_ROLE {
+            get {
+                return ResourceManager.GetString("LABOUR_ROLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide labour role.
+        /// </summary>
+        public static string LABOUR_ROLE_NOTBLANK {
+            get {
+                return ResourceManager.GetString("LABOUR_ROLE_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Labour Shift.
+        /// </summary>
+        public static string LABOUR_SHIFT {
+            get {
+                return ResourceManager.GetString("LABOUR_SHIFT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide labour shift.
+        /// </summary>
+        public static string LABOUR_SHIFT_NOTBLANK {
+            get {
+                return ResourceManager.GetString("LABOUR_SHIFT_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Labour Skill Sets.
+        /// </summary>
+        public static string LABOUR_SKILLSET {
+            get {
+                return ResourceManager.GetString("LABOUR_SKILLSET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide labour skill sets.
+        /// </summary>
+        public static string LABOUR_SKILLSET_NOTBLANK {
+            get {
+                return ResourceManager.GetString("LABOUR_SKILLSET_NOTBLANK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Labour Standard Working Hour.
+        /// </summary>
+        public static string LABOUR_STDWORKINGHR {
+            get {
+                return ResourceManager.GetString("LABOUR_STDWORKINGHR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide labour standard working hour.
+        /// </summary>
+        public static string LABOUR_STDWORKINGHR_NOTBLANK {
+            get {
+                return ResourceManager.GetString("LABOUR_STDWORKINGHR_NOTBLANK", resourceCulture);
             }
         }
         
