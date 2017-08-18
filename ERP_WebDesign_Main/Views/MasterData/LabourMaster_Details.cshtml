@@ -1,0 +1,130 @@
+﻿@model ERP_WebDesign_Main.Models.MasterData_Model.LabourMaster_Model
+
+@{
+    ViewBag.Title = "LabourMaster_Details";
+}
+
+<h2>LabourMaster_Details</h2>
+
+<div>
+    <h4>LabourMaster_Model</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DailyWage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DailyWage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DailyWageFrequency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DailyWageFrequency)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OTHourlyRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OTHourlyRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SkillSet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkillSet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StandardWorkingHr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StandardWorkingHr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Shift)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shift)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedDateTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LabourID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -546,5 +546,50 @@ namespace ERP_WebDesign_Main.Controllers
         }
         #endregion
 
+        #region Labour master
+        public ActionResult LabourMaster_Index()
+        {
+            Model_BL.MasterData_BL.LabourMaster_BL  objLabourMasterBL = new Model_BL.MasterData_BL.LabourMaster_BL();
+            object[] parameters = { };
+            return View(objLabourMasterBL.GetAllItems(parameters));
+        }
+        public ActionResult LabourMaster_Create()
+        {
+            //Model_BL.MasterData_BL.SubProcessMaster_BL  objSubProcessMasterBL = new Model_BL.MasterData_BL.SubProcessMaster_BL ();
+            //return View(objSubProcessMasterBL.BindModelForInsertion());
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult LabourMaster_Create(Models.MasterData_Model.LabourMaster_Model  collection)
+        {
+            Model_BL.MasterData_BL.LabourMaster_BL objLabourMasterBL = new Model_BL.MasterData_BL.LabourMaster_BL();
+            objLabourMasterBL.InsertData(collection);
+            return Json(Url.Action("LabourMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult LabourMaster_Edit(string ItemId)
+        {
+            Model_BL.MasterData_BL.LabourMaster_BL objLabourMasterBL = new Model_BL.MasterData_BL.LabourMaster_BL();
+            return View(objLabourMasterBL.DetailsData(ItemId));
+        }
+
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult LabourMaster_Edit(Models.MasterData_Model.LabourMaster_Model Entity)
+        {
+
+            Model_BL.MasterData_BL.LabourMaster_BL objLabourMasterBL = new Model_BL.MasterData_BL.LabourMaster_BL();
+            objLabourMasterBL.UpdateData(Entity);
+            return Json(Url.Action("LabourMaster_Index", "MasterData"), JsonRequestBehavior.AllowGet);
+
+        }
+        public ActionResult LabourMaster_Details(string ItemId)
+        {
+            Model_BL.MasterData_BL.LabourMaster_BL objLabourMasterBL = new Model_BL.MasterData_BL.LabourMaster_BL();
+            return View(objLabourMasterBL.DetailsData(ItemId));
+        }
+        #endregion
     }
 }

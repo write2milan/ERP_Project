@@ -158,6 +158,7 @@
     <Compile Include="Model_BL\MasterData_BL\Codification_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\GroupsMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\ItemsMaster_BL.cs" />
+    <Compile Include="Model_BL\MasterData_BL\LabourMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\MachineMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\ProcessMaster_BL.cs" />
     <Compile Include="Model_BL\MasterData_BL\ProductionUnitMaster_BL.cs" />
@@ -405,6 +406,10 @@
     <Content Include="Views\MasterData\ToolMaster_Create.cshtml" />
     <Content Include="Views\MasterData\ToolMaster_Edit.cshtml" />
     <Content Include="Views\MasterData\ToolMaster_Details.cshtml" />
+    <Content Include="Views\MasterData\LabourMaster_Index.cshtml" />
+    <Content Include="Views\MasterData\LabourMaster_Create.cshtml" />
+    <Content Include="Views\MasterData\LabourMaster_Edit.cshtml" />
+    <Content Include="Views\MasterData\LabourMaster_Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

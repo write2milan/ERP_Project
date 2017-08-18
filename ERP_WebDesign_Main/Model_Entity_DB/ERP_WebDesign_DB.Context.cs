@@ -605,5 +605,7 @@ namespace ERP_WebDesign_Main.Model_Entity_DB
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update_Tool", toolIDParameter, toolNameParameter, toolDescParameter, modifiedByParameter, modifiedDateTimeParameter);
         }
+
+        public System.Data.Entity.DbSet<ERP_WebDesign_Main.Models.MasterData_Model.LabourMaster_Model> LabourMaster_Model { get; set; }
     }
 }
