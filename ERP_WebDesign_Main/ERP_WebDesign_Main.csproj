@@ -298,6 +298,7 @@
     <Content Include="ERP_SqlServer_Scripts\16042017_ERP_SQLSCRIPT.sql" />
     <Content Include="ERP_SqlServer_Scripts\06042017_ERP.sql" />
     <Content Include="ERP_SqlServer_Scripts\26032017_ERP_CODIFICATION.sql" />
+    <Content Include="ERP_SqlServer_Scripts\ERP_DB.sql" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
