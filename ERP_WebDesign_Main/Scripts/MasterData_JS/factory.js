@@ -35,19 +35,19 @@
             });
         };
 
-        var get_SearchItems = function (url, searchText) {
+        var get_SearchItems = function (url, searchText, ItemID, GroupID, SpecificationID, RackID) {
             return $http({
                 method: 'POST',
                 url: url,
-                data: JSON.stringify({ searchText: searchText })
+                data: JSON.stringify({ searchText: searchText, ITEMID: ItemID, GROUPID: GroupID, SPECIFICATIONID: SpecificationID, RACKID: RackID })
             });
         };
 
-        var get_PagedItems = function (url, searchText, pageNo) {
+        var get_PagedItems = function (url, searchText, pageNo, ItemID, GroupID, SpecificationID, RackID) {
             return $http({
                 method: 'POST',
                 url: url,
-                data: JSON.stringify({ searchText: searchText, pageNo: pageNo })
+                data: JSON.stringify({ searchText: searchText, pageNo: pageNo, ITEMID: ItemID, GROUPID: GroupID, SPECIFICATIONID: SpecificationID, RACKID: RackID })
             });
         };
 
