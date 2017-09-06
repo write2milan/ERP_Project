@@ -2,7 +2,7 @@
     'use strict';
 
     var controllerModule = angular.module('ERP-CONTROLLER', []);
-    controllerModule.controller('codification', ['$scope', 'codificationfactory', '$window', function ($scope, codificationfactory, $window) {
+    controllerModule.controller('codification', ['$scope', 'codificationfactory', '$window', '$compile', function ($scope, codificationfactory, $window, $compile) {
 
         $scope.ErrorFlagValidation = false;
         $scope.IsCodePresent = false;
@@ -18,61 +18,102 @@
         };
 
         $scope.BindCodificationForIndex = function (Codification_Model) {
+            // change 03/09/2017
+            $scope.CodiFilterItems = Codification_Model;
+            // end change 03/09/2017
+
+        };
+
+        $scope.BindCodificationForSearchGrid = function (Codification_Model) {
             $scope.Codification_Model = Codification_Model.Collection;
             $scope.TotalCount = Codification_Model.ItemCount;
             $scope.PageIndex = Codification_Model.PageNo;
             $scope.PageSizeSelected = Codification_Model.PageSize;
             $scope.NoRecordFound = Codification_Model.NoRecordFound;
+        };
+
+
+
+        // change 03/09/2017
+        $scope.Search = function (url) {
+            ERP_JS_MAIN.showPleaseWait();
+            codificationfactory.GetSearchItems(url, $scope.SearchText, $scope.CodiFilterItems.ItemID, $scope.CodiFilterItems.GroupID, $scope.CodiFilterItems.SpecificationID, $scope.CodiFilterItems.RackID).then(function (response) {
+                var outPut = response.data;
+                var gridData = $compile(outPut)($scope);
+                angular.element('#codiCollectionSearchGrid').html(gridData);
+                ERP_JS_MAIN.hidePleaseWait();
+            }).catch(function (response) {
+                ERP_JS_MAIN.hidePleaseWait();
+                ERP_JS_MAIN.OnFailure(response);
+            });
 
         };
 
+        $scope.ClearAll = function (url) {
+            ERP_JS_MAIN.showPleaseWait();
+            $scope.SearchText = "";
+            $scope.CodiFilterItems.ItemID = "";
+            $scope.CodiFilterItems.GroupID = "";
+            $scope.CodiFilterItems.SpecificationID = "";
+            $scope.CodiFilterItems.RackID = "";
+            codificationfactory.GetSearchItems(url, $scope.SearchText, $scope.CodiFilterItems.ItemID, $scope.CodiFilterItems.GroupID, $scope.CodiFilterItems.SpecificationID, $scope.CodiFilterItems.RackID).then(function (response) {
+                var outPut = response.data;
+                var gridData = $compile(outPut)($scope);
+                angular.element('#codiCollectionSearchGrid').html(gridData);
+                ERP_JS_MAIN.hidePleaseWait();
+            }).catch(function (response) {
+                ERP_JS_MAIN.hidePleaseWait();
+                ERP_JS_MAIN.OnFailure(response);
+            });
+
+        };
+        // end chnge 03/09/2017 
 
         $scope.PageChanged = function (url) {
             ERP_JS_MAIN.showPleaseWait();
-            codificationfactory.GetPagedItems(url, $scope.SearchText, $scope.PageIndex).then(function (response) {
-                $scope.BindCodificationForIndex(response.data);
+            codificationfactory.GetPagedItems(url, $scope.SearchText, $scope.PageIndex, $scope.CodiFilterItems.ItemID, $scope.CodiFilterItems.GroupID, $scope.CodiFilterItems.SpecificationID, $scope.CodiFilterItems.RackID).then(function (response) {
+                var outPut = response.data;
+                var gridData = $compile(outPut)($scope);
+                angular.element('#codiCollectionSearchGrid').html(gridData);
                 ERP_JS_MAIN.hidePleaseWait();
             }).catch(function (response) {
                 ERP_JS_MAIN.hidePleaseWait();
                 ERP_JS_MAIN.OnFailure(response);
             });
-
-        };
-
-        $scope.Search = function (url) {
-            ERP_JS_MAIN.showPleaseWait();
-            codificationfactory.GetSearchItems(url, $scope.SearchText).then(function (response) {
-                $scope.BindCodificationForIndex(response.data);
-                ERP_JS_MAIN.hidePleaseWait();
-            }).catch(function (response) {
-                ERP_JS_MAIN.hidePleaseWait();
-                ERP_JS_MAIN.OnFailure(response);
-            });
-
-        };
-
-
+        }
 
         $scope.GetItems = function (url) {
             ERP_JS_MAIN.showPleaseWait();
-            codificationfactory.GetCodiItems($scope.Codification_Model.GroupID, url).then(function (response) {
-                $scope.Codification_Model.Items = response.data;
+            // change 03/09/2017
+            var _id = (typeof ($scope.Codification_Model) === 'undefined' || $scope.Codification_Model === null) ? $scope.CodiFilterItems.GroupID : $scope.Codification_Model.GroupID;
+            codificationfactory.GetCodiItems(_id, url).then(function (response) {
+                if ((typeof ($scope.Codification_Model) === 'undefined' || $scope.Codification_Model === null))
+                    $scope.CodiFilterItems.Items = response.data;
+                else
+                    $scope.Codification_Model.Items = response.data;
                 ERP_JS_MAIN.hidePleaseWait();
             }).catch(function (response) {
                 ERP_JS_MAIN.hidePleaseWait();
                 ERP_JS_MAIN.OnFailure(response);
             });
+            //end change 03/09/2017
         };
 
         $scope.GetSpecs = function (url) {
             ERP_JS_MAIN.showPleaseWait();
-            codificationfactory.GetCodiSpecs($scope.Codification_Model.ItemID, url).then(function (response) {
-                $scope.Codification_Model.Specifications = response.data;
+            // change 03/09/2017
+            var _id = (typeof ($scope.Codification_Model) === 'undefined' || $scope.Codification_Model === null) ? $scope.CodiFilterItems.ItemID : $scope.Codification_Model.ItemID;
+            codificationfactory.GetCodiSpecs(_id, url).then(function (response) {
+                if ((typeof ($scope.Codification_Model) === 'undefined' || $scope.Codification_Model === null))
+                    $scope.CodiFilterItems.Specifications = response.data;
+                else
+                    $scope.Codification_Model.Specifications = response.data;
                 ERP_JS_MAIN.hidePleaseWait();
             }).catch(function (response) {
                 ERP_JS_MAIN.hidePleaseWait();
                 ERP_JS_MAIN.OnFailure(response);
             });
+            //end change 03/09/2017
         };
 
         $scope.InsertCodi = function (url) {
