@@ -1,0 +1,97 @@
+﻿@using ERP_WebDesign_Main.Resources;
+@model ERP_WebDesign_Main.Models.MasterData_Model.Codification
+
+
+<div ng-controller="codification" ng-init="BindCodificationForSearchGrid(@Newtonsoft.Json.JsonConvert.SerializeObject(Model))">
+    <div>
+        <table class="table table-striped">
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Collection[0].CodificationCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Collection[0].GroupDisplayName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Collection[0].ItemDisplayName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Collection[0].RackDisplayName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Collection[0].SpecificationDisplayName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Collection[0].CreatedBy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Collection[0].CreatedDateTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Collection[0].ModifiedBy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Collection[0].ModifiedDateTime)
+                </th>
+                <th></th>
+            </tr>
+
+            <tr ng-if="Codification_Model.length===0" class="norecordfound">
+                <td colspan="6"><span>{{NoRecordFound}}</span></td>
+            </tr>
+
+            <tbody ng-if="Codification_Model.length!==0">
+                <tr ng-repeat="row in Codification_Model">
+
+                    <td>
+                        {{row.CodificationCode}}
+
+                    </td>
+                    <td>
+                        {{row.GroupDisplayName}}
+
+                    </td>
+                    <td>
+                        {{row.ItemDisplayName}}
+
+                    </td>
+                    <td>
+                        {{row.RackDisplayName}}
+
+                    </td>
+                    <td>
+                        {{row.SpecificationDisplayName}}
+
+                    </td>
+                    <td>
+                        {{row.CreatedBy}}
+
+                    </td>
+                    <td>
+                        {{row.CreatedDateTime|dateconvert}}
+
+                    </td>
+                    <td>
+                        {{row.ModifiedBy}}
+
+                    </td>
+                    <td>
+                        {{row.ModifiedDateTime|dateconvert}}
+
+                    </td>
+                    <td>
+                        <a href="@Url.Action("CodificationMaster_Edit","MasterData")?CodiId={{row.CodificationID}}">Edit</a> |
+                        <a href="@Url.Action("CodificationMaster_Details","MasterData")?CodiId={{row.CodificationID}}">View</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pagingFooter" ng-show="Codification_Model.length!==0">
+            <div class="pull-right">
+                <pagination total-items="TotalCount" ng-change="PageChanged('@Url.Action("CodificationMaster_PageChanged", "MasterData")')" items-per-page="PageSizeSelected" direction-links="true" ng-model="PageIndex" max-size="MaxSize" class="pagination" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+            </div>
+        </div>
+    </div>
+</div>
+
