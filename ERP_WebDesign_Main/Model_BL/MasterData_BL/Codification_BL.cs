@@ -1,4 +1,4 @@
-﻿using ERP_WebDesign_Main.Model_Entity_DB;
+using ERP_WebDesign_Main.Model_Entity_DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,27 +14,35 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
     public class Codification_BL : Base_BL<Models.MasterData_Model.Codification_Model>
     {
 
-        private string CreateStoreProcXmlInput(string searchText = "", int pageNo = 1, int pageSize = 10)
+        private string CreateStoreProcXmlInput(string searchText = "", int pageNo = 1, int pageSize = 10
+            , string ITEMID = "", string GROUPID = "", string SPECIFICATIONID = "", string RACKID = "")
         {
             StringBuilder spInput = new StringBuilder();
             spInput.Append("<ROOT>");
-            spInput.Append("<CODIFICATIONCODE><![CDATA[" + searchText + "]]></CODIFICATIONCODE>");
+            if (!string.IsNullOrEmpty(searchText)) spInput.Append("<CODIFICATIONCODE><![CDATA[" + searchText + "]]></CODIFICATIONCODE>");
+            if (!string.IsNullOrEmpty(ITEMID)) spInput.Append("<ITEMID><![CDATA[" + ITEMID + "]]></ITEMID>");
+            if (!string.IsNullOrEmpty(GROUPID)) spInput.Append("<GROUPID><![CDATA[" + GROUPID + "]]></GROUPID>");
+            if (!string.IsNullOrEmpty(SPECIFICATIONID)) spInput.Append("<SPECIFICATIONID><![CDATA[" + SPECIFICATIONID + "]]></SPECIFICATIONID>");
+            if (!string.IsNullOrEmpty(RACKID)) spInput.Append("<RACKID><![CDATA[" + RACKID + "]]></RACKID>");
             spInput.Append("<PAGENO>" + pageNo + "</PAGENO>");
             spInput.Append("<PAGESIZE>" + pageSize + "</PAGESIZE>");
             spInput.Append("</ROOT>");
             return spInput.ToString();
         }
-        public Codification GetAllItems(string searchText = "", int pageNo = 1, int pageSize = 10)
+        public CodificationWrapper GetAllItems(string searchText = "", int pageNo = 1, int pageSize = 10
+            , string ITEMID = "", string GROUPID = "", string SPECIFICATIONID = "", string RACKID = "", bool flagSearch_Paging = false)
         {
             Codification objEntity = new Codification();
+            CodificationFilterItems objFilterItems = new CodificationFilterItems();
             List<Codification_Model> objCollection = new List<Codification_Model>();
+            CodificationWrapper objWrap = new CodificationWrapper();
 
             try
             {
                 using (ERP_DEMOEntities objContext = new ERP_DEMOEntities())
                 {
                     ObjectParameter outPut = new ObjectParameter("TOTALRECORDCOUNT", typeof(Int32));
-                    objCollection = (from each in objContext.ERP_DB_SPGetCodificationSearchData(CreateStoreProcXmlInput(searchText, pageNo, pageSize), outPut).ToList<ERP_DB_SPGetCodificationSearchData_Result>()
+                    objCollection = (from each in objContext.ERP_DB_SPGetCodificationSearchData(CreateStoreProcXmlInput(searchText, pageNo, pageSize, ITEMID, GROUPID, SPECIFICATIONID, RACKID), outPut).ToList<ERP_DB_SPGetCodificationSearchData_Result>()
                                      select new Codification_Model
                                      {
                                          CodificationID = each.CodificationID,
@@ -42,12 +50,33 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
                                          CreatedBy = each.CreatedBy,
                                          CreatedDateTime = each.CreatedDateTime,
                                          ModifiedBy = each.ModifiedBy,
-                                         ModifiedDateTime = each.ModifiedDateTime
+                                         ModifiedDateTime = each.ModifiedDateTime,
+                                         GroupCode = each.GroupCode,
+                                         GroupDisplayName = each.GroupDisplayName,
+                                         ItemCode = each.ItemCode,
+                                         ItemDisplayName = each.ItemDisplayName,
+                                         RackCode = each.RackCode,
+                                         RackDisplayName = each.RackDisplayName,
+                                         SpecificationCode = each.SpecificationCode,
+                                         SpecificationDisplayName = each.SpecificationDisplayName
                                      }).ToList<Codification_Model>();
+                    if (flagSearch_Paging == false)
+                    {
+                        objFilterItems.Groups = PopulateGroupsDropdown();
+                        objFilterItems.Racks = PopulateRacksDropdown();
+                        objFilterItems.GroupID = ERP_WebDesign_CommonResource.DEFAULT_DROPDOWN_VALUE;
+                        objFilterItems.ItemID = ERP_WebDesign_CommonResource.DEFAULT_DROPDOWN_VALUE;
+                        objFilterItems.RackID = ERP_WebDesign_CommonResource.DEFAULT_DROPDOWN_VALUE;
+                        objFilterItems.SpecificationID = ERP_WebDesign_CommonResource.DEFAULT_DROPDOWN_VALUE;
+                        
+                    }
                     objEntity.Collection = objCollection;
                     objEntity.ItemCount = int.Parse(Convert.ToString(outPut.Value));
                     objEntity.PageNo = pageNo;
                     objEntity.PageSize = pageSize;
+
+                    objWrap.Codi = objEntity;
+                    objWrap.CodiFilterItems = objFilterItems;
 
                 }
             }
@@ -55,7 +84,7 @@ namespace ERP_WebDesign_Main.Model_BL.MasterData_BL
             {
                 throw;
             }
-            return objEntity;
+            return objWrap;
         }
         public override IEnumerable<Codification_Model> GetAllItems()
         {
