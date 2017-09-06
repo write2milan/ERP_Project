@@ -67,17 +67,28 @@ namespace ERP_WebDesign_Main.Controllers
         }
 
         [HttpPost]
-        public JsonResult CodificationMaster_PageChanged(string searchText = "", int pageNo = CommonHelper.Constants.DEFAULT_PAGE_NO)
+        // change 09/03/2017
+        public ActionResult CodificationMaster_PageChanged(string searchText = "", string RACKID = "", int pageNo = CommonHelper.Constants.DEFAULT_PAGE_NO, string ITEMID = "", string GROUPID = "", string SPECIFICATIONID = "")
         {
             Model_BL.MasterData_BL.Codification_BL objCodificationMasterBL = new Model_BL.MasterData_BL.Codification_BL();
-            return Json(objCodificationMasterBL.GetAllItems(searchText: searchText, pageNo: pageNo, pageSize: CommonHelper.Constants.DEFAULT_PAGE_SIZE), JsonRequestBehavior.AllowGet);
+            Models.MasterData_Model.Codification model = (objCodificationMasterBL.GetAllItems(searchText: searchText, pageNo: pageNo, pageSize: CommonHelper.Constants.DEFAULT_PAGE_SIZE
+              , ITEMID: ITEMID, GROUPID: GROUPID, SPECIFICATIONID: SPECIFICATIONID, RACKID: RACKID, flagSearch_Paging: true)).Codi;
+
+            return PartialView("_CodificationSearchGrid", model);
         }
+        // end change 09/03/2017
+
         [HttpPost]
-        public JsonResult CodificationMaster_Search(string searchText = "", int pageNo = CommonHelper.Constants.DEFAULT_PAGE_NO)
+        // change 09/03/2017
+        public ActionResult CodificationMaster_Search(string searchText = "", string ITEMID = "", string GROUPID = "", string SPECIFICATIONID = "", string RACKID = "", int pageNo = CommonHelper.Constants.DEFAULT_PAGE_NO)
         {
             Model_BL.MasterData_BL.Codification_BL objCodificationMasterBL = new Model_BL.MasterData_BL.Codification_BL();
-            return Json(objCodificationMasterBL.GetAllItems(searchText: searchText, pageNo: pageNo, pageSize: CommonHelper.Constants.DEFAULT_PAGE_SIZE), JsonRequestBehavior.AllowGet);
+            Models.MasterData_Model.Codification model = (objCodificationMasterBL.GetAllItems(searchText: searchText, pageNo: pageNo, pageSize: CommonHelper.Constants.DEFAULT_PAGE_SIZE
+              , ITEMID: ITEMID, GROUPID: GROUPID, SPECIFICATIONID: SPECIFICATIONID, RACKID: RACKID, flagSearch_Paging: true)).Codi;
+
+            return PartialView("_CodificationSearchGrid", model);
         }
+        // end change 09/03/2017
 
         public ActionResult CodificationMaster_Index()
         {
